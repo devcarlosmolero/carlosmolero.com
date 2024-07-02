@@ -1,0 +1,22 @@
+import { ActionFunctionArgs } from '@remix-run/cloudflare'
+import { redirectWithToast } from '../utils/server'
+import { ContactFormSubmission } from '~/types/forms'
+import { sendDiscordMessage } from '~/actions/discord'
+
+export async function action({ request }: ActionFunctionArgs) {
+    const formData = await request.formData()
+    const submission = Object.fromEntries(
+        formData
+    ) as unknown as ContactFormSubmission
+
+    await sendDiscordMessage(
+        `\n\n👋 ${submission.name} ha escrito: \n\n*"${submission.message}"*\n\nPuedes escribirle de vuelta usando el siguiente correo: ${submission.email}`
+    )
+
+    return redirectWithToast(
+        `${formData.get('pathname')}?contactFormStatus=success`,
+        'Mensaje Enviado. Nos pondremos en contacto contigo lo antes posible.',
+        'success',
+        true
+    )
+}

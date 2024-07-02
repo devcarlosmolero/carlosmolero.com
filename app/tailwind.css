@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    scroll-behavior: smooth;
+}
+
+.embla {
+    overflow: hidden;
+    mask-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0) 0%,
+        rgb(0, 0, 0) 10%,
+        rgb(0, 0, 0) 90%,
+        rgba(0, 0, 0, 0) 100%
+    );
+}
+
+.embla__container {
+    display: flex;
+}
+
+.embla__slide {
+    flex: 0 0 40%;
+    @apply mx-5;
+    min-width: 0;
+}
+
+@screen md {
+    .embla__slide {
+        flex: 0 0 20%;
+        @apply mx-10;
+        min-width: 0;
+    }
+}
+
+.font-accent {
+    font-family: 'Instrument serif', serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.prose table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+@screen sm {
+    .prose table {
+        display: inline-table;
+    }
+}
+
+.prose table th {
+    text-align: inherit;
+}
+
+.Toastify__toast-body {
+    display: flex !important;
+    align-items: flex-start !important;
+    @apply text-sm;
+}
+
+.Toastify__toast-icon {
+    @apply mt-1;
+}
+
+.Toastify__progress-bar--success {
+    background: hsl(140, 100%, 27%) !important;
+}
+
+.Toastify__progress-bar--error {
+    background: hsl(360, 100%, 45%) !important;
+}
+
+.Toastify__toast--success {
+    background: hsl(143, 85%, 96%) !important;
+    border-color: hsl(145, 92%, 91%) !important;
+    color: hsl(140, 100%, 27%) !important;
+}
+
+.Toastify__toast--error {
+    background: hsl(359, 100%, 97%) !important;
+    border-color: hsl(359, 100%, 94%) !important;
+    color: hsl(360, 100%, 45%) !important;
+}
