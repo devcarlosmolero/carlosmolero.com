@@ -1,10 +1,6 @@
 import 'animate.css/animate.compat.css'
 
-import {
-    ActionFunctionArgs,
-    json,
-    type MetaFunction,
-} from '@remix-run/cloudflare'
+import { json, type MetaFunction } from '@remix-run/cloudflare'
 import Page from '~/components/templates/Page'
 import Faq from '~/components/pages/Home/Faq'
 import Hero from '~/components/pages/Home/Hero'
@@ -80,11 +76,6 @@ export const meta: MetaFunction = () => {
             content: '@novascriptio',
         },
     ]
-}
-
-export async function action({ request }: ActionFunctionArgs) {
-    console.log(await request.formData())
-    return json({ success: true })
 }
 
 export default function Home() {
