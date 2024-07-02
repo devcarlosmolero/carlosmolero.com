@@ -44,7 +44,9 @@ export default function App() {
             toast.success(params.get('tm'))
         }
 
-        setParams({}, { preventScrollReset: true })
+        params.delete('tt')
+        params.delete('tm')
+        setParams({}, { preventScrollReset: true, replace: true })
     }, [params, setParams])
 
     return (

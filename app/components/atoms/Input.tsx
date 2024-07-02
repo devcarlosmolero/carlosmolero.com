@@ -17,7 +17,7 @@ export default function Input({
             )}
             <input
                 {...inputProps}
-                className="h-[60px] rounded-full bg-neutral-900 p-5 outline-none placeholder:text-gray-500"
+                className="h-[60px] rounded-xl bg-neutral-900 p-5 outline-none placeholder:text-gray-400"
             />
         </div>
     )
