@@ -29,6 +29,7 @@ export default function Services() {
             description:
                 'Desarrollamos aplicaciones iOS y Android que crean experiencias que tus usuarios querrán repetir una y otra vez. Usamos tecnologías vanguardistas como Flutter.',
             icon: <DevicePhoneMobileIcon className="size-12 text-violet-300" />,
+            pathname: 'desarrollo-de-aplicaciones-ios-y-android',
         },
         {
             title: 'Software a medida',
