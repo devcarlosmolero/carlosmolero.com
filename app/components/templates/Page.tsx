@@ -10,7 +10,7 @@ export default function Page({
     className?: string
 }) {
     return (
-        <div className="mt-[80px] text-white">
+        <div className="pt-[80px] text-white">
             <Container>
                 <PageInner className={className}>{children}</PageInner>
             </Container>

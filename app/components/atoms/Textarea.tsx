@@ -15,7 +15,7 @@ export default function Textarea({
             </label>
             <textarea
                 {...inputProps}
-                className="rounded-xl bg-neutral-900 p-5 outline-none placeholder:text-gray-500"
+                className="rounded-xl bg-neutral-900 p-5 outline-none placeholder:text-gray-400"
             />
         </div>
     )
