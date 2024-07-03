@@ -1,12 +1,16 @@
 import { LoaderFunction } from '@remix-run/cloudflare'
-import { getLatestPosts } from '~/actions/contentful'
+import { getLatestPosts, getServices } from '~/actions/contentful'
 import { STATIC_PATHS } from '~/consts'
 
 export const loader: LoaderFunction = async () => {
-    const posts = await getLatestPosts(100)
-    const entries = posts.map((post) => ({
-        slug: post.slug!,
-        updatedAt: post.updatedAt!,
+    const [posts, services] = await Promise.all([
+        getLatestPosts(100),
+        getServices(),
+    ])
+
+    const entries = [...posts, ...services].map((entry) => ({
+        slug: entry.slug!,
+        updatedAt: entry.updatedAt!,
     }))
 
     return new Response(renderXML(entries), {

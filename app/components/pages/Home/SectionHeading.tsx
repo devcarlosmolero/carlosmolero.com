@@ -7,7 +7,7 @@ export default function SectionHeading({
 }: {
     badgeLabel?: string
     title: string
-    description: string
+    description?: string
 }) {
     return (
         <div className="mb-16 flex w-full flex-col items-center gap-y-5">
@@ -17,7 +17,7 @@ export default function SectionHeading({
                     className="text-4xl font-semibold tracking-tighter"
                     dangerouslySetInnerHTML={{ __html: title }}
                 ></h2>
-                <p className="text-gray-300">{description}</p>
+                {description && <p className="text-gray-300">{description}</p>}
             </div>
         </div>
     )

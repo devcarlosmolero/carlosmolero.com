@@ -1,36 +1,50 @@
 import { json, LoaderFunctionArgs, redirect } from '@remix-run/cloudflare'
-import { MetaFunction, useLoaderData } from '@remix-run/react'
-import { getPostBySlug } from '~/actions/contentful'
+import { useLoaderData } from '@remix-run/react'
+import { getPostBySlug, getServiceBySlug } from '~/actions/contentful'
 import PostLayout from '~/components/templates/PostLayout'
-import { type Post } from '~/types/contentful'
+import ServiceLayout from '~/components/templates/ServiceLayout'
+import { SERVICE_SLUGS } from '~/consts'
+import { Service, type Post } from '~/types/contentful'
 
 export async function loader({ request }: LoaderFunctionArgs) {
     const url = new URL(request.url)
+    const slug = url.pathname.split('/')[1]
+
+    let post: Post | undefined
+    let service: Service | undefined
 
     try {
-        const post = await getPostBySlug(url.pathname.split('/')[1])
-        return json(post)
+        if (SERVICE_SLUGS.includes(slug)) {
+            service = await getServiceBySlug(slug)
+        } else {
+            post = await getPostBySlug(slug)
+        }
+
+        return json({
+            post,
+            service,
+        })
     } catch (e) {
         return redirect('/')
     }
 }
 
-export const meta: MetaFunction = ({ data }: { data: any }) => {
-    const post = data as Post
+export const meta = (payload: { data: { post: Post; service: Service } }) => {
+    const { post, service } = payload.data
 
     return [
-        { title: post.seoTitle },
+        { title: post?.seoTitle || `${service?.seoTitle} - NovaScript` },
         {
             property: 'og:title',
-            content: post.seoTitle,
+            content: post?.seoTitle || `${service?.seoTitle} - NovaScript`,
         },
         {
             name: 'description',
-            content: post.seoDescription,
+            content: post?.seoDescription || service?.seoDescription,
         },
         {
             property: 'og:description',
-            content: post.seoDescription,
+            content: post?.seoDescription || service?.seoDescription,
         },
         {
             name: 'robots',
@@ -39,11 +53,11 @@ export const meta: MetaFunction = ({ data }: { data: any }) => {
         },
         {
             property: 'og:type',
-            content: 'article',
+            content: post ? 'article' : 'website',
         },
         {
             property: 'og:image',
-            content: `https:${post.headerImgUrl}`,
+            content: `https:${post?.headerImgUrl || service?.headerImgUrl}`,
         },
         {
             property: 'og:image:width',
@@ -67,7 +81,7 @@ export const meta: MetaFunction = ({ data }: { data: any }) => {
         },
         {
             name: 'twitter:title',
-            content: post.seoTitle,
+            content: post?.seoTitle || `${service?.seoTitle} - NovaScript`,
         },
         {
             name: 'twitter:name',
@@ -77,7 +91,13 @@ export const meta: MetaFunction = ({ data }: { data: any }) => {
 }
 
 export default function Post() {
-    const post = useLoaderData<typeof loader>()
+    const { post, service } = useLoaderData<typeof loader>()
 
-    return <PostLayout post={post} />
+    if (post) {
+        return <PostLayout post={post} />
+    }
+
+    if (service) {
+        return <ServiceLayout service={service} />
+    }
 }

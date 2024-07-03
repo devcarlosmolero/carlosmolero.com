@@ -3,11 +3,11 @@ import { Link } from '@remix-run/react'
 import Markdown from 'react-markdown'
 import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
+import rehypeRaw from 'rehype-raw'
 import { Post } from '~/types/contentful'
 import Contact from '../pages/shared/Contact'
 import cl from 'classnames'
 import Page from './Page'
-import rehypeRaw from 'rehype-raw'
 
 export default function PostLayout({ post }: { post: Post }) {
     function hasSidebar() {

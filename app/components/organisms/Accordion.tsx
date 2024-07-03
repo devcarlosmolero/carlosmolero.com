@@ -8,8 +8,8 @@ export interface AccordionProps {
 }
 
 export interface AccordionPropsItem {
-    title: string
-    description: string
+    question: string
+    answer: string
 }
 
 const Accordion = ({ data }: AccordionProps) => (
@@ -21,8 +21,8 @@ const Accordion = ({ data }: AccordionProps) => (
         {data.map((item, index) => {
             return (
                 <AccordionItem key={index} value={String(index)}>
-                    <AccordionTrigger>{item.title}</AccordionTrigger>
-                    <AccordionContent>{item.description}</AccordionContent>
+                    <AccordionTrigger>{item.question}</AccordionTrigger>
+                    <AccordionContent>{item.answer}</AccordionContent>
                 </AccordionItem>
             )
         })}
@@ -60,7 +60,7 @@ const AccordionTrigger = React.forwardRef<
     <RadixAccordion.Header className="flex">
         <RadixAccordion.Trigger
             className={cl(
-                'group flex w-full items-center rounded-xl border border-zinc-600 bg-neutral-900 p-5 text-start text-lg',
+                'group flex w-full items-center rounded-xl border border-zinc-800 bg-neutral-900 p-5 text-start text-lg',
                 className
             )}
             {...props}
