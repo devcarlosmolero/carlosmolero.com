@@ -22,7 +22,7 @@ export default function Services() {
             description:
                 'Creamos tu sitio web, atractivo y funcional, con Wordpress, Webflow o Framer. ¿A qué esperas para convertir a tus visitantes en clientes?',
             icon: <ComputerDesktopIcon className="size-12 text-violet-300" />,
-            pathname: 'diseno-web-a-medida',
+            pathname: 'diseno-y-desarrollo-de-paginas-web',
         },
         {
             title: 'Apps móviles',
