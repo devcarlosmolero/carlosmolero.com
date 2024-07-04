@@ -13,7 +13,15 @@ import Blog from '~/components/pages/Home/Blog'
 import { useLoaderData } from '@remix-run/react'
 
 export async function loader() {
-    const posts = await getLatestPosts(6)
+    const posts = await getLatestPosts(6, [
+        'fields.seoTitle',
+        'fields.seoDescription',
+        'fields.headerImg',
+        'fields.authorName',
+        'fields.authorAvatar',
+        'fields.slug',
+        'sys',
+    ])
     return json(posts)
 }
 

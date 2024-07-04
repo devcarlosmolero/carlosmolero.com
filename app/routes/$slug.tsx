@@ -18,6 +18,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
             service = await getServiceBySlug(slug)
         } else {
             post = await getPostBySlug(slug)
+            post.createdAt = new Date(post.createdAt!).toLocaleDateString('es')
         }
 
         return json({

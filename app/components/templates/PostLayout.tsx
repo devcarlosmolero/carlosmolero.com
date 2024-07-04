@@ -1,4 +1,3 @@
-import { LinkIcon } from '@heroicons/react/24/outline'
 import { Link } from '@remix-run/react'
 import Markdown from 'react-markdown'
 import rehypeSlug from 'rehype-slug'
@@ -8,6 +7,29 @@ import { Post } from '~/types/contentful'
 import Contact from '../pages/shared/Contact'
 import cl from 'classnames'
 import Page from './Page'
+import Accordion from '../organisms/Accordion'
+
+export function SideBarContent({
+    sections,
+}: {
+    sections: { id: string; text: string }[]
+}) {
+    return (
+        <div className="flex flex-col gap-y-2 text-gray-300">
+            {sections?.map((section, index) => {
+                return (
+                    <Link
+                        className="flex items-start underline hover:text-violet-300"
+                        to={`#${section.id}`}
+                        key={index}
+                    >
+                        {section.text}
+                    </Link>
+                )
+            })}
+        </div>
+    )
+}
 
 export default function PostLayout({ post }: { post: Post }) {
     function hasSidebar() {
@@ -23,18 +45,18 @@ export default function PostLayout({ post }: { post: Post }) {
         >
             <div
                 className={cl(
-                    'grid grid-cols-1 gap-x-10 gap-y-5 md:grid-cols-12',
+                    'grid grid-cols-1 gap-x-10 gap-y-5 lg:grid-cols-12',
                     !hasSidebar() && '!flex'
                 )}
             >
                 <div
                     className={cl(
-                        'md:sticky md:top-[100px] md:col-span-4 md:h-[200px]',
+                        'md:top-[100px] lg:sticky lg:col-span-4 lg:h-[200px]',
                         !hasSidebar() && 'hidden'
                     )}
                 >
                     {hasSidebar() && (
-                        <div className="flex w-full flex-col gap-y-2">
+                        <div className="flex w-full flex-col gap-y-2 lg:rounded-xl lg:border lg:border-zinc-800 lg:bg-neutral-900 lg:p-5">
                             {post.headerImgUrl && (
                                 <img
                                     className="rounded-xl"
@@ -42,29 +64,32 @@ export default function PostLayout({ post }: { post: Post }) {
                                     src={post.headerImgUrl}
                                 />
                             )}
+                            <div className="lg:hidden">
+                                <Accordion
+                                    data={[
+                                        {
+                                            question: 'Tabla de contenidos',
+                                            answer: (
+                                                <SideBarContent
+                                                    sections={post.sections!}
+                                                />
+                                            ),
+                                        },
+                                    ]}
+                                />
+                            </div>
                             <h2 className="mt-3 hidden text-2xl tracking-tighter md:block">
                                 Tabla de contenidos
                             </h2>
-                            <div className="hidden flex-col gap-y-1 text-gray-300 md:flex">
-                                {post.sections?.map((section, index) => {
-                                    return (
-                                        <Link
-                                            className="flex items-start gap-x-2 hover:text-violet-300"
-                                            to={`#${section.id}`}
-                                            key={index}
-                                        >
-                                            <LinkIcon className="size-4 min-w-[16px]" />
-                                            {section.text}
-                                        </Link>
-                                    )
-                                })}
+                            <div className="hidden lg:flex">
+                                <SideBarContent sections={post.sections!} />
                             </div>
                         </div>
                     )}
                 </div>
                 <div
                     className={cl(
-                        'md:col-span-8',
+                        'lg:col-span-8',
                         !hasSidebar() && 'max-w-[765px]'
                     )}
                 >
@@ -73,11 +98,8 @@ export default function PostLayout({ post }: { post: Post }) {
                         {post.createdAt && post.readingTime && (
                             <div className="flex flex-col gap-y-1 text-gray-400">
                                 <p suppressHydrationWarning>
-                                    Publicado el{' '}
-                                    {new Date(
-                                        post.createdAt
-                                    ).toLocaleDateString()}{' '}
-                                    | {post.readingTime} min.
+                                    Publicado el {post.createdAt} |{' '}
+                                    {post.readingTime} min.
                                 </p>
                                 <p></p>
                             </div>
@@ -97,7 +119,7 @@ export default function PostLayout({ post }: { post: Post }) {
                             )}
                         </div>
                     </div>
-                    <article className="prose prose-dark w-full !max-w-none prose-img:w-full [&_h2:first-of-type]:mt-0">
+                    <article className="prose prose-dark w-full !max-w-none prose-img:w-full prose-img:rounded-xl [&_h2:first-of-type]:mt-0">
                         <Markdown
                             remarkPlugins={[remarkGfm]}
                             rehypePlugins={[rehypeSlug, rehypeRaw]}

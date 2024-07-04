@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import cl from 'classnames'
 import * as RadixAccordion from '@radix-ui/react-accordion'
 import { PlusIcon, MinusIcon } from '@heroicons/react/24/outline'
@@ -9,7 +9,7 @@ export interface AccordionProps {
 
 export interface AccordionPropsItem {
     question: string
-    answer: string
+    answer: string | ReactNode
 }
 
 const Accordion = ({ data }: AccordionProps) => (

@@ -11,7 +11,7 @@ export default function AccentCard({
     return (
         <div
             className={cl(
-                'relative col-span-1 h-full min-h-[280px] w-full md:min-h-[230px] lg:col-span-2 lg:min-h-0',
+                'relative col-span-1 h-full min-h-[280px] w-full rounded-xl shadow shadow-zinc-700 md:min-h-[230px] lg:col-span-2 lg:min-h-0',
                 className
             )}
         >

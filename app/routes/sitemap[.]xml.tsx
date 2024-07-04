@@ -4,8 +4,8 @@ import { STATIC_PATHS } from '~/consts'
 
 export const loader: LoaderFunction = async () => {
     const [posts, services] = await Promise.all([
-        getLatestPosts(100),
-        getServices(),
+        getLatestPosts(10, ['sys', 'fields.slug']),
+        getServices(10, ['sys', 'fields.slug']),
     ])
 
     const entries = [...posts, ...services].map((entry) => ({

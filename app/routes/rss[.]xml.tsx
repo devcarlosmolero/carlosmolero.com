@@ -3,7 +3,12 @@ import { getLatestPosts } from '~/actions/contentful'
 import { Post } from '~/types/contentful'
 
 export const loader: LoaderFunction = async () => {
-    const posts = await getLatestPosts(100)
+    const posts = await getLatestPosts(100, [
+        'sys',
+        'fields.slug',
+        'fields.seoTitle',
+        'fields.seoDescription',
+    ])
 
     return new Response(renderXML(posts), {
         headers: {
