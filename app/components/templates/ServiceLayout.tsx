@@ -1,4 +1,4 @@
-import { Service } from '~/types/contentful'
+import { Service, ServiceCard } from '~/types/contentful'
 import Page from './Page'
 import Badge from '../atoms/Badge'
 import Separator from '../atoms/Separator'
@@ -9,11 +9,24 @@ import rehypeRaw from 'rehype-raw'
 import Contact from '../pages/shared/Contact'
 import SectionHeading from '../pages/Home/SectionHeading'
 import Accordion from '../organisms/Accordion'
-import { ArrowRightIcon, CalendarDaysIcon } from '@heroicons/react/24/outline'
+import {
+    ArrowRightIcon,
+    ArrowUpRightIcon,
+    CalendarDaysIcon,
+} from '@heroicons/react/24/outline'
 import Button from '../atoms/Button'
 import AccentCard from './AccentCard'
+import Card from './Card'
+import { Link } from '@remix-run/react'
+import ServicesIconMap from '../atoms/ServicesIconMap'
 
-export default function ServiceLayout({ service }: { service: Service }) {
+export default function ServiceLayout({
+    service,
+    cards,
+}: {
+    service: Service
+    cards: ServiceCard[]
+}) {
     return (
         <Page>
             <div className="grid gap-x-10 gap-y-10 lg:grid-cols-2">
@@ -99,6 +112,48 @@ export default function ServiceLayout({ service }: { service: Service }) {
                         </div>
                     </div>
                 </AccentCard>
+            </div>
+            <div className="flex flex-col">
+                <div>
+                    <SectionHeading title="Descubre Más Servicios" />
+                </div>
+                <div className="grid grid-cols-1 gap-x-5 gap-y-5 lg:grid-cols-3">
+                    {cards.map((card, index) => {
+                        return (
+                            <Card
+                                key={index}
+                                className="transition-scale flex h-full flex-col items-start gap-x-3 gap-y-3 rounded-xl duration-500 hover:scale-105"
+                            >
+                                <div className="grid w-full grid-cols-2 items-center">
+                                    <div className="w-full">
+                                        {/* @ts-expect-error idk */}
+                                        {ServicesIconMap[card.iconString]}
+                                    </div>
+                                    {card.enabled && (
+                                        <div className="flex justify-end">
+                                            <Link
+                                                reloadDocument
+                                                className="flex items-center justify-end gap-x-2 hover:text-violet-300"
+                                                to={`/${card.slug}`}
+                                            >
+                                                <p>Saber más</p>
+                                                <ArrowUpRightIcon className="size-4" />
+                                            </Link>
+                                        </div>
+                                    )}
+                                </div>
+                                <div className="mt-3 flex flex-col gap-y-3">
+                                    <h3 className="text-xl">
+                                        {card.cardTitle}
+                                    </h3>
+                                    <p className="text-sm text-gray-300">
+                                        {card.cardDescription}
+                                    </p>
+                                </div>
+                            </Card>
+                        )
+                    })}
+                </div>
             </div>
             <div>
                 <Contact />

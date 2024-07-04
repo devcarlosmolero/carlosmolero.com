@@ -1,4 +1,3 @@
-import stylesheet from '~/tailwind.css?url'
 import {
     Links,
     Meta,
@@ -15,8 +14,10 @@ import Navbar from '~/components/organisms/Navbar'
 import Footer from './components/organisms/Footer'
 import { useEffect, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 import cl from 'classnames'
+
+import stylesheet from '~/tailwind.css?url'
+import 'react-toastify/dist/ReactToastify.css'
 
 export async function loader({ request }: LoaderFunctionArgs) {
     const isRoot = new URL(request.url).pathname === '/'

@@ -1,60 +1,23 @@
-import {
-    ChartBarIcon,
-    CloudArrowUpIcon,
-    DevicePhoneMobileIcon,
-    RocketLaunchIcon,
-    ComputerDesktopIcon,
-    CodeBracketIcon,
-    Square3Stack3DIcon,
-    ArrowUpRightIcon,
-} from '@heroicons/react/24/outline'
 import Button from '~/components/atoms/Button'
 import SectionHeading from './SectionHeading'
 import Card from '~/components/templates/Card'
 import ScrollAnimation from 'react-animate-on-scroll'
 import AccentCard from '~/components/templates/AccentCard'
 import { Link } from '@remix-run/react'
+import { ArrowUpRightIcon } from '@heroicons/react/24/outline'
+import ServicesIconMap from '~/components/atoms/ServicesIconMap'
+import { ServiceCard } from '~/types/contentful'
 
-export default function Services({
-    cards,
-}: {
-    cards: {
-        cardTitle: string
-        cardDescription: string
-        slug: string
-        iconString: string
-        enabled: boolean
-    }[]
-}) {
-    const iconMap = {
-        ComputerDesktopIcon: (
-            <ComputerDesktopIcon className="size-12 text-violet-300" />
-        ),
-        DevicePhoneMobileIcon: (
-            <DevicePhoneMobileIcon className="size-12 text-violet-300" />
-        ),
-        CodeBracketIcon: (
-            <CodeBracketIcon className="size-12 text-violet-300" />
-        ),
-        ChartBarIcon: <ChartBarIcon className="size-12 text-violet-300" />,
-        RocketLaunchIcon: (
-            <RocketLaunchIcon className="size-12 text-violet-300" />
-        ),
-        CloudArrowUpIcon: (
-            <CloudArrowUpIcon className="size-12 text-violet-300" />
-        ),
-        Square3Stack3DIcon: (
-            <Square3Stack3DIcon className="size-12 text-violet-300" />
-        ),
-    }
-
+export default function Services({ cards }: { cards: ServiceCard[] }) {
     return (
         <section id="servicios">
-            <SectionHeading
-                badgeLabel="Servicios"
-                title="Servicios que llevarán a tu empresa <span class='font-accent tracking-normal'>a lo más alto</span>"
-                description="Descubre todo lo que podemos ofrecer a tu negocio gracias a un equipo profesional y multidisciplinar"
-            />
+            <ScrollAnimation animateOnce={true} animateIn="fadeIn">
+                <SectionHeading
+                    badgeLabel="Servicios"
+                    title="Servicios que llevarán a tu empresa <span class='font-accent tracking-normal'>a lo más alto</span>"
+                    description="Descubre todo lo que podemos ofrecer a tu negocio gracias a un equipo profesional y multidisciplinar"
+                />
+            </ScrollAnimation>
             <div className="grid grid-cols-1 gap-x-5 gap-y-5 lg:grid-cols-3">
                 {cards.map((card, index) => {
                     return (
@@ -67,7 +30,7 @@ export default function Services({
                                 <div className="grid w-full grid-cols-2 items-center">
                                     <div className="w-full">
                                         {/* @ts-expect-error idk */}
-                                        {iconMap[card.iconString]}
+                                        {ServicesIconMap[card.iconString]}
                                     </div>
                                     {card.enabled && (
                                         <div className="flex justify-end">

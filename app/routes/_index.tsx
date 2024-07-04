@@ -11,6 +11,7 @@ import { IMAGE_KIT_BASE_URL } from '~/consts'
 import { getLatestPosts, getServices } from '~/actions/contentful'
 import Blog from '~/components/pages/Home/Blog'
 import { useLoaderData } from '@remix-run/react'
+import ScrollAnimation from 'react-animate-on-scroll'
 
 export async function loader() {
     const posts = await getLatestPosts(6, [
@@ -109,7 +110,9 @@ export default function Home() {
             <OurProcess />
             <Faq />
             <Blog posts={posts} />
-            <Contact />
+            <ScrollAnimation once={true} animateIn="fadeIn">
+                <Contact />
+            </ScrollAnimation>
         </Page>
     )
 }

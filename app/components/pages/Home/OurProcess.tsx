@@ -11,30 +11,34 @@ import ScrollAnimation from 'react-animate-on-scroll'
 export default function OurProcess() {
     return (
         <section id="proceso">
-            <SectionHeading
-                badgeLabel="Nuestro Proceso"
-                title="Funcionamos de forma <span class='font-accent tracking-normal'>simple y transparente</span>"
-                description="Nuestro proceso de diseño y desarrollo carece de complicaciones"
-            />
-            <Steps
-                data={[
-                    {
-                        title: 'Breve reunión de 30 minutos',
-                        description:
-                            'Nos sentamos contigo para que nos cuentes los retos que enfrenta tu negocio y qué esperas de nosotros',
-                    },
-                    {
-                        title: 'Presupuesto y plan de acción',
-                        description:
-                            'Te proporcionamos un presupuesto y una propuesta de acción con todo lujo de detalles',
-                    },
-                    {
-                        title: 'Comunicación constante',
-                        description:
-                            'Empezamos a desarrollar tu proyecto proporcionándote herramientas para que monitorices nuestro trabajo y estés al tanto de todo',
-                    },
-                ]}
-            />
+            <ScrollAnimation animateOnce={true} animateIn="fadeIn">
+                <SectionHeading
+                    badgeLabel="Nuestro Proceso"
+                    title="Funcionamos de forma <span class='font-accent tracking-normal'>simple y transparente</span>"
+                    description="Nuestro proceso de diseño y desarrollo carece de complicaciones"
+                />
+            </ScrollAnimation>
+            <ScrollAnimation animateOnce={true} animateIn="fadeIn">
+                <Steps
+                    data={[
+                        {
+                            title: 'Breve reunión de 30 minutos',
+                            description:
+                                'Nos sentamos contigo para que nos cuentes los retos que enfrenta tu negocio y qué esperas de nosotros',
+                        },
+                        {
+                            title: 'Presupuesto y plan de acción',
+                            description:
+                                'Te proporcionamos un presupuesto y una propuesta de acción con todo lujo de detalles',
+                        },
+                        {
+                            title: 'Comunicación constante',
+                            description:
+                                'Empezamos a desarrollar tu proyecto proporcionándote herramientas para que monitorices nuestro trabajo y estés al tanto de todo',
+                        },
+                    ]}
+                />
+            </ScrollAnimation>
             <div className="pt-16">
                 <LogoCarousel heading="Han confiado en nosotros" />
             </div>
@@ -68,75 +72,84 @@ export default function OurProcess() {
                     </div>
                 </div>
                 <div className="grid gap-x-10 gap-y-10 lg:grid-cols-2">
-                    <div>
-                        <ImageKitImage
-                            className="rounded-xl"
-                            alt=""
-                            src={'/tr:ar-16-9,w-580,f-webp/crm-erp.png'}
-                        />
-                    </div>
-                    <div className="flex justify-center">
-                        <div className="flex flex-col items-start gap-y-3">
-                            <h2 className="text-2xl tracking-tighter">
-                                Tu negocio se merece lo mejor
-                            </h2>
-                            <p className="text-gray-300">
-                                A día de hoy, los negocios necesitan contar con
-                                una faceta digital fuerte y no hay nada mejor
-                                que un equipo preparado para crearla y
-                                mantenerla.
-                            </p>
-                            <p className="mb-3 text-gray-300">
-                                En NovaScript hemos ayudado ya a más de 50
-                                pequeñas y medianas empresas a digitalizar y
-                                mejorar sus servicios para incrementar sus
-                                ventas y mejorar su productividad.
-                            </p>
-                            <Button
-                                asLink
-                                to="#contacto"
-                                variant="primary"
-                                hasIcon
-                            >
-                                Te ayudamos
-                                <ArrowRightIcon className="size-4" />
-                            </Button>
+                    <ScrollAnimation animateOnce animateIn="flipInY">
+                        <div>
+                            <ImageKitImage
+                                className="rounded-xl"
+                                alt=""
+                                src={'/tr:ar-16-9,w-580,f-webp/crm-erp.png'}
+                            />
                         </div>
+                    </ScrollAnimation>
+                    <div className="flex justify-center">
+                        <ScrollAnimation animateOnce animateIn="fadeInUp">
+                            <div className="flex flex-col items-start gap-y-3">
+                                <h2 className="text-2xl tracking-tighter">
+                                    Tu negocio se merece lo mejor
+                                </h2>
+                                <p className="text-gray-300">
+                                    A día de hoy, los negocios necesitan contar
+                                    con una faceta digital fuerte y no hay nada
+                                    mejor que un equipo preparado para crearla y
+                                    mantenerla.
+                                </p>
+                                <p className="mb-3 text-gray-300">
+                                    En NovaScript hemos ayudado ya a más de 50
+                                    pequeñas y medianas empresas a digitalizar y
+                                    mejorar sus servicios para incrementar sus
+                                    ventas y mejorar su productividad.
+                                </p>
+                                <Button
+                                    asLink
+                                    to="#contacto"
+                                    variant="primary"
+                                    hasIcon
+                                >
+                                    Te ayudamos
+                                    <ArrowRightIcon className="size-4" />
+                                </Button>
+                            </div>
+                        </ScrollAnimation>
                     </div>
                 </div>
+
                 <div className="grid gap-x-10 gap-y-10 lg:grid-cols-2">
                     <div className="order-2 flex justify-center lg:order-first">
-                        <div className="flex flex-col items-start gap-y-3">
-                            <h2 className="text-2xl tracking-tighter">
-                                Confianza, garantías y profesionalidad
-                            </h2>
-                            <p className="text-gray-300">
-                                Sabemos que tienes muchas agencias dónde elegir,
-                                sin embargo, nosotros somos la única que se
-                                compromete por escrito a entregar una serie de
-                                resultados en tiempo y forma.
-                            </p>
-                            <p className="mb-3 text-gray-300">
-                                Si no cumplimos no cobramos, tu seguridad es lo
-                                primero, así de sencillo.
-                            </p>
-                            <Button
-                                asLink
-                                to="#contacto"
-                                variant="primary"
-                                hasIcon
-                            >
-                                Envíanos un mensaje
-                                <ArrowRightIcon className="size-4" />
-                            </Button>
-                        </div>
+                        <ScrollAnimation animateOnce animateIn="fadeInUp">
+                            <div className="flex flex-col items-start gap-y-3">
+                                <h2 className="text-2xl tracking-tighter">
+                                    Confianza, garantías y profesionalidad
+                                </h2>
+                                <p className="text-gray-300">
+                                    Sabemos que tienes muchas agencias dónde
+                                    elegir, sin embargo, nosotros somos la única
+                                    que se compromete por escrito a entregar una
+                                    serie de resultados en tiempo y forma.
+                                </p>
+                                <p className="mb-3 text-gray-300">
+                                    Si no cumplimos no cobramos, tu seguridad es
+                                    lo primero, así de sencillo.
+                                </p>
+                                <Button
+                                    asLink
+                                    to="#contacto"
+                                    variant="primary"
+                                    hasIcon
+                                >
+                                    Envíanos un mensaje
+                                    <ArrowRightIcon className="size-4" />
+                                </Button>
+                            </div>
+                        </ScrollAnimation>
                     </div>
                     <div>
-                        <ImageKitImage
-                            className="rounded-xl"
-                            alt=""
-                            src={'/tr:ar-16-9,w-580,f-webp/web-design.jpg'}
-                        />
+                        <ScrollAnimation animateOnce animateIn="flipInY">
+                            <ImageKitImage
+                                className="rounded-xl"
+                                alt=""
+                                src={'/tr:ar-16-9,w-580,f-webp/web-design.jpg'}
+                            />
+                        </ScrollAnimation>
                     </div>
                 </div>
             </div>

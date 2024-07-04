@@ -18,10 +18,19 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
     let post: Post | undefined
     let service: Service | undefined
+    let services: Service[] | undefined
 
     try {
         if (servicesSlugs.includes(slug)) {
             service = await getServiceBySlug(slug)
+            services = await getServices(10, [
+                'fields.cardTitle',
+                'fields.cardDescription',
+                'fields.slug',
+                'fields.iconString',
+                'fields.enabled',
+                'sys',
+            ])
         } else {
             post = await getPostBySlug(slug)
             post.createdAt = new Date(post.createdAt!).toLocaleDateString('es')
@@ -30,6 +39,9 @@ export async function loader({ request }: LoaderFunctionArgs) {
         return json({
             post,
             service,
+            services: services
+                ? services!.filter((service) => service.slug !== slug)
+                : [],
         })
     } catch (e) {
         return redirect('/')
@@ -98,13 +110,13 @@ export const meta = (payload: { data: { post: Post; service: Service } }) => {
 }
 
 export default function Post() {
-    const { post, service } = useLoaderData<typeof loader>()
+    const { post, service, services } = useLoaderData<typeof loader>()
 
     if (post) {
         return <PostLayout post={post} />
     }
 
     if (service) {
-        return <ServiceLayout service={service} />
+        return <ServiceLayout service={service} cards={services!} />
     }
 }

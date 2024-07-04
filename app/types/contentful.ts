@@ -32,3 +32,8 @@ export interface Service {
     cardDescription: string
     iconString: string
 }
+
+export type ServiceCard = Pick<
+    Service,
+    'cardTitle' | 'cardDescription' | 'slug' | 'iconString' | 'enabled'
+>
