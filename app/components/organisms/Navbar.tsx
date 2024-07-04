@@ -118,9 +118,9 @@ function NavbarDrawer({
             >
                 <div
                     className={cl(
-                        'h-100 flex flex-col items-start justify-center gap-y-2 px-6 py-4 font-semibold uppercase tracking-tighter transition-opacity',
-                        isOpen && 'opacity-1 w-[100%] duration-[2300ms]',
-                        !isOpen && 'w-[0%] opacity-0 duration-0'
+                        'h-100 flex min-w-[300px] flex-col items-start justify-center gap-y-2 px-6 py-4 font-semibold uppercase tracking-tighter transition-opacity',
+                        isOpen && 'opacity-1 w-[100%] duration-500',
+                        !isOpen && 'hidden w-[0%] opacity-0 duration-0'
                     )}
                 >
                     <Link onClick={setClose} to="/" className="mb-5">
