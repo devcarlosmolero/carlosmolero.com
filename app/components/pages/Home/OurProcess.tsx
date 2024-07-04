@@ -31,7 +31,7 @@ export default function OurProcess() {
                     {
                         title: 'Comunicación constante',
                         description:
-                            'Empezamos a desarrollar tu proyecto proporcionándote herramientas para que monitorices nuestro trabajo y estés al tanto de todo.',
+                            'Empezamos a desarrollar tu proyecto proporcionándote herramientas para que monitorices nuestro trabajo y estés al tanto de todo',
                     },
                 ]}
             />

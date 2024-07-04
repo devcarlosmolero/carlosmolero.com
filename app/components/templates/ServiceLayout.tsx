@@ -35,7 +35,7 @@ export default function ServiceLayout({ service }: { service: Service }) {
                 </div>
                 <div>
                     <img
-                        className="rounded-xl"
+                        className="aspect-video rounded-xl"
                         alt={service.seoTitle}
                         src={service.headerImgUrl}
                     />
