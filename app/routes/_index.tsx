@@ -8,7 +8,7 @@ import OurProcess from '~/components/pages/Home/OurProcess'
 import Services from '~/components/pages/Home/Services'
 import Contact from '~/components/pages/shared/Contact'
 import { IMAGE_KIT_BASE_URL } from '~/consts'
-import { getLatestPosts } from '~/actions/contentful'
+import { getLatestPosts, getServices } from '~/actions/contentful'
 import Blog from '~/components/pages/Home/Blog'
 import { useLoaderData } from '@remix-run/react'
 
@@ -22,7 +22,20 @@ export async function loader() {
         'fields.slug',
         'sys',
     ])
-    return json(posts)
+
+    const serviceCards = await getServices(10, [
+        'fields.cardTitle',
+        'fields.cardDescription',
+        'fields.enabled',
+        'fields.slug',
+        'fields.iconString',
+        'sys',
+    ])
+
+    return json({
+        posts,
+        serviceCards: serviceCards.sort((a, b) => (a === b ? 0 : a ? -1 : 1)),
+    })
 }
 
 export const meta: MetaFunction = () => {
@@ -87,12 +100,12 @@ export const meta: MetaFunction = () => {
 }
 
 export default function Home() {
-    const posts = useLoaderData<typeof loader>()
+    const { posts, serviceCards } = useLoaderData<typeof loader>()
 
     return (
         <Page>
             <Hero />
-            <Services />
+            <Services cards={serviceCards} />
             <OurProcess />
             <Faq />
             <Blog posts={posts} />

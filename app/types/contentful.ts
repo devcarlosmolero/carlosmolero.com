@@ -27,4 +27,8 @@ export interface Service {
         question: string
         answer: string
     }[]
+    enabled: boolean
+    cardTitle: string
+    cardDescription: string
+    iconString: string
 }

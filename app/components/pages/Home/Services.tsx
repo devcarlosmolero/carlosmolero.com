@@ -15,53 +15,38 @@ import ScrollAnimation from 'react-animate-on-scroll'
 import AccentCard from '~/components/templates/AccentCard'
 import { Link } from '@remix-run/react'
 
-export default function Services() {
-    const services = [
-        {
-            title: 'Diseño web',
-            description:
-                'Creamos tu sitio web, atractivo y funcional, con Wordpress, Webflow o Framer. ¿A qué esperas para convertir a tus visitantes en clientes?',
-            icon: <ComputerDesktopIcon className="size-12 text-violet-300" />,
-            pathname: 'diseno-y-desarrollo-de-paginas-web',
-        },
-        {
-            title: 'Apps móviles',
-            description:
-                'Desarrollamos aplicaciones iOS y Android que crean experiencias que tus usuarios querrán repetir una y otra vez. Usamos tecnologías vanguardistas como Flutter.',
-            icon: <DevicePhoneMobileIcon className="size-12 text-violet-300" />,
-            pathname: 'desarrollo-de-aplicaciones-ios-y-android',
-        },
-        {
-            title: 'Software a medida',
-            description:
-                'Si no encontramos la solución perfecta para ti la fabricamos a tu medida. Tu imaginación es el límite.',
-            icon: <CodeBracketIcon className="size-12 text-violet-300" />,
-        },
-        {
-            title: 'Software empresarial',
-            description:
-                'Impulsa tu negocio con soluciones que mejoren la productividad de tu equipo de ventas, recursos humanos, control de stocks etc. Un sinfín de automatizaciones te esperan.',
-            icon: <ChartBarIcon className="size-12 text-violet-300" />,
-        },
-        {
-            title: 'Producto mínimo viable',
-            description:
-                'Desbanca a tus competidores y levanta esa ronda de financiación desarrollando un producto mínimo viable en tiempo récord.',
-            icon: <RocketLaunchIcon className="size-12 text-violet-300" />,
-        },
-        {
-            title: 'DevOps e infra',
-            description:
-                'Gestionamos o creamos tu infraestructura en la nube para garantizar la resiliencia y la seguridad de tus proyectos de software. Nuestros profesionales están certificados.',
-            icon: <CloudArrowUpIcon className="size-12 text-violet-300" />,
-        },
-        {
-            title: 'IA',
-            description:
-                'Abraza la evolución y permite a la IA automatizar los procesos tediosos y repetitivos de tu empresa, pregúntanos sin compromiso.',
-            icon: <Square3Stack3DIcon className="size-12 text-violet-300" />,
-        },
-    ]
+export default function Services({
+    cards,
+}: {
+    cards: {
+        cardTitle: string
+        cardDescription: string
+        slug: string
+        iconString: string
+        enabled: boolean
+    }[]
+}) {
+    const iconMap = {
+        ComputerDesktopIcon: (
+            <ComputerDesktopIcon className="size-12 text-violet-300" />
+        ),
+        DevicePhoneMobileIcon: (
+            <DevicePhoneMobileIcon className="size-12 text-violet-300" />
+        ),
+        CodeBracketIcon: (
+            <CodeBracketIcon className="size-12 text-violet-300" />
+        ),
+        ChartBarIcon: <ChartBarIcon className="size-12 text-violet-300" />,
+        RocketLaunchIcon: (
+            <RocketLaunchIcon className="size-12 text-violet-300" />
+        ),
+        CloudArrowUpIcon: (
+            <CloudArrowUpIcon className="size-12 text-violet-300" />
+        ),
+        Square3Stack3DIcon: (
+            <Square3Stack3DIcon className="size-12 text-violet-300" />
+        ),
+    }
 
     return (
         <section id="servicios">
@@ -71,7 +56,7 @@ export default function Services() {
                 description="Descubre todo lo que podemos ofrecer a tu negocio gracias a un equipo profesional y multidisciplinar"
             />
             <div className="grid grid-cols-1 gap-x-5 gap-y-5 lg:grid-cols-3">
-                {services.map((service, index) => {
+                {cards.map((card, index) => {
                     return (
                         <ScrollAnimation
                             animateOnce={true}
@@ -80,13 +65,16 @@ export default function Services() {
                         >
                             <Card className="transition-scale flex h-full flex-col items-start gap-x-3 gap-y-3 rounded-xl duration-500 hover:scale-105">
                                 <div className="grid w-full grid-cols-2 items-center">
-                                    <div className="w-full">{service.icon}</div>
-                                    {service?.pathname && (
+                                    <div className="w-full">
+                                        {/* @ts-expect-error idk */}
+                                        {iconMap[card.iconString]}
+                                    </div>
+                                    {card.enabled && (
                                         <div className="flex justify-end">
                                             <Link
                                                 reloadDocument
                                                 className="flex items-center justify-end gap-x-2 hover:text-violet-300"
-                                                to={`/${service.pathname}`}
+                                                to={`/${card.slug}`}
                                             >
                                                 <p>Saber más</p>
                                                 <ArrowUpRightIcon className="size-4" />
@@ -95,9 +83,11 @@ export default function Services() {
                                     )}
                                 </div>
                                 <div className="mt-3 flex flex-col gap-y-3">
-                                    <h3 className="text-xl">{service.title}</h3>
+                                    <h3 className="text-xl">
+                                        {card.cardTitle}
+                                    </h3>
                                     <p className="text-sm text-gray-300">
-                                        {service.description}
+                                        {card.cardDescription}
                                     </p>
                                 </div>
                             </Card>

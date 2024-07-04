@@ -1,20 +1,26 @@
 import { json, LoaderFunctionArgs, redirect } from '@remix-run/cloudflare'
 import { useLoaderData } from '@remix-run/react'
-import { getPostBySlug, getServiceBySlug } from '~/actions/contentful'
+import {
+    getPostBySlug,
+    getServiceBySlug,
+    getServices,
+} from '~/actions/contentful'
 import PostLayout from '~/components/templates/PostLayout'
 import ServiceLayout from '~/components/templates/ServiceLayout'
-import { SERVICE_SLUGS } from '~/consts'
 import { Service, type Post } from '~/types/contentful'
 
 export async function loader({ request }: LoaderFunctionArgs) {
     const url = new URL(request.url)
     const slug = url.pathname.split('/')[1]
+    const servicesSlugs = (await getServices(10, ['fields.slug', 'sys'])).map(
+        (service) => service.slug
+    )
 
     let post: Post | undefined
     let service: Service | undefined
 
     try {
-        if (SERVICE_SLUGS.includes(slug)) {
+        if (servicesSlugs.includes(slug)) {
             service = await getServiceBySlug(slug)
         } else {
             post = await getPostBySlug(slug)
