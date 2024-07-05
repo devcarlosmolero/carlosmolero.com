@@ -19,8 +19,6 @@ export async function loader() {
         'fields.seoTitle',
         'fields.seoDescription',
         'fields.headerImg',
-        'fields.authorName',
-        'fields.authorAvatar',
         'fields.slug',
         'sys',
     ])
