@@ -104,7 +104,7 @@ function NavbarDrawer({
                 onKeyUp={() => {}}
                 onClick={setClose}
                 className={cl(
-                    'fixed h-[100vh] w-full cursor-default bg-neutral-950/50 transition-opacity duration-500 lg:hidden',
+                    'fixed h-[100vh] z-20 w-full cursor-default bg-neutral-950/50 transition-opacity duration-500 lg:hidden',
                     isOpen && 'opacity-1',
                     !isOpen && 'hidden opacity-0'
                 )}
