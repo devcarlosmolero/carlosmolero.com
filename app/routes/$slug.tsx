@@ -1,4 +1,9 @@
-import { json, LoaderFunctionArgs, redirect } from '@remix-run/cloudflare'
+import {
+    json,
+    LoaderFunctionArgs,
+    MetaFunction,
+    redirect,
+} from '@remix-run/cloudflare'
 import { useLoaderData } from '@remix-run/react'
 import {
     getPostBySlug,
@@ -8,6 +13,7 @@ import {
 import PostLayout from '~/components/templates/PostLayout'
 import ServiceLayout from '~/components/templates/ServiceLayout'
 import { Service, type Post } from '~/types/contentful'
+import { getBasicMetas } from '~/utils/meta'
 
 export async function loader({ request }: LoaderFunctionArgs) {
     const url = new URL(request.url)
@@ -33,7 +39,9 @@ export async function loader({ request }: LoaderFunctionArgs) {
             ])
         } else {
             post = await getPostBySlug(slug)
-            post.createdAt = new Date(post.createdAt!).toLocaleDateString('es')
+            post.formattedCreatedAt = new Date(
+                post.createdAt!
+            ).toLocaleDateString('es')
         }
 
         return json({
@@ -48,64 +56,52 @@ export async function loader({ request }: LoaderFunctionArgs) {
     }
 }
 
-export const meta = (payload: { data: { post: Post; service: Service } }) => {
+// @ts-expect-error idk
+export const meta: MetaFunction = (payload: {
+    data: { post: Post; service: Service }
+}) => {
     const { post, service } = payload.data
 
     return [
-        { title: post?.seoTitle || `${service?.seoTitle} - NovaScript` },
-        {
-            property: 'og:title',
-            content: post?.seoTitle || `${service?.seoTitle} - NovaScript`,
-        },
-        {
-            name: 'description',
-            content: post?.seoDescription || service?.seoDescription,
-        },
-        {
-            property: 'og:description',
-            content: post?.seoDescription || service?.seoDescription,
-        },
-        {
-            name: 'robots',
-            content:
-                'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
-        },
-        {
-            property: 'og:type',
-            content: post ? 'article' : 'website',
-        },
-        {
-            property: 'og:image',
-            content: `https:${post?.headerImgUrl || service?.headerImgUrl}`,
-        },
-        {
-            property: 'og:image:width',
-            content: '1366',
-        },
-        {
-            property: 'og:image:height',
-            content: '768',
-        },
-        {
-            property: 'og:image:type',
-            content: 'image/webp',
-        },
-        {
-            property: 'og:site_name',
-            content: 'NovaScript',
-        },
-        {
-            name: 'twitter:card',
-            content: 'summary_large_image',
-        },
-        {
-            name: 'twitter:title',
-            content: post?.seoTitle || `${service?.seoTitle} - NovaScript`,
-        },
-        {
-            name: 'twitter:name',
-            content: '@novascriptio',
-        },
+        ...getBasicMetas({
+            title: post?.seoTitle || service?.seoTitle,
+            description: post?.seoDescription || service?.seoDescription,
+            img: `https:${post?.headerImgUrl || service?.headerImgUrl}`,
+            appendSiteName: Boolean(service),
+        }),
+        ...(post
+            ? [
+                  {
+                      'script:ld+json': {
+                          '@context': 'https://schema.org/',
+                          '@type': 'Article',
+                          headline: post.seoTitle,
+                          description: post.seoDescription,
+                          image: {
+                              '@type': 'ImageObject',
+                              url: `https://${post.headerImgUrl}`,
+                              width: '1366',
+                              height: '768',
+                          },
+                          author: {
+                              '@type': 'Organization',
+                              name: 'NovaScript',
+                          },
+                          publisher: {
+                              '@type': 'Organization',
+                              name: 'NovaScript',
+                              logo: {
+                                  '@type': 'ImageObject',
+                                  url: 'https://ik.imagekit.io/jgh04cawf/novascriptio/tr:w-16,ar-1-1,f-webp/favicon.png',
+                                  width: '60',
+                                  height: '60',
+                              },
+                          },
+                          datePublished: post.createdAt,
+                      },
+                  },
+              ]
+            : []),
     ]
 }
 

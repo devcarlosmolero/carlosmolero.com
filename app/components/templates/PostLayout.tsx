@@ -98,7 +98,7 @@ export default function PostLayout({ post }: { post: Post }) {
                         {post.createdAt && post.readingTime && (
                             <div className="flex flex-col gap-y-1 text-gray-400">
                                 <p suppressHydrationWarning>
-                                    Publicado el {post.createdAt} |{' '}
+                                    Publicado el {post.formattedCreatedAt!} |{' '}
                                     {post.readingTime} min.
                                 </p>
                                 <p></p>

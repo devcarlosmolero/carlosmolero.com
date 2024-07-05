@@ -12,6 +12,7 @@ import { getLatestPosts, getServices } from '~/actions/contentful'
 import Blog from '~/components/pages/Home/Blog'
 import { useLoaderData } from '@remix-run/react'
 import ScrollAnimation from 'react-animate-on-scroll'
+import { getBasicMetas } from '~/utils/meta'
 
 export async function loader() {
     const posts = await getLatestPosts(6, [
@@ -41,61 +42,35 @@ export async function loader() {
 
 export const meta: MetaFunction = () => {
     return [
-        { title: 'Desarrollo de Software y Diseño Web - NovaScript' },
-        {
-            property: 'og:title',
-            content: 'Desarrollo de Software y Diseño Web - NovaScript',
-        },
-        {
-            name: 'description',
-            content:
+        ...getBasicMetas({
+            title: 'Desarrollo de Software y Diseño Web',
+            description:
                 'Optimiza tu PYME/Startup con software a medida: desarrollo de apps web, iOS y Android, producto mínimo viable, cloud, diseño web, y más soluciones tecnológicas.',
-        },
+            img: `${IMAGE_KIT_BASE_URL}/tr:f-webp/meta.png`,
+            appendSiteName: true,
+        }),
         {
-            property: 'og:description',
-            content:
-                'Optimiza tu PYME/Startup con software a medida: desarrollo de apps web, iOS y Android, producto mínimo viable, cloud, diseño web, y más soluciones tecnológicas.',
-        },
-        {
-            name: 'robots',
-            content:
-                'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
-        },
-        {
-            property: 'og:type',
-            content: 'website',
-        },
-        {
-            property: 'og:image',
-            content: `${IMAGE_KIT_BASE_URL}/tr:f-webp/meta.png`,
-        },
-        {
-            property: 'og:image:width',
-            content: '1366',
-        },
-        {
-            property: 'og:image:height',
-            content: '768',
-        },
-        {
-            property: 'og:image:type',
-            content: 'image/webp',
-        },
-        {
-            property: 'og:site_name',
-            content: 'NovaScript',
-        },
-        {
-            name: 'twitter:card',
-            content: 'summary_large_image',
-        },
-        {
-            name: 'twitter:title',
-            content: 'Desarrollo de Software y Diseño Web - NovaScript',
-        },
-        {
-            name: 'twitter:name',
-            content: '@novascriptio',
+            'script:ld+json': {
+                '@context': 'https://schema.org',
+                '@type': 'Organization',
+                name: 'NovaScript',
+                url: 'https://novascript.io/',
+                logo: 'https://ik.imagekit.io/jgh04cawf/novascriptio/tr:w-16,ar-1-1,f-webp/favicon.png',
+                sameAs: [
+                    'https://twitter.com/novascriptio',
+                    'https://www.linkedin.com/company/novascript-io/',
+                    'https://www.facebook.com/profile.php?id=61557708621835',
+                ],
+                contactPoint: [
+                    {
+                        '@type': 'ContactPoint',
+                        telephone: '674386776',
+                        contactType: 'customer service',
+                        email: 'hi@novascript.io',
+                        availableLanguage: 'es',
+                    },
+                ],
+            },
         },
     ]
 }

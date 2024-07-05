@@ -5,7 +5,9 @@ export interface Post {
     headerImgUrl?: string
     categories: string[]
     createdAt?: string
+    formattedCreatedAt?: string
     updatedAt?: string
+    formattedUpdatedAt?: string
     readingTime?: string
     authorName?: string
     authorAvatarUrl?: string
