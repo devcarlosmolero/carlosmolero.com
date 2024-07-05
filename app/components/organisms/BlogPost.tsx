@@ -3,6 +3,7 @@ import Card from '../templates/Card'
 import Badge from '../atoms/Badge'
 import { Link } from '@remix-run/react'
 import { ArrowUpRightIcon } from '@heroicons/react/24/outline'
+import ImageKitImage from '../atoms/ImageKitImage'
 
 export default function BlogPost({ post }: { post: Post }) {
     return (
@@ -22,12 +23,11 @@ export default function BlogPost({ post }: { post: Post }) {
                         <div className="grid grid-cols-2">
                             <Badge className="!px-2 !py-2 md:!px-3">
                                 <div className="flex gap-x-2">
-                                    <img
+                                    <ImageKitImage
+                                        src="/tr:f-webp,ar:1-1,w-20/carlos-molero.jpg"
                                         className="h-[20px] w-[20px] rounded-full"
-                                        src={post.authorAvatarUrl}
-                                        alt={post.authorName}
                                     />
-                                    <p>{post.authorName}</p>
+                                    <p>Carlos Molero</p>
                                 </div>
                             </Badge>
                             <Link

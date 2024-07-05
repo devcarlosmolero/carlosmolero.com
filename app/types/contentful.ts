@@ -5,12 +5,10 @@ export interface Post {
     headerImgUrl?: string
     categories: string[]
     createdAt?: string
-    formattedCreatedAt?: string
     updatedAt?: string
+    formattedCreatedAt?: string
     formattedUpdatedAt?: string
     readingTime?: string
-    authorName?: string
-    authorAvatarUrl?: string
     slug?: string
     sections?: { id: string; text: string }[]
 }

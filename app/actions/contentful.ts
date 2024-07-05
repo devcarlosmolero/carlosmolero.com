@@ -119,12 +119,6 @@ export async function getLatestPosts(limit = 6, select?: string[]) {
                 updatedAt: item.sys.updatedAt,
             } as Post
 
-            if (item.fields?.authorAvatar) {
-                post.authorAvatarUrl = await getAssetUrl(
-                    item.fields.authorAvatar.sys.id
-                )
-            }
-
             if (item.fields.headerImg) {
                 post.headerImgUrl = await getAssetUrl(
                     item.fields.headerImg.sys.id
