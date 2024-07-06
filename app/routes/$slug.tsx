@@ -101,7 +101,93 @@ export const meta: MetaFunction = (payload: {
                       },
                   },
               ]
-            : []),
+            : [
+                  {
+                      'script:ld+json': {
+                          '@context': 'http://schema.org',
+                          '@type': 'LocalBusiness',
+                          name: 'NovaScript',
+                          image: 'https://ik.imagekit.io/jgh04cawf/novascriptio/tr:w-16,ar-1-1,f-webp/favicon.png',
+                          telephone: '+34 674 386 776',
+                          email: 'hi@novascript.io',
+                          address: {
+                              '@type': 'PostalAddress',
+                              streetAddress: 'C. Molina Lario',
+                              addressLocality: 'Málaga',
+                              addressRegion: 'Málaga',
+                              postalCode: '29015',
+                              addressCountry: 'ES',
+                          },
+                          url: 'https://novascript.io',
+                          priceRange: '500-1500€',
+                          description: service!.seoDescription,
+                          aggregateRating: {
+                              '@type': 'AggregateRating',
+                              ratingValue: '5',
+                          },
+                          review: [
+                              {
+                                  '@type': 'Review',
+                                  author: {
+                                      '@type': 'Person',
+                                      name: 'Elena Diaz Sanchez',
+                                  },
+                                  reviewRating: {
+                                      '@type': 'Rating',
+                                      ratingValue: '5',
+                                      bestRating: '5',
+                                  },
+                              },
+                              {
+                                  '@type': 'Review',
+                                  author: {
+                                      '@type': 'Person',
+                                      name: 'Stefan Dreverman',
+                                  },
+                                  reviewRating: {
+                                      '@type': 'Rating',
+                                      ratingValue: '5',
+                                      bestRating: '5',
+                                  },
+                                  reviewBody:
+                                      'Los recomendaría sin dudarlo. Siempre consiguen encontrar una solución perfecta para las necesidades de tu negocio. Carlos es una persona clara y responsable.',
+                              },
+                              {
+                                  '@type': 'Review',
+                                  author: {
+                                      '@type': 'Person',
+                                      name: 'Lourdes Mata de Damas',
+                                  },
+                                  reviewRating: {
+                                      '@type': 'Rating',
+                                      ratingValue: '5',
+                                      bestRating: '5',
+                                  },
+                              },
+                              {
+                                  '@type': 'Review',
+                                  author: {
+                                      '@type': 'Person',
+                                      name: 'lourdes mata de damas',
+                                  },
+                                  reviewRating: {
+                                      '@type': 'Rating',
+                                      ratingValue: '5',
+                                      bestRating: '5',
+                                  },
+                                  reviewBody: `Todo fenomenal con ellos, son excelentes profesionales. En menos de 1 semana tenía mi sitio web funcionando.
+                                               Son un equipo sobresaliente en todo lo relativo a la creación de productos digitales, ya sean páginas web, software personalizado para empresas e integraciones.
+                                               Recomendadísimos!`,
+                              },
+                          ],
+                          service: {
+                              '@type': 'Service',
+                              name: service.seoTitle,
+                              description: service.seoDescription,
+                          },
+                      },
+                  },
+              ]),
     ]
 }
 
