@@ -79,7 +79,7 @@ export const meta: MetaFunction = (payload: {
                           description: post.seoDescription,
                           image: {
                               '@type': 'ImageObject',
-                              url: `https://${post.headerImgUrl}`,
+                              url: `https:${post.headerImgUrl}`,
                               width: '1366',
                               height: '768',
                           },
