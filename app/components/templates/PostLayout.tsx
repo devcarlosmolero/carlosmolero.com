@@ -8,6 +8,7 @@ import Contact from '../pages/shared/Contact'
 import cl from 'classnames'
 import Page from './Page'
 import Accordion from '../organisms/Accordion'
+import ImageContainer from '../atoms/ImageContainer'
 
 export function SideBarContent({
     sections,
@@ -58,7 +59,8 @@ export default function PostLayout({ post }: { post: Post }) {
                     {hasSidebar() && (
                         <div className="flex w-full flex-col gap-y-2 lg:rounded-xl lg:border lg:border-zinc-800 lg:bg-neutral-900 lg:p-5">
                             {post.headerImgUrl && (
-                                <img
+                                <ImageContainer
+                                    containerClassName="min-h-[250px] md:min-h-[400px] lg:min-h-[200px] w-full rounded-xl"
                                     className="rounded-xl"
                                     alt={post.seoTitle}
                                     src={post.headerImgUrl}

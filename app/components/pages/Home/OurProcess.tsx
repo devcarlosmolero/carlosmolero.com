@@ -80,7 +80,7 @@ export default function OurProcess() {
                         <div>
                             <ImageKitImage
                                 className="rounded-xl"
-                                alt=""
+                                alt="App de CRM o ERP para empresas"
                                 src={'/tr:ar-16-9,w-580,f-webp/crm-erp.png'}
                             />
                         </div>
@@ -154,7 +154,7 @@ export default function OurProcess() {
                         >
                             <ImageKitImage
                                 className="rounded-xl"
-                                alt=""
+                                alt="Aplicación web"
                                 src={'/tr:ar-16-9,w-580,f-webp/web-design.jpg'}
                             />
                         </ScrollAnimation>

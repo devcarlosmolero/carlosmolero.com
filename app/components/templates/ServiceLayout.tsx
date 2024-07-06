@@ -19,6 +19,7 @@ import AccentCard from './AccentCard'
 import Card from './Card'
 import { Link } from '@remix-run/react'
 import ServicesIconMap from '../atoms/ServicesIconMap'
+import ImageContainer from '../atoms/ImageContainer'
 
 export default function ServiceLayout({
     service,
@@ -46,13 +47,12 @@ export default function ServiceLayout({
                         Pide presupuesto <ArrowRightIcon className="size-4" />
                     </Button>
                 </div>
-                <div>
-                    <img
-                        className="aspect-video rounded-xl"
-                        alt={service.seoTitle}
-                        src={service.headerImgUrl}
-                    />
-                </div>
+                <ImageContainer
+                    alt={service.seoTitle}
+                    src={service.headerImgUrl}
+                    containerClassName="min-h-[350px] rounded-xl"
+                    className="rounded-xl"
+                />
             </div>
             <Separator />
             <div className="flex w-full justify-center">

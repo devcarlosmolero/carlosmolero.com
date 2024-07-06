@@ -4,6 +4,7 @@ import Badge from '../atoms/Badge'
 import { Link } from '@remix-run/react'
 import { ArrowUpRightIcon } from '@heroicons/react/24/outline'
 import ImageKitImage from '../atoms/ImageKitImage'
+import ImageContainer from '../atoms/ImageContainer'
 
 export default function BlogPost({ post }: { post: Post }) {
     return (
@@ -24,6 +25,7 @@ export default function BlogPost({ post }: { post: Post }) {
                             <Badge className="!px-2 !py-2 md:!px-3">
                                 <div className="flex gap-x-2">
                                     <ImageKitImage
+                                        alt={post.seoTitle}
                                         src="/tr:f-webp,ar:1-1,w-20/carlos-molero.jpg"
                                         className="h-[20px] w-[20px] rounded-full"
                                     />

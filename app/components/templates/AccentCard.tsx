@@ -18,7 +18,7 @@ export default function AccentCard({
             <div
                 style={{
                     backgroundImage:
-                        'url(https://i.postimg.cc/HsHJ9YRC/abstract-1.png)',
+                        'url(https://ik.imagekit.io/jgh04cawf/novascriptio/accent-background.webp)',
                 }}
                 className="h-full w-full rounded-xl bg-cover bg-right"
             ></div>
