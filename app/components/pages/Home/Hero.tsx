@@ -72,7 +72,7 @@ export default function Hero() {
                             jobTitle="CEO de EntreCode"
                             description={`Los recomendaría sin dudarlo. Siempre consiguen
                                           encontrar una solución perfecta para las necesidades
-                                          de tu negocio. Carlos es una persona clara y
+                                          de tu negocio. Carlos es una persona seria y
                                           responsable.`}
                             src="/stefan-dreverman.jpg"
                             alt="Stefan Dreverman - CEO de EntreCode"

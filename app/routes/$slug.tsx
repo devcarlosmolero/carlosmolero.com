@@ -131,18 +131,6 @@ export const meta: MetaFunction = (payload: {
                                   '@type': 'Review',
                                   author: {
                                       '@type': 'Person',
-                                      name: 'Elena Diaz Sanchez',
-                                  },
-                                  reviewRating: {
-                                      '@type': 'Rating',
-                                      ratingValue: '5',
-                                      bestRating: '5',
-                                  },
-                              },
-                              {
-                                  '@type': 'Review',
-                                  author: {
-                                      '@type': 'Person',
                                       name: 'Stefan Dreverman',
                                   },
                                   reviewRating: {
@@ -150,8 +138,8 @@ export const meta: MetaFunction = (payload: {
                                       ratingValue: '5',
                                       bestRating: '5',
                                   },
-                                  reviewBody:
-                                      'Los recomendaría sin dudarlo. Siempre consiguen encontrar una solución perfecta para las necesidades de tu negocio. Carlos es una persona clara y responsable.',
+                                  reviewBody: `Los recomendaría sin dudarlo. Siempre consiguen encontrar una solución perfecta para las necesidades de 
+                                  tu negocio. Carlos es una persona seria y responsable.`,
                               },
                               {
                                   '@type': 'Review',
@@ -164,21 +152,38 @@ export const meta: MetaFunction = (payload: {
                                       ratingValue: '5',
                                       bestRating: '5',
                                   },
+                                  reviewBody: `Todo fenomenal con ellos, son excelentes profesionales. En menos de 1 semana tenía mi sitio web funcionando.
+                                               Son un equipo sobresaliente en todo lo relativo a la creación de productos digitales, ya sean páginas web, software personalizado para empresas e integraciones.
+                                               ¡Recomendadísimos!`,
                               },
                               {
                                   '@type': 'Review',
                                   author: {
                                       '@type': 'Person',
-                                      name: 'lourdes mata de damas',
+                                      name: 'Monika Milenova',
                                   },
                                   reviewRating: {
                                       '@type': 'Rating',
                                       ratingValue: '5',
                                       bestRating: '5',
                                   },
-                                  reviewBody: `Todo fenomenal con ellos, son excelentes profesionales. En menos de 1 semana tenía mi sitio web funcionando.
-                                               Son un equipo sobresaliente en todo lo relativo a la creación de productos digitales, ya sean páginas web, software personalizado para empresas e integraciones.
-                                               Recomendadísimos!`,
+                                  reviewBody: `Captaron mi idea a la primera y la ejecutaron a la perfección. 
+                                               Había pasado por un infierno tratando con agencias que solo me querían sacar el dinero, 
+                                               NovaScript fue la solución.`,
+                              },
+                              {
+                                  '@type': 'Review',
+                                  author: {
+                                      '@type': 'Person',
+                                      name: 'Elena Diaz Sanchez',
+                                  },
+                                  reviewRating: {
+                                      '@type': 'Rating',
+                                      ratingValue: '5',
+                                      bestRating: '5',
+                                  },
+                                  reviewBody:
+                                      'No tengo ninguna pega, son buenos en todo lo que tiene que ver con diseño web y desarrollo de software, rápidos y atentos. Si lo necesito, repetiré sin dudarlo.',
                               },
                           ],
                           service: {
