@@ -124,6 +124,7 @@ export const meta: MetaFunction = (payload: {
                           aggregateRating: {
                               '@type': 'AggregateRating',
                               ratingValue: '5',
+                              reviewCount: '4',
                           },
                           review: [
                               {
