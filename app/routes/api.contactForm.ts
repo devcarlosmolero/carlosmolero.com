@@ -10,7 +10,7 @@ export async function action({ request }: ActionFunctionArgs) {
     ) as unknown as ContactFormSubmission
 
     await sendDiscordMessage(
-        `\n\n👋 ${submission.name} ha escrito: \n\n*"${submission.message}"*\n\nPuedes escribirle de vuelta usando el siguiente correo: ${submission.email}`
+        `\n\n🪐 **${submission.name} ha escrito**: \n\n*"${submission.message}"*\n\n📝 Puedes escribirle de vuelta usando el siguiente correo: ${submission.email}`
     )
 
     return redirectWithToast(
