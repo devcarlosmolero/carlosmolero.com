@@ -8,7 +8,7 @@ pages_build_output_dir = "./build/client"
 # rather than the end user may result in better performance.
 # Docs: https://developers.cloudflare.com/pages/functions/smart-placement/#smart-placement
 [placement]
-mode = "default"
+mode = "off"
 
 # Variable bindings. These are arbitrary, plaintext strings (similar to environment variables)
 # Docs:
