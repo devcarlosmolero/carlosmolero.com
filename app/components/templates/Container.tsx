@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import cl from 'classnames'
+import cn from 'classnames'
 
 export default function Container({
     children,
@@ -9,7 +9,7 @@ export default function Container({
     className?: string
 }) {
     return (
-        <div className={cl('px-lg-0 mx-auto max-w-[1200px] px-4', className)}>
+        <div className={cn('px-lg-0 mx-auto max-w-[1200px] px-4', className)}>
             {children}
         </div>
     )

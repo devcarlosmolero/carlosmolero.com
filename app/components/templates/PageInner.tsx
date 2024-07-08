@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import cl from 'classnames'
+import cn from 'classnames'
 
 export default function PageInner({
     children,
@@ -9,7 +9,7 @@ export default function PageInner({
     className?: string
 }) {
     return (
-        <div className={cl(className ?? 'grid grid-cols-1', 'gap-y-24 py-10')}>
+        <div className={cn(className ?? 'grid grid-cols-1', 'gap-y-24 py-10')}>
             {children}
         </div>
     )

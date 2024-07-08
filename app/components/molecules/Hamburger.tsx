@@ -1,4 +1,4 @@
-import cl from 'classnames'
+import cn from 'classnames'
 import { Dispatch, SetStateAction } from 'react'
 
 export default function Hamburger({
@@ -9,9 +9,9 @@ export default function Hamburger({
     setIsOpen: Dispatch<SetStateAction<boolean>>
 }) {
     return (
-          <button
+        <button
             onClick={() => setIsOpen(!isOpen)}
-            className={cl(`tham tham-e-squeeze tham-w-6`, {
+            className={cn(`tham tham-e-squeeze tham-w-6`, {
                 'tham-active': isOpen,
             })}
         >

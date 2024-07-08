@@ -5,7 +5,7 @@ import { Fragment, useEffect, useState } from 'react'
 import ImageKitImage from '~/components/atoms/ImageKitImage'
 import Button from '../atoms/Button'
 import { ChatBubbleLeftEllipsisIcon } from '@heroicons/react/24/outline'
-import cl from 'classnames'
+import cn from 'classnames'
 
 export default function Navbar({
     isRoot,
@@ -103,21 +103,21 @@ function NavbarDrawer({
                 tabIndex={-1}
                 onKeyUp={() => {}}
                 onClick={setClose}
-                className={cl(
-                    'fixed h-[100vh] z-20 w-full cursor-default bg-neutral-950/50 transition-opacity duration-500 lg:hidden',
+                className={cn(
+                    'fixed z-20 h-[100vh] w-full cursor-default bg-neutral-950/50 transition-opacity duration-500 lg:hidden',
                     isOpen && 'opacity-1',
                     !isOpen && 'hidden opacity-0'
                 )}
             ></div>
             <div
-                className={cl(
+                className={cn(
                     `fixed left-0 z-50 h-[100vh] bg-neutral-950 transition-all duration-500 lg:hidden`,
                     isOpen && 'opacity-1 w-[80%]',
                     !isOpen && 'w-[0%] opacity-0'
                 )}
             >
                 <div
-                    className={cl(
+                    className={cn(
                         'h-100 flex min-w-[300px] flex-col items-start justify-center gap-y-2 px-6 py-4 font-semibold uppercase tracking-tighter transition-opacity',
                         isOpen && 'opacity-1 w-[100%] duration-500',
                         !isOpen && 'hidden w-[0%] opacity-0 duration-0'

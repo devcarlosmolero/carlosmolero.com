@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import cl from 'classnames'
+import cn from 'classnames'
 import * as RadixAccordion from '@radix-ui/react-accordion'
 import { PlusIcon, MinusIcon } from '@heroicons/react/24/outline'
 
@@ -37,7 +37,7 @@ interface AccordionItemProps
 const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps>(
     ({ children, className, ...props }, forwardedRef) => (
         <RadixAccordion.Item
-            className={cl('', className)}
+            className={cn('', className)}
             {...props}
             ref={forwardedRef}
         >
@@ -59,7 +59,7 @@ const AccordionTrigger = React.forwardRef<
 >(({ children, className, ...props }, forwardedRef) => (
     <RadixAccordion.Header className="flex">
         <RadixAccordion.Trigger
-            className={cl(
+            className={cn(
                 'group flex w-full items-center rounded-xl border border-zinc-800 bg-neutral-900 p-5 text-start text-lg',
                 className
             )}
@@ -85,7 +85,7 @@ const AccordionContent = React.forwardRef<
     AccordionContentProps
 >(({ children, className, ...props }, forwardedRef) => (
     <RadixAccordion.Content
-        className={cl(
+        className={cn(
             'overflow-hidden text-gray-300 data-[state=closed]:animate-slideUp data-[state=open]:animate-slideDown',
             className
         )}

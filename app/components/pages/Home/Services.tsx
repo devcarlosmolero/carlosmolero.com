@@ -57,7 +57,7 @@ export default function Services({ cards }: { cards: ServiceCard[] }) {
                         </ScrollAnimation>
                     )
                 })}
-                <AccentCard>
+                <AccentCard className="col-span-1 lg:col-span-2">
                     <div className="flex flex-col justify-center gap-y-3 md:max-w-[70%]">
                         <h3 className="text-2xl font-bold">
                             Contacta con nosotros y te responderémos en menos de

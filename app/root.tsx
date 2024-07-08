@@ -14,8 +14,9 @@ import Navbar from '~/components/organisms/Navbar'
 import Footer from './components/organisms/Footer'
 import { useEffect, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
-import cl from 'classnames'
+import cn from 'classnames'
 
+//@ts-expect-error idk
 import stylesheet from '~/tailwind.css?url'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -70,7 +71,7 @@ export default function App() {
                 <Links />
             </head>
             <body
-                className={cl(
+                className={cn(
                     'bg-neutral-950 lg:overflow-y-auto',
                     isNavbarOpen ? 'overflow-y-hidden' : 'overflow-auto'
                 )}

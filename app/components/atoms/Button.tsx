@@ -1,5 +1,5 @@
 import { Fragment, ReactNode } from 'react'
-import cl from 'classnames'
+import cn from 'classnames'
 import Spinner from '../molecules/Spinner'
 import { Link } from '@remix-run/react'
 import { RemixLinkProps } from '@remix-run/react/dist/components'
@@ -50,7 +50,7 @@ export default function Button({
         <Fragment>
             {!asLink && (
                 <button
-                    className={cl(
+                    className={cn(
                         getVariantClassname(),
                         className,
                         hasIcon && 'flex items-center gap-x-3',
@@ -65,7 +65,7 @@ export default function Button({
             {asLink && (
                 <Link
                     to={to ?? ''}
-                    className={cl(
+                    className={cn(
                         getVariantClassname(),
                         className,
                         hasIcon && 'flex items-center gap-x-3',

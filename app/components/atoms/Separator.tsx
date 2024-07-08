@@ -1,9 +1,9 @@
-import cl from 'classnames'
+import cn from 'classnames'
 
 export default function Separator({ className }: { className?: string }) {
     return (
         <div
-            className={cl(
+            className={cn(
                 'via-opacity-40 h-[1px] bg-gradient-to-r from-transparent via-zinc-600 to-transparent',
                 className
             )}

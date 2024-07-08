@@ -1,4 +1,4 @@
-import cl from 'classnames'
+import cn from 'classnames'
 import ImageKitImage from './ImageKitImage'
 
 export default function ImageContainer({
@@ -15,12 +15,12 @@ export default function ImageContainer({
     className?: string
 }) {
     return (
-        <div className={cl('relative overflow-hidden', containerClassName)}>
+        <div className={cn('relative overflow-hidden', containerClassName)}>
             {useImageKit ? (
                 <ImageKitImage
                     alt={alt}
                     src={src}
-                    className={cl(
+                    className={cn(
                         'absolute left-1/2 top-1/2 h-full max-h-none min-h-full w-auto min-w-full max-w-none -translate-x-1/2 -translate-y-1/2 transform object-cover',
                         className
                     )}
@@ -29,7 +29,7 @@ export default function ImageContainer({
                 <img
                     src={src}
                     alt={alt}
-                    className={cl(
+                    className={cn(
                         'absolute left-1/2 top-1/2 h-full max-h-none min-h-full w-auto min-w-full max-w-none -translate-x-1/2 -translate-y-1/2 transform object-cover',
                         className
                     )}

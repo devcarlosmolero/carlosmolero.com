@@ -5,7 +5,7 @@ import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 import { Post } from '~/types/contentful'
 import Contact from '../pages/shared/Contact'
-import cl from 'classnames'
+import cn from 'classnames'
 import Page from './Page'
 import Accordion from '../organisms/Accordion'
 import ImageContainer from '../atoms/ImageContainer'
@@ -39,19 +39,19 @@ export default function PostLayout({ post }: { post: Post }) {
 
     return (
         <Page
-            className={cl(
+            className={cn(
                 'flex flex-col items-center justify-center',
                 hasSidebar() && 'md:mb-[400px]'
             )}
         >
             <div
-                className={cl(
+                className={cn(
                     'grid grid-cols-1 gap-x-10 gap-y-5 lg:grid-cols-12',
                     !hasSidebar() && '!flex'
                 )}
             >
                 <div
-                    className={cl(
+                    className={cn(
                         'md:top-[100px] lg:sticky lg:col-span-4 lg:h-[200px]',
                         !hasSidebar() && 'hidden'
                     )}
@@ -90,7 +90,7 @@ export default function PostLayout({ post }: { post: Post }) {
                     )}
                 </div>
                 <div
-                    className={cl(
+                    className={cn(
                         'lg:col-span-8',
                         !hasSidebar() && 'max-w-[765px]'
                     )}
