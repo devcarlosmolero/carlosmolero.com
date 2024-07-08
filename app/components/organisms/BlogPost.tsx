@@ -29,7 +29,7 @@ export default function BlogPost({ post }: { post: Post }) {
                                         src="/tr:f-webp,ar:1-1,w-20/carlos-molero.jpg"
                                         className="h-[20px] w-[20px] rounded-full"
                                     />
-                                    <p>Carlos Molero</p>
+                                    <p>Carlos M.</p>
                                 </div>
                             </Badge>
                             <Link

@@ -72,11 +72,7 @@ export default function OurProcess() {
                     </div>
                 </div>
                 <div className="grid gap-x-10 gap-y-10 lg:grid-cols-2">
-                    <ScrollAnimation
-                        animateOnce
-                        duration={2}
-                        animateIn="flipInY"
-                    >
+                    <ScrollAnimation animateOnce animateIn="fadeInLeft">
                         <div>
                             <ImageKitImage
                                 className="rounded-xl"
@@ -147,11 +143,7 @@ export default function OurProcess() {
                         </ScrollAnimation>
                     </div>
                     <div>
-                        <ScrollAnimation
-                            animateOnce
-                            duration={2}
-                            animateIn="flipInY"
-                        >
+                        <ScrollAnimation animateOnce animateIn="fadeInRight">
                             <ImageKitImage
                                 className="rounded-xl"
                                 alt="Aplicación web"

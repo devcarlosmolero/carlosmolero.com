@@ -20,7 +20,7 @@ export function SideBarContent({
             {sections?.map((section, index) => {
                 return (
                     <Link
-                        className="flex items-start underline hover:text-violet-300"
+                        className="flex items-start underline decoration-gray-400 decoration-dashed hover:text-violet-300"
                         to={`#${section.id}`}
                         key={index}
                     >
