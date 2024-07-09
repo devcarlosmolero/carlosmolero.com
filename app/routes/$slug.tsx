@@ -14,13 +14,17 @@ import PostLayout from '~/components/templates/PostLayout'
 import ServiceLayout from '~/components/templates/ServiceLayout'
 import { Service, type Post } from '~/types/contentful'
 import { getBasicMetas } from '~/utils/meta'
-import { applyServiceRedirects } from '~/utils/server'
+import { serviceRedirects } from '~/utils/server'
 
 export async function loader({ request }: LoaderFunctionArgs) {
     const url = new URL(request.url)
     const slug = url.pathname.split('/')[1]
 
-    applyServiceRedirects(slug)
+    //@ts-expect-error idk
+    if (serviceRedirects[slug]) {
+        //@ts-expect-error idk
+        return redirect(`/${serviceRedirects[slug]}`, 301)
+    }
 
     const servicesSlugs = (await getServices(10, ['fields.slug', 'sys'])).map(
         (service) => service.slug
