@@ -22,6 +22,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
     //@ts-expect-error idk
     if (serviceRedirects[slug]) {
+        console.log('hello!')
         //@ts-expect-error idk
         return redirect(`/${serviceRedirects[slug]}`, 301)
     }
