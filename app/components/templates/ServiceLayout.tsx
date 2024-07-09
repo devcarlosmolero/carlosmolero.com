@@ -30,7 +30,7 @@ export default function ServiceLayout({
 }) {
     return (
         <Page>
-            <div className="grid gap-x-10 gap-y-10 lg:grid-cols-2">
+            <div className="grid gap-10 lg:grid-cols-2">
                 <div className="flex flex-col gap-y-3">
                     <Badge label="Servicio" />
                     <h1 className="text-4xl font-semibold tracking-tighter">
@@ -50,7 +50,7 @@ export default function ServiceLayout({
                 <ImageContainer
                     alt={service.seoTitle}
                     src={service.headerImgUrl}
-                    containerClassName="min-h-[350px] rounded-xl"
+                    containerClassName="min-h-[250px] md:min-h-[400px] lg:min-h-[320px] rounded-xl"
                     className="rounded-xl"
                 />
             </div>
