@@ -41,9 +41,10 @@ export async function loader() {
 export const meta: MetaFunction = () => {
     return [
         ...getBasicMetas({
-            title: 'Desarrollo de Software y Diseño Web',
-            description:
-                'Optimiza tu PYME/Startup con software a medida: desarrollo de apps web, iOS y Android, producto mínimo viable, cloud, diseño web, y más soluciones tecnológicas.',
+            title: 'Software y Diseño Web para Empresas en Málaga',
+            description: `Somos la empresa Malagueña de desarrollo de software y diseño web líder en el sector, operamos en toda España 
+                apoyando a pequeñas y medianas empresas mediante la creación de software a medida, 
+                apps móviles, páginas web y asesorándolas tecnológicamente.`,
             img: `${IMAGE_KIT_BASE_URL}/tr:f-webp/meta.png`,
             appendSiteName: true,
         }),

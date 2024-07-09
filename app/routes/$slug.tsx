@@ -145,6 +145,20 @@ export const meta: MetaFunction = (payload: {
                                   '@type': 'Review',
                                   author: {
                                       '@type': 'Person',
+                                      name: 'Joaquin Galan',
+                                  },
+                                  reviewRating: {
+                                      '@type': 'Rating',
+                                      ratingValue: '5',
+                                      bestRating: '5',
+                                  },
+                                  reviewBody: `Son los mejores especialistas que podrás encontrar en el campo del diseño web y el desarrollo de software para pequeñas y medianas empresas.
+                                  Destacaría el excelente trato, la atención al detalle, su cercanía, compromiso, apoyo, formalidad y calidad/precio. 100% recomendados.`,
+                              },
+                              {
+                                  '@type': 'Review',
+                                  author: {
+                                      '@type': 'Person',
                                       name: 'Lourdes Mata de Damas',
                                   },
                                   reviewRating: {
@@ -153,8 +167,8 @@ export const meta: MetaFunction = (payload: {
                                       bestRating: '5',
                                   },
                                   reviewBody: `Todo fenomenal con ellos, son excelentes profesionales. En menos de 1 semana tenía mi sitio web funcionando.
-                                               Son un equipo sobresaliente en todo lo relativo a la creación de productos digitales, ya sean páginas web, software personalizado para empresas e integraciones.
-                                               ¡Recomendadísimos!`,
+                                  Son un equipo sobresaliente en todo lo relativo a la creación de productos digitales, ya sean páginas web, software personalizado para empresas e integraciones.
+                                  ¡Recomendadísimos!`,
                               },
                               {
                                   '@type': 'Review',
@@ -168,8 +182,8 @@ export const meta: MetaFunction = (payload: {
                                       bestRating: '5',
                                   },
                                   reviewBody: `Captaron mi idea a la primera y la ejecutaron a la perfección. 
-                                               Había pasado por un infierno tratando con agencias que solo me querían sacar el dinero, 
-                                               NovaScript fue la solución.`,
+                                  Había pasado por un infierno tratando con agencias que solo me querían sacar el dinero, 
+                                  NovaScript fue la solución.`,
                               },
                               {
                                   '@type': 'Review',
