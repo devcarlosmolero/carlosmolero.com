@@ -60,7 +60,7 @@ export default function PostLayout({ post }: { post: Post }) {
                         <div className="flex w-full flex-col gap-y-2 lg:rounded-xl lg:border lg:border-zinc-800 lg:bg-neutral-900 lg:p-5">
                             {post.headerImgUrl && (
                                 <ImageContainer
-                                    containerClassName="min-h-[250px] md:min-h-[400px] lg:min-h-[200px] w-full rounded-xl"
+                                    containerClassName="aspect-w-16 aspect-h-9 w-full rounded-xl"
                                     className="rounded-xl"
                                     alt={post.seoTitle}
                                     src={post.headerImgUrl}

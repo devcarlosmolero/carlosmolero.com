@@ -6,6 +6,7 @@ import ImageKitImage from '~/components/atoms/ImageKitImage'
 import Button from '../atoms/Button'
 import { ChatBubbleLeftEllipsisIcon } from '@heroicons/react/24/outline'
 import cn from 'classnames'
+import { IMAGE_KIT_BASE_URL } from '~/consts'
 
 export default function Navbar({
     isRoot,
@@ -41,7 +42,7 @@ export default function Navbar({
                             <img
                                 className="h-[60px] w-[60px]"
                                 alt="Logo"
-                                src="https://ik.imagekit.io/jgh04cawf/novascriptio/logo.svg?updatedAt=1715109841439"
+                                src={`${IMAGE_KIT_BASE_URL}/tr:w-60,ar-1-1,f-webp/logo.svg`}
                             />
                         </Link>
                     </div>
@@ -127,7 +128,7 @@ function NavbarDrawer({
                         <img
                             className="h-[60px] w-[60px]"
                             alt="Logo"
-                            src="https://ik.imagekit.io/jgh04cawf/novascriptio/logo.svg?updatedAt=1715109841439"
+                            src={`${IMAGE_KIT_BASE_URL}/tr:ar-1-1,w-60,f-webp/logo.svg`}
                         />
                     </Link>
                     <Link

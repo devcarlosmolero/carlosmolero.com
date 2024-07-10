@@ -12,6 +12,7 @@ import {
 } from '~/actions/contentful'
 import PostLayout from '~/components/templates/PostLayout'
 import ServiceLayout from '~/components/templates/ServiceLayout'
+import { IMAGE_KIT_BASE_URL } from '~/consts'
 import { Service, type Post } from '~/types/contentful'
 import { getBasicMetas } from '~/utils/meta'
 import { serviceRedirects } from '~/utils/server'
@@ -101,7 +102,7 @@ export const meta: MetaFunction = (payload: {
                               name: 'NovaScript',
                               logo: {
                                   '@type': 'ImageObject',
-                                  url: 'https://ik.imagekit.io/jgh04cawf/novascriptio/tr:w-16,ar-1-1,f-webp/favicon.png',
+                                  url: `${IMAGE_KIT_BASE_URL}/tr:w-16,ar-1-1,f-webp/favicon.png`,
                                   width: '60',
                                   height: '60',
                               },
@@ -116,7 +117,7 @@ export const meta: MetaFunction = (payload: {
                           '@context': 'http://schema.org',
                           '@type': 'LocalBusiness',
                           name: 'NovaScript',
-                          image: 'https://ik.imagekit.io/jgh04cawf/novascriptio/tr:w-16,ar-1-1,f-webp/favicon.png',
+                          image: `${IMAGE_KIT_BASE_URL}/tr:w-16,ar-1-1,f-webp/favicon.png`,
                           telephone: '+34 674 386 776',
                           email: 'hi@novascript.io',
                           address: {

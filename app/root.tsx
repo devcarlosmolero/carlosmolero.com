@@ -19,6 +19,7 @@ import cn from 'classnames'
 //@ts-expect-error idk
 import stylesheet from '~/tailwind.css?url'
 import 'react-toastify/dist/ReactToastify.css'
+import { IMAGE_KIT_BASE_URL } from './consts'
 
 export async function loader({ request }: LoaderFunctionArgs) {
     const isRoot = new URL(request.url).pathname === '/'
@@ -62,7 +63,7 @@ export default function App() {
                 <link
                     rel="icon"
                     type="image/x-icon"
-                    href="https://ik.imagekit.io/jgh04cawf/novascriptio/tr:w-16,ar-1-1,f-webp/favicon.png"
+                    href={`${IMAGE_KIT_BASE_URL}/tr:w-16,ar-1-1,f-webp/favicon.png`}
                 />
                 <link rel="canonical" href={url} />
                 <meta property="og:url" content={url} />

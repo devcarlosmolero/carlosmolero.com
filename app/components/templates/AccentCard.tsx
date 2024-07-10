@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
 import cn from 'classnames'
+import { IMAGE_KIT_BASE_URL } from '~/consts'
 
 export default function AccentCard({
     children,
@@ -17,8 +18,7 @@ export default function AccentCard({
         >
             <div
                 style={{
-                    backgroundImage:
-                        'url(https://ik.imagekit.io/jgh04cawf/novascriptio/accent-background.webp)',
+                    backgroundImage: `url(${IMAGE_KIT_BASE_URL}/accent-background.webp)`,
                 }}
                 className="h-full w-full rounded-xl bg-cover bg-right"
             ></div>

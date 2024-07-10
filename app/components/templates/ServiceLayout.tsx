@@ -50,7 +50,7 @@ export default function ServiceLayout({
                 <ImageContainer
                     alt={service.seoTitle}
                     src={service.headerImgUrl}
-                    containerClassName="min-h-[250px] md:min-h-[400px] lg:min-h-[320px] rounded-xl"
+                    containerClassName="aspect-w-16 aspect-h-9 rounded-xl"
                     className="rounded-xl"
                 />
             </div>
