@@ -41,10 +41,10 @@ export async function loader() {
 export const meta: MetaFunction = () => {
     return [
         ...getBasicMetas({
-            title: 'Software y Diseño Web para Empresas en Málaga',
-            description: `Somos la empresa Malagueña de desarrollo de software y diseño web líder en el sector, operamos en toda España 
+            title: 'Software y Diseño Web para Empresas',
+            description: `Somos la empresa de desarrollo de software y diseño web líder en el sector, operamos en toda España 
                 apoyando a pequeñas y medianas empresas mediante la creación de software a medida, 
-                apps móviles, páginas web y asesorándolas tecnológicamente.`,
+                apps móviles, páginas web, tiendas online y asesorándolas tecnológicamente.`,
             img: `${IMAGE_KIT_BASE_URL}/tr:f-webp/meta.png`,
             appendSiteName: true,
         }),
