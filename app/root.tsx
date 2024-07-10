@@ -63,7 +63,7 @@ export default function App() {
                 <link
                     rel="icon"
                     type="image/x-icon"
-                    href={`${IMAGE_KIT_BASE_URL}/tr:w-16,ar-1-1,f-webp/favicon.png`}
+                    href={`${IMAGE_KIT_BASE_URL}/tr:w-48,ar-1-1/favicon.png`}
                 />
                 <link rel="canonical" href={url} />
                 <meta property="og:url" content={url} />

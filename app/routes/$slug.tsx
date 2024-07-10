@@ -102,7 +102,7 @@ export const meta: MetaFunction = (payload: {
                               name: 'NovaScript',
                               logo: {
                                   '@type': 'ImageObject',
-                                  url: `${IMAGE_KIT_BASE_URL}/tr:w-16,ar-1-1,f-webp/favicon.png`,
+                                  url: `${IMAGE_KIT_BASE_URL}/tr:w-48,ar-1-1/favicon.png`,
                                   width: '60',
                                   height: '60',
                               },
