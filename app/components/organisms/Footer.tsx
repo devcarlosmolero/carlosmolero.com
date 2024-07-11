@@ -20,7 +20,7 @@ export default function Footer() {
                 <Button
                     hasIcon
                     asLink
-                    to="https://cal.com/carlosmolero/30min"
+                    to="https://cal.com/carlosmta/30min"
                     props={
                         {
                             target: '_blank',
