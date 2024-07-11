@@ -103,8 +103,8 @@ export const meta: MetaFunction = (payload: {
                               logo: {
                                   '@type': 'ImageObject',
                                   url: `${IMAGE_KIT_BASE_URL}/tr:w-48,ar-1-1/favicon.png`,
-                                  width: '60',
-                                  height: '60',
+                                  width: '48',
+                                  height: '48',
                               },
                           },
                           datePublished: post.createdAt,
