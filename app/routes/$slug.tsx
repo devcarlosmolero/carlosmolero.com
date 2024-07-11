@@ -117,7 +117,7 @@ export const meta: MetaFunction = (payload: {
                           '@context': 'http://schema.org',
                           '@type': 'LocalBusiness',
                           name: 'NovaScript',
-                          image: `${IMAGE_KIT_BASE_URL}/tr:w-16,ar-1-1,f-webp/favicon.png`,
+                          image: `${IMAGE_KIT_BASE_URL}/tr:f-webp/meta.png`,
                           telephone: '+34 674 386 776',
                           email: 'hi@novascript.io',
                           address: {
