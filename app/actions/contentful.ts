@@ -1,5 +1,5 @@
 import { Post, Service } from '~/types/contentful'
-import { getPostReadingTimeInMinutes, getPostSections } from '~/utils/post'
+import { getPostReadingTimeInMinutes, getPostSections } from '~/utils/posts'
 
 const BASE_URL = 'https://cdn.contentful.com'
 const SPACE_ID = 'dbho2mzjh6aw'

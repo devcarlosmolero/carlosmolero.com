@@ -9,6 +9,8 @@ export interface Post {
     formattedCreatedAt?: string
     formattedUpdatedAt?: string
     readingTime?: string
+    hookTitle?: string
+    hookDescription?: string
     slug?: string
     sections?: { id: string; text: string }[]
 }

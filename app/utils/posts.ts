@@ -27,3 +27,7 @@ export function getPostReadingTimeInMinutes(content: string) {
     const minutes = words / 200
     return Math.ceil(minutes)
 }
+
+export default function injectHook(content: string, hookHtml: string) {
+    return content.replace(/--hook--/g, hookHtml)
+}

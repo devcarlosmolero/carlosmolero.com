@@ -85,7 +85,7 @@ export default function ServiceLayout({
                 </div>
             </div>
             <div>
-                <AccentCard className="!min-h-[500px]">
+                <AccentCard>
                     <div className="flex h-full flex-col items-center justify-center gap-y-3 text-center">
                         <div className="flex max-w-[600px] flex-col items-center gap-y-5">
                             <h3 className="text-3xl font-bold md:text-5xl">
@@ -103,7 +103,6 @@ export default function ServiceLayout({
                                         target: '_blank',
                                     } as React.LinkHTMLAttributes<HTMLLinkElement>
                                 }
-                                className="lg:!py-2"
                                 variant="accent"
                             >
                                 Agenda una videollamada

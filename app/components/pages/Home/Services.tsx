@@ -67,12 +67,7 @@ export default function Services({ cards }: { cards: ServiceCard[] }) {
                             Empezar a trabajar con nosotros es tan sencillo cómo
                             enviarnos un mensaje, estamos a tu servicio.
                         </p>
-                        <Button
-                            asLink
-                            to="#contacto"
-                            className="lg:!py-2"
-                            variant="accent"
-                        >
+                        <Button asLink to="#contacto" variant="accent">
                             Empezar proyecto
                         </Button>
                     </div>

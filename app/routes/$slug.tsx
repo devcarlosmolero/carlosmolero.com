@@ -5,16 +5,19 @@ import {
     redirect,
 } from '@remix-run/cloudflare'
 import { useLoaderData } from '@remix-run/react'
+import { renderToStaticMarkup } from 'react-dom/server'
 import {
     getPostBySlug,
     getServiceBySlug,
     getServices,
 } from '~/actions/contentful'
+import PostHook from '~/components/pages/Slug/PostHook'
 import PostLayout from '~/components/templates/PostLayout'
 import ServiceLayout from '~/components/templates/ServiceLayout'
 import { IMAGE_KIT_BASE_URL } from '~/consts'
 import { Service, type Post } from '~/types/contentful'
 import { getBasicMetas } from '~/utils/meta'
+import injectHook from '~/utils/posts'
 import { serviceRedirects } from '~/utils/server'
 
 export async function loader({ request }: LoaderFunctionArgs) {
@@ -51,6 +54,18 @@ export async function loader({ request }: LoaderFunctionArgs) {
             post.formattedCreatedAt = new Date(
                 post.createdAt!
             ).toLocaleDateString('es')
+
+            if (post.hookTitle && post.hookDescription) {
+                post.content = injectHook(
+                    post.content,
+                    renderToStaticMarkup(
+                        <PostHook
+                            title={post.hookTitle}
+                            description={post.hookDescription}
+                        />
+                    )
+                )
+            }
         }
 
         return json({

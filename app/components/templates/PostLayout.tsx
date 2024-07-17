@@ -121,7 +121,7 @@ export default function PostLayout({ post }: { post: Post }) {
                             )}
                         </div>
                     </div>
-                    <article className="prose prose-dark w-full !max-w-none prose-img:w-full prose-img:rounded-xl [&_h2:first-of-type]:mt-0">
+                    <article className="prose prose-dark w-full !max-w-none prose-img:aspect-h-9 prose-img:rounded-xl [&_h2:first-of-type]:mt-0">
                         <Markdown
                             remarkPlugins={[remarkGfm]}
                             rehypePlugins={[rehypeSlug, rehypeRaw]}
