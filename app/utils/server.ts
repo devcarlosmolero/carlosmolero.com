@@ -21,4 +21,6 @@ export const serviceRedirects = {
     'software-a-medida-para-tu-negocio': 'software-de-gestion-para-empresas',
     'creacion-de-software-para-empresas':
         'aplicaciones-a-medida-para-pequenas-y-medianas-empresas',
+    'software-automatizacion-procesos-pymes':
+        'software-automatizacion-procesos-empresas',
 }
