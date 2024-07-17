@@ -1,4 +1,3 @@
-import { Link } from '@remix-run/react'
 import Markdown from 'react-markdown'
 import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
@@ -9,6 +8,7 @@ import cn from 'classnames'
 import Page from './Page'
 import Accordion from '../organisms/Accordion'
 import ImageContainer from '../atoms/ImageContainer'
+import DashedLink from '../atoms/DashedLink'
 
 export function SideBarContent({
     sections,
@@ -19,13 +19,9 @@ export function SideBarContent({
         <div className="flex flex-col gap-y-2 text-gray-300">
             {sections?.map((section, index) => {
                 return (
-                    <Link
-                        className="flex items-start underline decoration-gray-500 decoration-dashed underline-offset-4 hover:text-violet-300"
-                        to={`#${section.id}`}
-                        key={index}
-                    >
+                    <DashedLink to={`#${section.id}`} key={index}>
                         {section.text}
-                    </Link>
+                    </DashedLink>
                 )
             })}
         </div>

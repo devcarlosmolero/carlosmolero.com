@@ -37,7 +37,7 @@ interface AccordionItemProps
 const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps>(
     ({ children, className, ...props }, forwardedRef) => (
         <RadixAccordion.Item
-            className={cn('', className)}
+            className={cn(className)}
             {...props}
             ref={forwardedRef}
         >

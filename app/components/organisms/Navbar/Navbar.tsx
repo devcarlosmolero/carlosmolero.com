@@ -3,11 +3,17 @@ import Container from '~/components/templates/Container'
 import Hamburger from '~/components/molecules/Hamburger'
 import { useEffect, useState } from 'react'
 import ImageKitImage from '~/components/atoms/ImageKitImage'
-import { ChatBubbleLeftEllipsisIcon } from '@heroicons/react/24/outline'
+import {
+    ChatBubbleLeftEllipsisIcon,
+    ChevronDownIcon,
+    ChevronRightIcon,
+} from '@heroicons/react/24/outline'
 import { IMAGE_KIT_BASE_URL } from '~/consts'
 import Button from '~/components/atoms/Button'
 import NavbarDrawer from './NavbarDrawer'
 import { ServiceCard } from '~/types/contentful'
+import PopoverPrimitive from '~/components/atoms/PopoverPrimitive'
+import DashedLink from '~/components/atoms/DashedLink'
 
 export default function Navbar({
     isRoot,
@@ -35,12 +41,8 @@ export default function Navbar({
         <nav className="flex w-full justify-center">
             <Container className="fixed z-20 w-full bg-neutral-950/80 px-10 py-2 text-white backdrop-blur lg:px-5">
                 {/* DESKTOP NAVBAR */}
-                <div className="hidden grid-cols-5 items-center py-2 text-center font-semibold uppercase tracking-tighter lg:grid">
-                    <Link to={`${isRoot ? '' : '/'}#servicios`}>Servicios</Link>
-                    <Link to={`${isRoot ? '' : '/'}#preguntas`}>
-                        Preguntas Frecuentes
-                    </Link>
-                    <div className="flex items-center justify-center gap-x-3">
+                <div className="hidden grid-cols-12 items-center py-2 text-center font-semibold tracking-tighter lg:grid">
+                    <div className="col-span-3 flex items-center justify-start gap-x-3">
                         <Link to="/">
                             <img
                                 className="h-[60px] w-[60px]"
@@ -49,22 +51,59 @@ export default function Navbar({
                             />
                         </Link>
                     </div>
-                    <Link to={`${isRoot ? '' : '/'}#contacto`}>Contacto</Link>
-                    <Button
-                        hasIcon
-                        variant="secondary"
-                        className="!py-2"
-                        asLink
-                        to="https://wa.link/byrnks"
-                        props={
-                            {
-                                target: '_blank',
-                            } as React.LinkHTMLAttributes<HTMLLinkElement>
-                        }
-                    >
-                        ¿Hablamos?
-                        <ChatBubbleLeftEllipsisIcon className="size-4" />
-                    </Button>
+                    <div className="col-span-9 flex w-full items-center justify-end gap-x-10">
+                        <PopoverPrimitive.Root>
+                            <PopoverPrimitive.Trigger className="flex w-full items-center">
+                                <div className="flex items-center gap-x-1">
+                                    <ChevronRightIcon className="size-4 group-hover:hidden" />
+                                    <ChevronDownIcon className="hidden size-4 group-hover:block" />
+                                    Servicios
+                                </div>
+                            </PopoverPrimitive.Trigger>
+                            <PopoverPrimitive.Content className="w-60 rounded-xl border border-zinc-800 bg-neutral-950 p-3 text-start normal-case">
+                                {services.map((service, index) => {
+                                    return (
+                                        <DashedLink
+                                            className="py-1 font-normal text-gray-300"
+                                            key={index}
+                                            reloadDocument
+                                            to={`/${service.slug}`}
+                                        >
+                                            {service.cardTitle}
+                                        </DashedLink>
+                                    )
+                                })}
+                            </PopoverPrimitive.Content>
+                        </PopoverPrimitive.Root>
+                        <Link
+                            className="w-fit"
+                            to={`${isRoot ? '' : '/'}#preguntas`}
+                        >
+                            Preguntas Frecuentes
+                        </Link>
+
+                        <Link
+                            className="w-fit"
+                            to={`${isRoot ? '' : '/'}#contacto`}
+                        >
+                            Contacto
+                        </Link>
+                        <Button
+                            hasIcon
+                            variant="secondary"
+                            className="!py-2"
+                            asLink
+                            to="https://wa.link/byrnks"
+                            props={
+                                {
+                                    target: '_blank',
+                                } as React.LinkHTMLAttributes<HTMLLinkElement>
+                            }
+                        >
+                            ¿Hablamos?
+                            <ChatBubbleLeftEllipsisIcon className="size-4" />
+                        </Button>
+                    </div>
                 </div>
                 {/* MOBILE NAVBAR */}
                 <div className="grid grid-cols-2 items-center px-2 py-2 text-center lg:hidden">

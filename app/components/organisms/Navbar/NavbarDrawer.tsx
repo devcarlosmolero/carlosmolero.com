@@ -1,11 +1,12 @@
 import { Fragment } from 'react/jsx-runtime'
 import cn from 'classnames'
-import { Link, Links } from '@remix-run/react'
+import { Link } from '@remix-run/react'
 import NavbarDropdown from './NavbarDropdown'
 import Button from '~/components/atoms/Button'
 import { ChatBubbleLeftEllipsisIcon } from '@heroicons/react/24/outline'
 import { IMAGE_KIT_BASE_URL } from '~/consts'
 import { ServiceCard } from '~/types/contentful'
+import DashedLink from '~/components/atoms/DashedLink'
 
 export default function NavbarDrawer({
     isOpen,
@@ -55,14 +56,14 @@ export default function NavbarDrawer({
                     <NavbarDropdown title="Servicios">
                         {services.map((service, index) => {
                             return (
-                                <Link
-                                    className="block py-1 pl-3 underline decoration-gray-500 decoration-dashed underline-offset-4 hover:text-violet-300"
+                                <DashedLink
+                                    className="block py-1 pl-5 text-gray-300"
                                     reloadDocument
                                     to={`/${service.slug}`}
                                     key={index}
                                 >
                                     {service.cardTitle}
-                                </Link>
+                                </DashedLink>
                             )
                         })}
                     </NavbarDropdown>
