@@ -4,7 +4,6 @@ import Badge from '../atoms/Badge'
 import { Link } from '@remix-run/react'
 import { ArrowUpRightIcon } from '@heroicons/react/24/outline'
 import ImageKitImage from '../atoms/ImageKitImage'
-import ImageContainer from '../atoms/ImageContainer'
 
 export default function BlogPost({ post }: { post: Post }) {
     return (

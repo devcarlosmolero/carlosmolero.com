@@ -8,25 +8,35 @@ import {
     useLoaderData,
     useSearchParams,
 } from '@remix-run/react'
-
 import type { LinksFunction, LoaderFunctionArgs } from '@remix-run/cloudflare'
-import Navbar from '~/components/organisms/Navbar'
 import Footer from './components/organisms/Footer'
 import { useEffect, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import cn from 'classnames'
+import { IMAGE_KIT_BASE_URL } from './consts'
 
 //@ts-expect-error idk
 import stylesheet from '~/tailwind.css?url'
 import 'react-toastify/dist/ReactToastify.css'
-import { IMAGE_KIT_BASE_URL } from './consts'
+import Navbar from './components/organisms/Navbar/Navbar'
+import { getServices } from './actions/contentful'
 
 export async function loader({ request }: LoaderFunctionArgs) {
     const isRoot = new URL(request.url).pathname === '/'
 
+    const services = await getServices(10, [
+        'fields.cardTitle',
+        'fields.cardDescription',
+        'fields.enabled',
+        'fields.slug',
+        'fields.iconString',
+        'sys',
+    ])
+
     return json({
         url: request.url,
         isRoot,
+        services: services.sort((a, b) => (a === b ? 0 : a ? -1 : 1)),
     })
 }
 
@@ -35,7 +45,7 @@ export const links: LinksFunction = () => [
 ]
 
 export default function App() {
-    const { url, isRoot } = useLoaderData<typeof loader>()
+    const { url, isRoot, services } = useLoaderData<typeof loader>()
     const [params, setParams] = useSearchParams()
     const [isNavbarOpen, setIsNavbarOpen] = useState(false)
 
@@ -79,6 +89,7 @@ export default function App() {
             >
                 <main>
                     <Navbar
+                        services={services}
                         onOpen={() => setIsNavbarOpen(true)}
                         onClose={() => setIsNavbarOpen(false)}
                         isRoot={isRoot}
