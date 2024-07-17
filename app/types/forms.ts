@@ -3,4 +3,5 @@ export interface ContactFormSubmission {
     name: string
     email: string
     message?: string
+    bot?: string
 }

@@ -9,6 +9,15 @@ export async function action({ request }: ActionFunctionArgs) {
         formData
     ) as unknown as ContactFormSubmission
 
+    if (submission.bot) {
+        return redirectWithToast(
+            `${formData.get('pathname')}?contactFormStatus=error`,
+            'Ha ocurrido un error durante el envío del formulario. Inténtalo de nuevo más tarde.',
+            'error',
+            true
+        )
+    }
+
     await sendDiscordMessage(
         `\n\n🪐 **${submission.name} ha escrito**: \n\n*"${submission.message}"*\n\n📝 Puedes escribirle de vuelta usando el siguiente correo: ${submission.email}`
     )

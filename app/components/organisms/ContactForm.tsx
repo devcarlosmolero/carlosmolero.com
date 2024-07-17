@@ -13,7 +13,7 @@ export default function ContactForm() {
 
     useEffect(
         function resetFormOnSuccess() {
-            if (params.get('contactFormStatus') === 'success') {
+            if (params.get('contactFormStatus')) {
                 $form.current?.reset()
                 setIsLoading(false)
             }
