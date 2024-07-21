@@ -1,4 +1,3 @@
-import Avatar from '~/components/atoms/Avatar'
 import { IMAGE_KIT_BASE_URL } from '~/consts'
 
 interface AvatarRowProps {
@@ -13,7 +12,7 @@ export default function AvatarRow({ images }: AvatarRowProps) {
         <div className="flex items-center">
             {images.map((image, index) => {
                 return (
-                    <Avatar
+                    <img
                         className={`h-[30px] w-[30px] rounded-full border-2 border-violet-300 ${
                             index > 0 ? '-ml-3' : ''
                         }`}

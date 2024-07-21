@@ -1,4 +1,4 @@
-import PostLayout from '~/components/templates/PostLayout'
+import PostLayout from '~/components/pages/Slug/PostLayout'
 // @ts-expect-error vite import
 import politicaDePrivacidadMd from '~/markdown/politica-de-privacidad.md?raw'
 

@@ -1,4 +1,4 @@
-NovaScript LLC, empresa de diseño web y desarrollo de software propiedad de <a target="_blank" href="https://x.com/carlosmta_">Carlos Molero</a>, se compromete a proteger la privacidad de sus usuarios.
+NovaScript LLC, empresa de diseño web y desarrollo de software propiedad de <a target="_blank" href="https://x.com/carlosmta_">Carlos M.</a>, se compromete a proteger la privacidad de sus usuarios.
 
 Esta política de privacidad describe cómo recopilamos, usamos y protegemos tu información personal cuando visitas nuestro sitio web.
 

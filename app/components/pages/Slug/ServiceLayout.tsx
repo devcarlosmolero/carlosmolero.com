@@ -1,25 +1,25 @@
 import { Service, ServiceCard } from '~/types/contentful'
-import Page from './Page'
-import Badge from '../atoms/Badge'
-import Separator from '../atoms/Separator'
 import Markdown from 'react-markdown'
 import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
-import Contact from '../pages/shared/Contact'
-import SectionHeading from '../pages/Home/SectionHeading'
-import Accordion from '../organisms/Accordion'
 import {
     ArrowRightIcon,
     ArrowUpRightIcon,
     CalendarDaysIcon,
 } from '@heroicons/react/24/outline'
-import Button from '../atoms/Button'
-import AccentCard from './AccentCard'
-import Card from './Card'
 import { Link } from '@remix-run/react'
-import ServicesIconMap from '../atoms/ServicesIconMap'
-import ImageContainer from '../atoms/ImageContainer'
+import Badge from '~/components/atoms/Badge'
+import Button from '~/components/atoms/Button'
+import Separator from '~/components/atoms/Separator'
+import AccentCard from '~/components/templates/AccentCard'
+import Card from '~/components/templates/Card'
+import Page from '~/components/templates/Page'
+import SectionHeading from '../Home/SectionHeading'
+import Contact from '../shared/Contact'
+import Accordion from '~/components/organisms/Accordion'
+import { FakeBackgroundImagePrimitive } from '~/components/atoms/FakeBackgroundImagePrimitive'
+import ServicesIconMap from '~/components/atoms/ServicesIconMap'
 
 export default function ServiceLayout({
     service,
@@ -47,12 +47,13 @@ export default function ServiceLayout({
                         Pide presupuesto <ArrowRightIcon className="size-4" />
                     </Button>
                 </div>
-                <ImageContainer
-                    alt={service.seoTitle}
-                    src={service.headerImgUrl}
-                    containerClassName="aspect-w-16 aspect-h-9 rounded-xl"
-                    className="rounded-xl"
-                />
+                <FakeBackgroundImagePrimitive.Container className="aspect-h-9 aspect-w-16 rounded-xl">
+                    <FakeBackgroundImagePrimitive.Image
+                        alt={service.seoTitle}
+                        src={service.headerImgUrl}
+                        className="rounded-xl"
+                    />
+                </FakeBackgroundImagePrimitive.Container>
             </div>
             <Separator />
             <div className="flex w-full justify-center">

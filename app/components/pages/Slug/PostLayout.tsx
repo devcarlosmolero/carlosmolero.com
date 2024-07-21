@@ -3,12 +3,12 @@ import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 import { Post } from '~/types/contentful'
-import Contact from '../pages/shared/Contact'
 import cn from 'classnames'
-import Page from './Page'
-import Accordion from '../organisms/Accordion'
-import ImageContainer from '../atoms/ImageContainer'
-import DashedLink from '../atoms/DashedLink'
+import DashedLink from '~/components/atoms/DashedLink'
+import Page from '~/components/templates/Page'
+import Contact from '../shared/Contact'
+import Accordion from '~/components/organisms/Accordion'
+import { FakeBackgroundImagePrimitive } from '~/components/atoms/FakeBackgroundImagePrimitive'
 
 export function SideBarContent({
     sections,
@@ -55,12 +55,13 @@ export default function PostLayout({ post }: { post: Post }) {
                     {hasSidebar() && (
                         <div className="flex w-full flex-col gap-y-2 lg:rounded-xl lg:border lg:border-zinc-800 lg:bg-neutral-900 lg:p-5">
                             {post.headerImgUrl && (
-                                <ImageContainer
-                                    containerClassName="aspect-w-16 aspect-h-9 w-full rounded-xl"
-                                    className="rounded-xl"
-                                    alt={post.seoTitle}
-                                    src={post.headerImgUrl}
-                                />
+                                <FakeBackgroundImagePrimitive.Container className="aspect-h-9 aspect-w-16 w-full rounded-xl">
+                                    <FakeBackgroundImagePrimitive.Image
+                                        className="rounded-xl"
+                                        src={post.headerImgUrl}
+                                        alt={post.seoTitle}
+                                    />
+                                </FakeBackgroundImagePrimitive.Container>
                             )}
                             <div className="lg:hidden">
                                 <Accordion

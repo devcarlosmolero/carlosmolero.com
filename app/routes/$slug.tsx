@@ -12,8 +12,8 @@ import {
     getServices,
 } from '~/actions/contentful'
 import PostHook from '~/components/pages/Slug/PostHook'
-import PostLayout from '~/components/templates/PostLayout'
-import ServiceLayout from '~/components/templates/ServiceLayout'
+import PostLayout from '~/components/pages/Slug/PostLayout'
+import ServiceLayout from '~/components/pages/Slug/ServiceLayout'
 import { IMAGE_KIT_BASE_URL } from '~/consts'
 import { Service, type Post } from '~/types/contentful'
 import { getBasicMetas } from '~/utils/meta'
