@@ -129,7 +129,7 @@ export function getArticleJsonLd(post: Post, postImageUrls: string[]) {
             height: '768',
         })),
         author: {
-            '@type': 'Organization',
+            '@type': 'Corporation',
             name: SITE_NAME,
         },
         publisher: {
