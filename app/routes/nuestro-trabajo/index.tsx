@@ -59,36 +59,38 @@ export default function NuestroTrabajo() {
 
     return (
         <Page>
-            <SectionHeading
-                title="Nuestro trabajo como <span class='font-accent tracking-normal'>empresa de software</span>"
-                description={`Hemos tenido el placer de trabajar desarrollando el software y diseñando 
-                las páginas web para decenas de empresas y negocios consolidados, PYMES y Startups. Deja que te mostremos
-                algunos de los proyectos en los que nos hemos involucrado.`}
-            />
-            <div className="grid grid-cols-3 gap-5">
-                {projects.map((project, index: number) => {
-                    return (
-                        <Link
-                            key={index}
-                            to={project.url}
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            <FakeBackgroundImagePrimitive.Container className="aspect-h-9 aspect-w-16 rounded-xl">
-                                <FakeBackgroundImagePrimitive.Image
-                                    src={project.imgUrl}
-                                    alt={project.imgUrl}
-                                    className="cursor-pointer transition-all duration-500 hover:scale-105"
-                                />
-                                <Overlay className="pointer-events-none flex items-center justify-center bg-black/70 p-5">
-                                    <h2 className="text-center text-xl">
-                                        {project.seoTitle}
-                                    </h2>
-                                </Overlay>
-                            </FakeBackgroundImagePrimitive.Container>
-                        </Link>
-                    )
-                })}
+            <div className="flex flex-col">
+                <SectionHeading
+                    title="Nuestro trabajo como <br class='hidden sm:block'/><span class='font-accent tracking-normal'>empresa de software</span>"
+                    description={`Hemos tenido el placer de trabajar desarrollando el software y diseñando 
+                    las páginas web para decenas de empresas y negocios consolidados, PYMES y Startups. Deja que te mostremos
+                    algunos de los proyectos en los que nos hemos involucrado.`}
+                />
+                <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+                    {projects.map((project, index: number) => {
+                        return (
+                            <Link
+                                key={index}
+                                to={project.url}
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                <FakeBackgroundImagePrimitive.Container className="aspect-h-9 aspect-w-16 rounded-xl">
+                                    <FakeBackgroundImagePrimitive.Image
+                                        src={project.imgUrl}
+                                        alt={project.imgUrl}
+                                        className="cursor-pointer transition-all duration-500 hover:scale-105"
+                                    />
+                                    <Overlay className="pointer-events-none flex items-center justify-center bg-black/70 p-5">
+                                        <h2 className="text-center text-xl">
+                                            {project.seoTitle}
+                                        </h2>
+                                    </Overlay>
+                                </FakeBackgroundImagePrimitive.Container>
+                            </Link>
+                        )
+                    })}
+                </div>
             </div>
         </Page>
     )
