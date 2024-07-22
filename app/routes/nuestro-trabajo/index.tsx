@@ -1,4 +1,4 @@
-import { MetaFunction } from '@remix-run/cloudflare'
+import { json, MetaFunction } from '@remix-run/cloudflare'
 import { Link, useLoaderData } from '@remix-run/react'
 import { appendImgUrlToProjects, getProjects } from '~/actions/projects'
 import { FakeBackgroundImagePrimitive } from '~/components/atoms/FakeBackgroundImagePrimitive'
@@ -7,15 +7,20 @@ import SectionHeading from '~/components/pages/Home/SectionHeading'
 import Page from '~/components/templates/Page'
 import { IMAGE_KIT_BASE_URL } from '~/consts'
 import { Project } from '~/types/contentful'
-import { getBasicMetas } from '~/utils/meta'
+import { getBasicMetas } from '~/utils/metas'
+import { getCacheControlHeader } from '~/utils/server'
 
 export async function loader() {
     let projects: Project[] = await getProjects()
     projects = await appendImgUrlToProjects(projects)
-
-    return {
-        projects,
-    }
+    return json(
+        { projects },
+        {
+            headers: {
+                'Cache-Control': getCacheControlHeader('ONE_WEEK'),
+            },
+        }
+    )
 }
 
 export const meta: MetaFunction = () => {

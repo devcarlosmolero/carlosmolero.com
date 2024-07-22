@@ -7,12 +7,19 @@ import Hero from '~/components/pages/Home/Hero'
 import OurProcess from '~/components/pages/Home/OurProcess'
 import Services from '~/components/pages/Home/Services'
 import Contact from '~/components/pages/shared/Contact'
-import { IMAGE_KIT_BASE_URL, SITE_BASE_URL } from '~/consts'
+import { IMAGE_KIT_BASE_URL, SITE_DESCRIPTION, SITE_TITLE } from '~/consts'
 import { getLatestPosts, getServices } from '~/actions/contentful'
 import Blog from '~/components/pages/Home/Blog'
 import { useLoaderData } from '@remix-run/react'
 import ScrollAnimation from 'react-animate-on-scroll'
-import { getBasicMetas } from '~/utils/meta'
+import {
+    getBasicMetas,
+    getBreadcrumbJsonLd,
+    getBusinessJsonLd,
+} from '~/utils/metas'
+import { ServiceCard } from '~/types/contentful'
+import { fromServiceCardToBreadCrumbJsonLdItem } from '~/utils/mappers'
+import { getCacheControlHeader } from '~/utils/server'
 
 export async function loader() {
     const posts = await getLatestPosts(6, [
@@ -32,62 +39,42 @@ export async function loader() {
         'sys',
     ])
 
-    return json({
-        posts,
-        serviceCards: serviceCards.sort((a, b) => (a === b ? 0 : a ? -1 : 1)),
-    })
+    return json(
+        {
+            posts,
+            serviceCards: serviceCards.sort((a, b) =>
+                a === b ? 0 : a ? -1 : 1
+            ),
+        },
+        {
+            headers: {
+                'Cache-Control': getCacheControlHeader('ONE_WEEK'),
+            },
+        }
+    )
 }
 
-export const meta: MetaFunction = (payload: any) => {
+//@ts-expect-error idk
+export const meta: MetaFunction = (payload: {
+    data: {
+        serviceCards: ServiceCard[]
+    }
+}) => {
+    const { serviceCards } = payload.data
+
     return [
         ...getBasicMetas({
-            title: 'Software y Diseño Web para Empresas',
-            description: `Somos la empresa de desarrollo de software y diseño web líder en el sector, operamos en toda España 
-                apoyando a pequeñas y medianas empresas mediante la creación de software a medida, 
-                apps móviles, páginas web, tiendas online y asesorándolas tecnológicamente.`,
+            title: SITE_TITLE,
+            description: SITE_DESCRIPTION,
             img: `${IMAGE_KIT_BASE_URL}/tr:f-webp/meta.png`,
             appendSiteName: true,
         }),
         {
             'script:ld+json': [
-                {
-                    '@context': 'https://schema.org',
-                    '@type': 'Corporation',
-                    name: 'NovaScript',
-                    url: 'https://novascript.io/',
-                    logo: `${IMAGE_KIT_BASE_URL}/tr:w-48,ar-1-1/favicon.png`,
-                    sameAs: [
-                        'https://twitter.com/novascriptio',
-                        'https://www.linkedin.com/company/novascript-io/',
-                        'https://www.facebook.com/profile.php?id=61557708621835',
-                    ],
-                    contactPoint: [
-                        {
-                            '@type': 'ContactPoint',
-                            telephone: '674386776',
-                            contactType: 'customer service',
-                            email: 'hi@novascript.io',
-                            availableLanguage: 'es',
-                        },
-                    ],
-                },
-
-                {
-                    '@context': 'https://schema.org/',
-                    '@type': 'BreadcrumbList',
-                    itemListElement: [
-                        ...payload.data.serviceCards.map(
-                            (service: any, index: number) => {
-                                return {
-                                    '@type': 'ListItem',
-                                    position: index,
-                                    name: service.cardTitle,
-                                    item: `${SITE_BASE_URL}/${service.slug}`,
-                                }
-                            }
-                        ),
-                    ],
-                },
+                getBusinessJsonLd(),
+                getBreadcrumbJsonLd(
+                    serviceCards.map(fromServiceCardToBreadCrumbJsonLdItem)
+                ),
             ],
         },
     ]
@@ -99,7 +86,7 @@ export default function Home() {
     return (
         <Page>
             <Hero />
-            <Services cards={serviceCards} />
+            <Services serviceCards={serviceCards} />
             <OurProcess />
             <Faq />
             <Blog posts={posts} />

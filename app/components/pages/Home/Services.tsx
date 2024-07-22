@@ -8,7 +8,11 @@ import { ArrowUpRightIcon } from '@heroicons/react/24/outline'
 import ServicesIconMap from '~/components/atoms/ServicesIconMap'
 import { ServiceCard } from '~/types/contentful'
 
-export default function Services({ cards }: { cards: ServiceCard[] }) {
+export default function Services({
+    serviceCards,
+}: {
+    serviceCards: ServiceCard[]
+}) {
     return (
         <section id="servicios">
             <ScrollAnimation animateOnce={true} animateIn="fadeIn">
@@ -19,7 +23,7 @@ export default function Services({ cards }: { cards: ServiceCard[] }) {
                 />
             </ScrollAnimation>
             <div className="grid grid-cols-1 gap-x-5 gap-y-5 lg:grid-cols-3">
-                {cards.map((card, index) => {
+                {serviceCards.map((card, index) => {
                     return (
                         <ScrollAnimation
                             animateOnce={true}

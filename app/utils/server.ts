@@ -11,6 +11,26 @@ export function redirectWithToast(
     )
 }
 
+export function getCacheControlHeader(
+    duration: 'THREE_DAYS' | 'ONE_WEEK' | 'ONE_MONTH'
+): string {
+    let maxAge: number
+
+    switch (duration) {
+        case 'THREE_DAYS':
+            maxAge = 60 * 60 * 24 * 3
+            break
+        case 'ONE_WEEK':
+            maxAge = 60 * 60 * 24 * 7
+            break
+        case 'ONE_MONTH':
+            maxAge = 60 * 60 * 24 * 30
+            break
+    }
+
+    return `public, max-age=${maxAge}, s-maxage=${maxAge}`
+}
+
 export const serviceRedirects = {
     'desarrollo-de-producto-minimo-viable-mvp':
         'desarrollo-de-mvp-para-startups-y-emprendedores',

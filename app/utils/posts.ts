@@ -31,3 +31,15 @@ export function getPostReadingTimeInMinutes(content: string) {
 export default function injectHook(content: string, hookHtml: string) {
     return content.replace(/--hook--/g, hookHtml)
 }
+
+export function getPostImageUrls(markdown: string) {
+    const imgMarkdownRegex = /!\[.*?\]\(([^)]+)\)/g
+    const urls = []
+    let match
+
+    while ((match = imgMarkdownRegex.exec(markdown)) !== null) {
+        urls.push(`http:${match[1]}`)
+    }
+
+    return urls
+}
