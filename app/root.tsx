@@ -8,18 +8,18 @@ import {
     useLoaderData,
     useSearchParams,
 } from '@remix-run/react'
+import { getServices } from './actions/contentful'
 import type { LinksFunction, LoaderFunctionArgs } from '@remix-run/cloudflare'
 import Footer from './components/organisms/Footer'
 import { useEffect, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import cn from 'classnames'
 import { IMAGE_KIT_BASE_URL } from './consts'
+import Navbar from './components/organisms/Navbar'
 
 //@ts-expect-error idk
 import stylesheet from '~/tailwind.css?url'
 import 'react-toastify/dist/ReactToastify.css'
-import Navbar from './components/organisms/Navbar/Navbar'
-import { getServices } from './actions/contentful'
 
 export async function loader({ request }: LoaderFunctionArgs) {
     const isRoot = new URL(request.url).pathname === '/'

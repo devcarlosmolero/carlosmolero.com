@@ -15,6 +15,13 @@ export interface Post {
     sections?: { id: string; text: string }[]
 }
 
+export interface Project {
+    seoTitle: string
+    categories: string[]
+    img: any
+    imgUrl: string
+}
+
 export interface Service {
     seoTitle: string
     seoDescription: string
