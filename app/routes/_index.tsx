@@ -7,7 +7,7 @@ import Hero from '~/components/pages/Home/Hero'
 import OurProcess from '~/components/pages/Home/OurProcess'
 import Services from '~/components/pages/Home/Services'
 import Contact from '~/components/pages/shared/Contact'
-import { IMAGE_KIT_BASE_URL } from '~/consts'
+import { IMAGE_KIT_BASE_URL, SITE_BASE_URL } from '~/consts'
 import { getLatestPosts, getServices } from '~/actions/contentful'
 import Blog from '~/components/pages/Home/Blog'
 import { useLoaderData } from '@remix-run/react'
@@ -38,7 +38,7 @@ export async function loader() {
     })
 }
 
-export const meta: MetaFunction = () => {
+export const meta: MetaFunction = (payload: any) => {
     return [
         ...getBasicMetas({
             title: 'Software y Diseño Web para Empresas',
@@ -49,27 +49,46 @@ export const meta: MetaFunction = () => {
             appendSiteName: true,
         }),
         {
-            'script:ld+json': {
-                '@context': 'https://schema.org',
-                '@type': 'Organization',
-                name: 'NovaScript',
-                url: 'https://novascript.io/',
-                logo: `${IMAGE_KIT_BASE_URL}/tr:w-48,ar-1-1/favicon.png`,
-                sameAs: [
-                    'https://twitter.com/novascriptio',
-                    'https://www.linkedin.com/company/novascript-io/',
-                    'https://www.facebook.com/profile.php?id=61557708621835',
-                ],
-                contactPoint: [
-                    {
-                        '@type': 'ContactPoint',
-                        telephone: '674386776',
-                        contactType: 'customer service',
-                        email: 'hi@novascript.io',
-                        availableLanguage: 'es',
-                    },
-                ],
-            },
+            'script:ld+json': [
+                {
+                    '@context': 'https://schema.org',
+                    '@type': 'Corporation',
+                    name: 'NovaScript',
+                    url: 'https://novascript.io/',
+                    logo: `${IMAGE_KIT_BASE_URL}/tr:w-48,ar-1-1/favicon.png`,
+                    sameAs: [
+                        'https://twitter.com/novascriptio',
+                        'https://www.linkedin.com/company/novascript-io/',
+                        'https://www.facebook.com/profile.php?id=61557708621835',
+                    ],
+                    contactPoint: [
+                        {
+                            '@type': 'ContactPoint',
+                            telephone: '674386776',
+                            contactType: 'customer service',
+                            email: 'hi@novascript.io',
+                            availableLanguage: 'es',
+                        },
+                    ],
+                },
+
+                {
+                    '@context': 'https://schema.org/',
+                    '@type': 'BreadcrumbList',
+                    itemListElement: [
+                        ...payload.data.serviceCards.map(
+                            (service: any, index: number) => {
+                                return {
+                                    '@type': 'ListItem',
+                                    position: index,
+                                    name: service.cardTitle,
+                                    item: `${SITE_BASE_URL}/${service.slug}`,
+                                }
+                            }
+                        ),
+                    ],
+                },
+            ],
         },
     ]
 }

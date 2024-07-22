@@ -18,6 +18,7 @@ export interface Post {
 export interface Project {
     seoTitle: string
     categories: string[]
+    url: string
     img: any
     imgUrl: string
 }

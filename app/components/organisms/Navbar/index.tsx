@@ -75,8 +75,8 @@ export default function Navbar({
                                 })}
                             </PopoverPrimitive.Content>
                         </PopoverPrimitive.Root>
-                        <Link className="w-fit" to={'/proyectos'}>
-                            Proyectos
+                        <Link className="w-fit" to={'/nuestro-trabajo'}>
+                            Nuestro Trabajo
                         </Link>
                         <Link
                             className="w-fit"

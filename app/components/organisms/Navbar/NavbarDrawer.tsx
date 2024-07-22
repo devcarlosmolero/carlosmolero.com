@@ -70,6 +70,13 @@ export default function NavbarDrawer({
                     <Link
                         onClick={onClose}
                         className="text-white"
+                        to={'/nuestro-trabajo'}
+                    >
+                        Nuestro Trabajo
+                    </Link>
+                    <Link
+                        onClick={onClose}
+                        className="text-white"
                         to={`${isRoot ? '' : '/'}#preguntas`}
                     >
                         Preguntas Frecuentes
