@@ -38,6 +38,8 @@ export const serviceRedirects = {
         'diseno-y-desarrollo-de-paginas-web-y-tienda-online',
     'desarrollo-de-aplicaciones-ios-y-android':
         'creacion-de-apps-ios-y-android',
+    'software-de-gestion-para-empresas':
+        'software-a-medida-para-empresas-y-pymes',
     'software-a-medida-para-tu-negocio': 'software-de-gestion-para-empresas',
     'creacion-de-software-para-empresas':
         'aplicaciones-a-medida-para-pequenas-y-medianas-empresas',
