@@ -46,7 +46,7 @@ export default function NavbarDrawer({
                         !isOpen && 'hidden w-[0%] opacity-0 duration-0'
                     )}
                 >
-                    <Link onClick={onClose} to="/" className="mb-5">
+                    <Link reloadDocument to="/" className="mb-5">
                         <img
                             className="h-[60px] w-[60px]"
                             alt="Logo"
@@ -68,6 +68,7 @@ export default function NavbarDrawer({
                         })}
                     </NavbarDropdown>
                     <Link
+                        reloadDocument
                         onClick={onClose}
                         className="text-white"
                         to={'/nuestro-trabajo'}

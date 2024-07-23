@@ -86,10 +86,22 @@ export default function NuestroTrabajo() {
                                         alt={project.imgUrl}
                                         className="cursor-pointer transition-all duration-500 hover:scale-105"
                                     />
-                                    <Overlay className="pointer-events-none flex items-center justify-center bg-black/70 p-5">
+                                    <Overlay className="pointer-events-none flex flex-col items-center justify-center gap-y-5 bg-black/60 p-5">
                                         <h2 className="text-center text-xl">
                                             {project.seoTitle}
                                         </h2>
+                                        <div>
+                                            {project.categories.map(
+                                                (category, index) => (
+                                                    <p
+                                                        className="mx-1 inline-block w-fit rounded-xl bg-neutral-900 px-3 py-1 text-sm"
+                                                        key={index}
+                                                    >
+                                                        {category}
+                                                    </p>
+                                                )
+                                            )}
+                                        </div>
                                     </Overlay>
                                 </FakeBackgroundImagePrimitive.Container>
                             </Link>

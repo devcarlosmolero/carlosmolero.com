@@ -43,7 +43,7 @@ export default function Navbar({
                 {/* DESKTOP NAVBAR */}
                 <div className="hidden grid-cols-12 items-center py-2 text-center font-semibold tracking-tighter lg:grid">
                     <div className="col-span-3 flex items-center justify-start gap-x-3">
-                        <Link to="/">
+                        <Link reloadDocument to="/">
                             <img
                                 className="h-[60px] w-[60px]"
                                 alt="Logo"
@@ -75,7 +75,11 @@ export default function Navbar({
                                 })}
                             </PopoverPrimitive.Content>
                         </PopoverPrimitive.Root>
-                        <Link className="w-fit" to={'/nuestro-trabajo'}>
+                        <Link
+                            reloadDocument
+                            className="w-fit"
+                            to={'/nuestro-trabajo'}
+                        >
                             Nuestro Trabajo
                         </Link>
                         <Link
