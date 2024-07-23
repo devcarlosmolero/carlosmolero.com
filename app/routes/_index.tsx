@@ -7,7 +7,12 @@ import Hero from '~/components/pages/Home/Hero'
 import OurProcess from '~/components/pages/Home/OurProcess'
 import Services from '~/components/pages/Home/Services'
 import Contact from '~/components/pages/shared/Contact'
-import { IMAGE_KIT_BASE_URL, SITE_DESCRIPTION, SITE_TITLE } from '~/consts'
+import {
+    IMAGE_KIT_BASE_URL,
+    SITE_BASE_URL,
+    SITE_DESCRIPTION,
+    SITE_TITLE,
+} from '~/consts'
 import { getLatestPosts, getServices } from '~/actions/contentful'
 import Blog from '~/components/pages/Home/Blog'
 import { useLoaderData } from '@remix-run/react'
@@ -72,9 +77,21 @@ export const meta: MetaFunction = (payload: {
         {
             'script:ld+json': [
                 getBusinessJsonLd(),
-                getBreadcrumbJsonLd(
-                    serviceCards.map(fromServiceCardToBreadCrumbJsonLdItem)
-                ),
+                getBreadcrumbJsonLd([
+                    ...[
+                        {
+                            name: 'Nuestro Trabajo',
+                            position: 1,
+                            item: `${SITE_BASE_URL}/nuestro-trabajo`,
+                        },
+                    ],
+                    ...serviceCards.map((service, index) =>
+                        fromServiceCardToBreadCrumbJsonLdItem(
+                            service,
+                            index + 1
+                        )
+                    ),
+                ]),
             ],
         },
     ]
