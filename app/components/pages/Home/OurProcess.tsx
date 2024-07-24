@@ -72,7 +72,7 @@ export default function OurProcess() {
                     </div>
                 </div>
                 <div className="grid gap-x-10 gap-y-10 lg:grid-cols-2">
-                    <ScrollAnimation animateOnce animateIn="fadeInLeft">
+                    <ScrollAnimation animateOnce animateIn="fadeIn">
                         <div>
                             <ImageKitImage
                                 className="rounded-xl"
@@ -82,7 +82,7 @@ export default function OurProcess() {
                         </div>
                     </ScrollAnimation>
                     <div className="flex justify-center">
-                        <ScrollAnimation animateOnce animateIn="fadeInUp">
+                        <ScrollAnimation animateOnce animateIn="fadeIn">
                             <div className="flex flex-col items-start gap-y-3">
                                 <h2 className="text-2xl tracking-tighter">
                                     Tu negocio se merece lo mejor
@@ -115,7 +115,7 @@ export default function OurProcess() {
 
                 <div className="grid gap-x-10 gap-y-10 lg:grid-cols-2">
                     <div className="order-2 flex justify-center lg:order-first">
-                        <ScrollAnimation animateOnce animateIn="fadeInUp">
+                        <ScrollAnimation animateOnce animateIn="fadeIn">
                             <div className="flex flex-col items-start gap-y-3">
                                 <h2 className="text-2xl tracking-tighter">
                                     Confianza, garantías y profesionalidad
@@ -143,7 +143,7 @@ export default function OurProcess() {
                         </ScrollAnimation>
                     </div>
                     <div>
-                        <ScrollAnimation animateOnce animateIn="fadeInRight">
+                        <ScrollAnimation animateOnce animateIn="fadeIn">
                             <ImageKitImage
                                 className="rounded-xl"
                                 alt="Aplicación web"
