@@ -8,6 +8,10 @@ import {
     SITE_NAME,
     SITE_X_HANDLE,
     SITE_X_URL,
+    SITE_STREET_ADDRESS,
+    SITE_ADDRESS_LOCALITY,
+    SITE_ADDRESS_REGION,
+    SITE_ADDRESS_POSTAL_CODE,
 } from '~/consts'
 import { Post, Service } from '~/types/contentful'
 import { BreadCrumbJsonLdItem, FAQJsonLdItem } from '~/types/metas'
@@ -153,16 +157,16 @@ export function getProductServiceJsonLd(
     return {
         '@context': 'http://schema.org',
         '@type': 'LocalBusiness',
-        name: 'NovaScript',
+        name: SITE_NAME,
         image: `${IMAGE_KIT_BASE_URL}/tr:f-webp/meta.png`,
         telephone: SITE_PHONE_NUMBER,
         email: SITE_EMAIL,
         address: {
             '@type': 'PostalAddress',
-            streetAddress: 'C. Molina Lario',
-            addressLocality: 'Málaga',
-            addressRegion: 'Málaga',
-            postalCode: '29015',
+            streetAddress: SITE_STREET_ADDRESS,
+            addressLocality: SITE_ADDRESS_LOCALITY,
+            addressRegion: SITE_ADDRESS_REGION,
+            postalCode: SITE_ADDRESS_POSTAL_CODE,
             addressCountry: 'ES',
         },
         url: `${SITE_BASE_URL}/${service.slug}`,

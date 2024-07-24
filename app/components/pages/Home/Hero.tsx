@@ -42,9 +42,8 @@ export default function Hero() {
                         <p>Listos para tu proyecto</p>
                     </div>
                     <h1 className="text-4xl font-semibold tracking-tighter">
-                        Desarrollo de Software
-                        <br className="hidden md:block" /> y Diseño Web para
-                        Empresas
+                        Empresa de Software
+                        <br className="hidden md:block" /> y Diseño Web
                     </h1>
                     <p>
                         Somos un equipo de desarrolladores de software,
