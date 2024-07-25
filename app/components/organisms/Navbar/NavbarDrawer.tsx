@@ -81,7 +81,6 @@ export default function NavbarDrawer({
                             )
                         })}
                     </NavbarDropdown>
-
                     <Link
                         reloadDocument
                         onClick={onClose}
@@ -89,13 +88,6 @@ export default function NavbarDrawer({
                         to={'/nuestro-trabajo'}
                     >
                         Nuestro Trabajo
-                    </Link>
-                    <Link
-                        onClick={onClose}
-                        className="text-white"
-                        to={`${isRoot ? '' : '/'}#preguntas`}
-                    >
-                        Preguntas Frecuentes
                     </Link>
                     <Link
                         onClick={onClose}
