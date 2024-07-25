@@ -10,7 +10,7 @@ export const SITE_STATIC_PATHS = [
 export const SITE_TITLE = 'Empresa de Software y Diseño Web'
 export const SITE_DESCRIPTION = `Somos la empresa de desarrollo de software y diseño web líder en el sector, operamos en toda España, desde Málaga, 
 apoyando a pequeñas y medianas empresas mediante la creación de software a medida, apps móviles iOS y Android, páginas web, tiendas online y 
-asesorándolas tecnológicamente.`
+el asesoramiento en materia tecnológica.`
 export const SITE_NAME = 'NovaScript'
 export const SITE_BASE_URL = 'https://novascript.io'
 export const SITE_EMAIL = 'hi@novascript.io'
