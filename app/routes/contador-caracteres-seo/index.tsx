@@ -40,13 +40,9 @@ de visualización SERP para dar con títulos y descripciones con el número de c
 }
 
 export default function ContadorCaracteresSEOPage() {
-    const [seoTitle, setSeoTitle] = useState(
-        'Empresa de Software y Diseño Web - NovaScript'
-    )
-    const [seoDescription, setSeoDescription] = useState(
-        'Nos dedicamos a desarrollar software a medida, crear apps móviles, diseñar y posicionar webs y mucho más ;)'
-    )
-    const [url, setUrl] = useState('https://novascript.io')
+    const [seoTitle, setSeoTitle] = useState<string | undefined>()
+    const [seoDescription, setSeoDescription] = useState<string | undefined>()
+    const [url, setUrl] = useState<string | undefined>()
 
     return (
         <Page>
@@ -69,7 +65,7 @@ export default function ContadorCaracteresSEOPage() {
                             }}
                         />
                         <span className="-mt-2 w-full text-end text-xs text-gray-400">
-                            {url.length}/50
+                            {url?.length || 0}/50
                         </span>
                         <Input
                             labelProps={{ text: 'Título SEO' }}
@@ -80,7 +76,7 @@ export default function ContadorCaracteresSEOPage() {
                             }}
                         />
                         <span className="-mt-2 w-full text-end text-xs text-gray-400">
-                            {seoTitle.length}/67
+                            {seoTitle?.length || 0}/67
                         </span>
                         <Textarea
                             labelProps={{ text: 'Descripción SEO' }}
@@ -92,7 +88,7 @@ export default function ContadorCaracteresSEOPage() {
                             }}
                         />
                         <span className="-mt-2 w-full text-end text-xs text-gray-400">
-                            {seoDescription.length}/155
+                            {seoDescription?.length || 0}/155
                         </span>
                     </div>
                     <div className="h-fit rounded-xl bg-[#1f1f1f] p-5 shadow-zinc-700">
@@ -104,25 +100,29 @@ export default function ContadorCaracteresSEOPage() {
                                 <div className="flex flex-col">
                                     <p className="mb-1 text-xs text-[#dadce0]">
                                         {url
-                                            .replace('http:', '')
-                                            .replace('www.', '')
-                                            .replace('https:', '')
-                                            .replace('//', '')}
+                                            ? url
+                                                  .replace('http:', '')
+                                                  .replace('www.', '')
+                                                  .replace('https:', '')
+                                                  .replace('//', '')
+                                            : 'novascript.io'}
                                     </p>
                                     <p className="mb-1 text-xs text-[#bdc1c6]">
-                                        {url}
+                                        {url || 'https://novascript.io'}
                                     </p>
                                 </div>
                             </div>
                             <h2 className="cursor-pointer text-xl text-[#99c3ff] underline-offset-4 hover:underline">
-                                {seoTitle.length > 58
+                                {seoTitle && seoTitle.length > 58
                                     ? seoTitle.substring(0, 58) + '...'
-                                    : seoTitle}
+                                    : seoTitle ||
+                                      'Empresa de Software y Diseño Web - NovaScript'}
                             </h2>
                             <p className="mt-1 text-sm text-[#bdc1c6]">
-                                {seoDescription.length > 124
+                                {seoDescription && seoDescription.length > 124
                                     ? seoDescription.substring(0, 124) + '...'
-                                    : seoDescription}
+                                    : seoDescription ||
+                                      'Nos dedicamos a desarrollar software a medida, crear apps móviles, diseñar y posicionar webs y mucho más ;)'}
                             </p>
                         </div>
                     </div>
