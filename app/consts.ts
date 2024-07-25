@@ -28,7 +28,7 @@ export const SITE_ADDRESS_POSTAL_CODE = '29015'
 
 export const SITE_TOOLS = [
     {
-        title: 'Contador de Carácteres SEO',
+        title: 'Contador de Caracteres SEO',
         pathname: 'contador-caracteres-seo',
     },
 ]

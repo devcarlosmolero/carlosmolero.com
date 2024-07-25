@@ -11,9 +11,9 @@ import { getBasicMetas, getBusinessJsonLd } from '~/utils/metas'
 export const meta: MetaFunction = () => {
     return [
         ...getBasicMetas({
-            title: 'Contador de Carácteres SEO Vista Previa SERP',
+            title: 'Contador de Caracteres SEO Vista Previa SERP',
             description: `Previsualiza cómo se verán tus títulos y descripciones SEO en Google. Utiliza nuestra herramienta 100% gratuita 
-de visualización SERP para dar con títulos y descripciones con el número de carácteres adecuado.`,
+de visualización SERP para dar con títulos y descripciones con el número de caracteres adecuado.`,
             img: `${IMAGE_KIT_BASE_URL}/tr:f-webp/meta.png`,
             appendSiteName: true,
         }),
