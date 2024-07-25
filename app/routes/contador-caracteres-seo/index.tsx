@@ -3,10 +3,26 @@ import { MetaFunction } from '@remix-run/cloudflare'
 import { useState } from 'react'
 import Input from '~/components/atoms/Input'
 import Textarea from '~/components/atoms/Textarea'
+import Accordion from '~/components/organisms/Accordion'
 import SectionHeading from '~/components/pages/Home/SectionHeading'
 import Page from '~/components/templates/Page'
 import { IMAGE_KIT_BASE_URL } from '~/consts'
-import { getBasicMetas, getBusinessJsonLd } from '~/utils/metas'
+import { getBasicMetas, getBusinessJsonLd, getFaqsJsonLd } from '~/utils/metas'
+
+const faqs = [
+    {
+        question: '¿Qué son las SERPs?',
+        answer: 'Las SERPs son los resultados que aparecen en las páginas de buscadores como Google, Bing o Yahoo. Las siglas proceden del término en inglés Search Engine Results Pages, que en español sería “las páginas de resultados de búsqueda.”',
+    },
+    {
+        question: '¿Qué tipos de SERPs hay?',
+        answer: 'A pesar de que se pueda pensar que solo hay un tipo de SERP, ni mucho menos. Tenemos la gran división entre el SEO (Search Engine Optimization) y el SEM (Search Engine Marketing) escenificada en dos tipos de SERPs: los resultados orgánicos y los resultados pagados.',
+    },
+    {
+        question: '¿Qué tipos de resultados aparecen en las SERPs?',
+        answer: 'En las SERPs pueden aparecer todo tipo de resultados, no solo páginas web: Vídeos, Imágenes, Noticias, Mapas, Productos con imágenes, Podcasts y un largo etc.',
+    },
+]
 
 export const meta: MetaFunction = () => {
     return [
@@ -18,7 +34,7 @@ de visualización SERP para dar con títulos y descripciones con el número de c
             appendSiteName: true,
         }),
         {
-            'script:ld+json': [getBusinessJsonLd()],
+            'script:ld+json': [getBusinessJsonLd(), getFaqsJsonLd(faqs)],
         },
     ]
 }
@@ -111,6 +127,13 @@ export default function ContadorCaracteresSEOPage() {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div>
+                <SectionHeading
+                    title="Preguntas y respuestas sobre las SERPs"
+                    description="Si no sabes muy bien qué hace esta herramienta ¡No te preocupes! Despejamos todas tus dudas acerca de los que son las SERPs y por qué son importantes."
+                />
+                <Accordion data={faqs} />
             </div>
         </Page>
     )

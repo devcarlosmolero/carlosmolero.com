@@ -2,6 +2,7 @@ import { json, MetaFunction } from '@remix-run/cloudflare'
 import { useLoaderData } from '@remix-run/react'
 import { appendImgUrlToProjects, getProjects } from '~/actions/projects'
 import PortfolioProject from '~/components/organisms/PortfolioProject'
+import LogoCarousel from '~/components/pages/Home/LogoCarousel'
 import SectionHeading from '~/components/pages/Home/SectionHeading'
 import Contact from '~/components/pages/shared/Contact'
 import Page from '~/components/templates/Page'
@@ -71,7 +72,11 @@ export default function NuestroTrabajo() {
                         )
                     })}
                 </div>
+                <div className="mt-12">
+                    <LogoCarousel heading="" />
+                </div>
             </div>
+
             <Contact />
         </Page>
     )
