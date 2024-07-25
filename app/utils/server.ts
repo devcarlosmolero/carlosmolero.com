@@ -45,4 +45,14 @@ export const serviceRedirects = {
         'aplicaciones-a-medida-para-pequenas-y-medianas-empresas',
     'software-automatizacion-procesos-pymes':
         'software-automatizacion-procesos-empresas',
+    'aplicaciones-a-medida-para-pequenas-y-medianas-empresas':
+        'software-de-gestion-empresarial',
+    'software-a-medida-para-empresas-y-pymes':
+        'desarrollo-de-software-a-medida',
+    'creacion-de-aplicaciones-impulsadas-por-ia':
+        'desarrollo-de-aplicaciones-impulsadas-por-ia',
+    'gestion-cloud-para-empresas': 'servicios-cloud-para-empresas',
+    'desarrollo-de-mvp-para-startups-y-emprendedores':
+        'desarrollo-de-producto-minimo-viable',
+    'creacion-de-apps-ios-y-android': 'desarrollo-de-apps-ios-y-android',
 }
