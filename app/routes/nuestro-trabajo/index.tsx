@@ -1,13 +1,13 @@
 import { json, MetaFunction } from '@remix-run/cloudflare'
-import { Link, useLoaderData } from '@remix-run/react'
+import { useLoaderData } from '@remix-run/react'
 import { appendImgUrlToProjects, getProjects } from '~/actions/projects'
-import { FakeBackgroundImagePrimitive } from '~/components/atoms/FakeBackgroundImagePrimitive'
-import Overlay from '~/components/atoms/Overlay'
+import PortfolioProject from '~/components/organisms/PortfolioProject'
 import SectionHeading from '~/components/pages/Home/SectionHeading'
+import Contact from '~/components/pages/shared/Contact'
 import Page from '~/components/templates/Page'
 import { IMAGE_KIT_BASE_URL } from '~/consts'
 import { Project } from '~/types/contentful'
-import { getBasicMetas } from '~/utils/metas'
+import { getBasicMetas, getBusinessJsonLd } from '~/utils/metas'
 import { getCacheControlHeader } from '~/utils/server'
 
 export async function loader() {
@@ -28,33 +28,13 @@ export const meta: MetaFunction = () => {
         ...getBasicMetas({
             title: 'Nuestro Trabajo Como Empresa de Software y Diseño Web',
             description: `Hemos tenido el placer de trabajar desarrollando el software y diseñando 
-                las páginas web para decenas de empresas y negocios consolidados, PYMES y Startups. Deja que te mostremos
-                algunos de los proyectos en los que nos hemos involucrado.`,
+las páginas web para decenas de empresas y negocios consolidados, PYMES y Startups. Deja que te mostremos
+algunos de los proyectos en los que nos hemos involucrado.`,
             img: `${IMAGE_KIT_BASE_URL}/tr:f-webp/meta.png`,
             appendSiteName: true,
         }),
         {
-            'script:ld+json': {
-                '@context': 'https://schema.org',
-                '@type': 'Corporation',
-                name: 'NovaScript',
-                url: 'https://novascript.io/',
-                logo: `${IMAGE_KIT_BASE_URL}/tr:w-48,ar-1-1/favicon.png`,
-                sameAs: [
-                    'https://twitter.com/novascriptio',
-                    'https://www.linkedin.com/company/novascript-io/',
-                    'https://www.facebook.com/profile.php?id=61557708621835',
-                ],
-                contactPoint: [
-                    {
-                        '@type': 'ContactPoint',
-                        telephone: '674386776',
-                        contactType: 'customer service',
-                        email: 'hi@novascript.io',
-                        availableLanguage: 'es',
-                    },
-                ],
-            },
+            'script:ld+json': [getBusinessJsonLd()],
         },
     ]
 }
@@ -72,43 +52,27 @@ export default function NuestroTrabajo() {
                     algunos de los proyectos en los que nos hemos involucrado.`}
                 />
                 <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+                    <PortfolioProject
+                        project={
+                            {
+                                seoTitle: 'Tu Proyecto',
+                                imgUrl: 'https://i.postimg.cc/pLqxyPG2/project-1.webp',
+                                url: '#contacto',
+                                categories: ['Contacta con Nosotros'],
+                            } as any
+                        }
+                    />
                     {projects.map((project, index: number) => {
                         return (
-                            <Link
+                            <PortfolioProject
                                 key={index}
-                                to={project.url}
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                <FakeBackgroundImagePrimitive.Container className="aspect-h-9 aspect-w-16 rounded-xl">
-                                    <FakeBackgroundImagePrimitive.Image
-                                        src={project.imgUrl}
-                                        alt={project.imgUrl}
-                                        className="cursor-pointer transition-all duration-500 hover:scale-105"
-                                    />
-                                    <Overlay className="pointer-events-none flex flex-col items-center justify-center gap-y-5 bg-black/60 p-5 text-center">
-                                        <h2 className="text-center text-xl">
-                                            {project.seoTitle}
-                                        </h2>
-                                        <div>
-                                            {project.categories.map(
-                                                (category, index) => (
-                                                    <p
-                                                        className="mx-1 my-1 inline-block w-fit rounded-xl bg-neutral-900 px-3 py-1 text-sm"
-                                                        key={index}
-                                                    >
-                                                        {category}
-                                                    </p>
-                                                )
-                                            )}
-                                        </div>
-                                    </Overlay>
-                                </FakeBackgroundImagePrimitive.Container>
-                            </Link>
+                                project={project as Project}
+                            />
                         )
                     })}
                 </div>
             </div>
+            <Contact />
         </Page>
     )
 }

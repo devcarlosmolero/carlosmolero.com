@@ -8,7 +8,7 @@ import {
     ChevronDownIcon,
     ChevronRightIcon,
 } from '@heroicons/react/24/outline'
-import { IMAGE_KIT_BASE_URL } from '~/consts'
+import { IMAGE_KIT_BASE_URL, SITE_TOOLS } from '~/consts'
 import Button from '~/components/atoms/Button'
 import NavbarDrawer from './NavbarDrawer'
 import { ServiceCard } from '~/types/contentful'
@@ -75,18 +75,35 @@ export default function Navbar({
                                 })}
                             </PopoverPrimitive.Content>
                         </PopoverPrimitive.Root>
+                        <PopoverPrimitive.Root>
+                            <PopoverPrimitive.Trigger className="flex w-full items-center">
+                                <div className="flex items-center gap-x-1">
+                                    <ChevronRightIcon className="size-4 group-hover:hidden" />
+                                    <ChevronDownIcon className="hidden size-4 group-hover:block" />
+                                    Herramientas
+                                </div>
+                            </PopoverPrimitive.Trigger>
+                            <PopoverPrimitive.Content className="w-60 rounded-xl border border-zinc-800 bg-neutral-950 p-3 text-start normal-case">
+                                {SITE_TOOLS.map((tool, index) => {
+                                    return (
+                                        <DashedLink
+                                            className="py-1 font-normal text-gray-300"
+                                            key={index}
+                                            reloadDocument
+                                            to={`/${tool.pathname}`}
+                                        >
+                                            {tool.title}
+                                        </DashedLink>
+                                    )
+                                })}
+                            </PopoverPrimitive.Content>
+                        </PopoverPrimitive.Root>
                         <Link
                             reloadDocument
                             className="w-fit"
                             to={'/nuestro-trabajo'}
                         >
                             Nuestro Trabajo
-                        </Link>
-                        <Link
-                            className="w-fit"
-                            to={`${isRoot ? '' : '/'}#preguntas`}
-                        >
-                            Preguntas Frecuentes
                         </Link>
                         <Link
                             className="w-fit"

@@ -4,7 +4,7 @@ import { Link } from '@remix-run/react'
 import NavbarDropdown from './NavbarDropdown'
 import Button from '~/components/atoms/Button'
 import { ChatBubbleLeftEllipsisIcon } from '@heroicons/react/24/outline'
-import { IMAGE_KIT_BASE_URL } from '~/consts'
+import { IMAGE_KIT_BASE_URL, SITE_TOOLS } from '~/consts'
 import { ServiceCard } from '~/types/contentful'
 import DashedLink from '~/components/atoms/DashedLink'
 
@@ -67,6 +67,21 @@ export default function NavbarDrawer({
                             )
                         })}
                     </NavbarDropdown>
+                    <NavbarDropdown title="Herramientas">
+                        {SITE_TOOLS.map((tool, index) => {
+                            return (
+                                <DashedLink
+                                    className="block py-1 pl-5 text-gray-300"
+                                    reloadDocument
+                                    to={`/${tool.pathname}`}
+                                    key={index}
+                                >
+                                    {tool.title}
+                                </DashedLink>
+                            )
+                        })}
+                    </NavbarDropdown>
+
                     <Link
                         reloadDocument
                         onClick={onClose}

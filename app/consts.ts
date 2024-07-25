@@ -1,7 +1,12 @@
 export const IMAGE_KIT_BASE_URL =
     'https://ik.imagekit.io/jgh04cawf/novascript-io'
 
-export const SITE_STATIC_PATHS = ['', 'politica-de-privacidad', 'proyectos']
+export const SITE_STATIC_PATHS = [
+    '',
+    'politica-de-privacidad',
+    'nuestro-trabajo',
+    'contador-caracteres-seo',
+]
 export const SITE_TITLE = 'Empresa de Software y Diseño Web'
 export const SITE_DESCRIPTION = `Somos la empresa de desarrollo de software y diseño web líder en el sector, operamos en toda España, desde Málaga, 
 apoyando a pequeñas y medianas empresas mediante la creación de software a medida, apps móviles iOS y Android, páginas web, tiendas online y 
@@ -20,3 +25,10 @@ export const SITE_STREET_ADDRESS = 'C. Molina Lario'
 export const SITE_ADDRESS_LOCALITY = 'Málaga'
 export const SITE_ADDRESS_REGION = 'Málaga'
 export const SITE_ADDRESS_POSTAL_CODE = '29015'
+
+export const SITE_TOOLS = [
+    {
+        title: 'Contador de Carácteres SEO',
+        pathname: 'contador-caracteres-seo',
+    },
+]

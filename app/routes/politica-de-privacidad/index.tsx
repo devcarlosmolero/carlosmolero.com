@@ -10,7 +10,7 @@ export const meta: MetaFunction = () => {
         ...getBasicMetas({
             title: 'Política de Privacidad',
             description: `Esta política de privacidad describe cómo recopilamos, usamos y protegemos tu
-            información personal cuando visitas nuestro sitio web.`,
+información personal cuando visitas nuestro sitio web.`,
             img: `${IMAGE_KIT_BASE_URL}/tr:f-webp/meta.png`,
             appendSiteName: true,
         }),
