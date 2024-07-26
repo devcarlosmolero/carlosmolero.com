@@ -6,6 +6,7 @@ export const SITE_STATIC_PATHS = [
     'politica-de-privacidad',
     'nuestro-trabajo',
     'contador-caracteres-seo',
+    'generador-sitemap-url',
 ]
 export const SITE_TITLE = 'Empresa de Software y Diseño Web'
 export const SITE_DESCRIPTION = `Somos la empresa de desarrollo de software y diseño web líder en el sector, operamos en toda España, desde Málaga, 
@@ -30,5 +31,9 @@ export const SITE_TOOLS = [
     {
         title: 'Contador de Caracteres SEO',
         pathname: 'contador-caracteres-seo',
+    },
+    {
+        title: 'Generador de Sitemaps',
+        pathname: 'generador-sitemap-url',
     },
 ]

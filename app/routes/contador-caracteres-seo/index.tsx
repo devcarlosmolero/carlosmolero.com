@@ -100,11 +100,7 @@ export default function ContadorCaracteresSEOPage() {
                                 <div className="flex flex-col">
                                     <p className="mb-1 text-xs text-[#dadce0]">
                                         {url
-                                            ? url
-                                                  .replace('http:', '')
-                                                  .replace('www.', '')
-                                                  .replace('https:', '')
-                                                  .replace('//', '')
+                                            ? new URL(url).hostname
                                             : 'novascript.io'}
                                     </p>
                                     <p className="mb-1 text-xs text-[#bdc1c6]">
