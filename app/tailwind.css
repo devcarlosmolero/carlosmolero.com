@@ -89,3 +89,9 @@ html {
     border-color: hsl(359, 100%, 94%) !important;
     color: hsl(360, 100%, 45%) !important;
 }
+
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    text-align: justify;
+}

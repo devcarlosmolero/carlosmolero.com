@@ -53,12 +53,13 @@ export default function ContadorCaracteresSEOPage() {
                 />
                 <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
                     <div className="flex flex-col gap-y-5">
-                        <p className="text-gray-300">
+                        <p className="rounded-xl bg-neutral-800 px-2 py-3 text-white">
                             💡 Edita los campos para ver los cambios
                         </p>
                         <Input
                             labelProps={{ text: 'Url' }}
                             inputProps={{
+                                type: 'url',
                                 value: url,
                                 onChange: (e) => setUrl(e.target.value),
                                 placeholder: 'URL a tu sitio web',
@@ -100,7 +101,11 @@ export default function ContadorCaracteresSEOPage() {
                                 <div className="flex flex-col">
                                     <p className="mb-1 text-xs text-[#dadce0]">
                                         {url
-                                            ? new URL(url).hostname
+                                            ? url
+                                                  .replace('http:', '')
+                                                  .replace('www.', '')
+                                                  .replace('https:', '')
+                                                  .replace('//', '')
                                             : 'novascript.io'}
                                     </p>
                                     <p className="mb-1 text-xs text-[#bdc1c6]">
