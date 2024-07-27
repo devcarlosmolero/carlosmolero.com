@@ -109,6 +109,31 @@ export function getBusinessJsonLd() {
     }
 }
 
+export function getHowToJsonLd({
+    name,
+    description,
+    steps,
+}: {
+    name: string
+    description: string
+    steps: { text: string; name: string }[]
+}) {
+    return {
+        '@context': 'https://schema.org/',
+        '@type': 'HowTo',
+        name,
+        description,
+        totalTime: 'PT60M',
+        step: [
+            ...steps.map(({ text, name }) => ({
+                '@type': 'HowToStep',
+                text,
+                name,
+            })),
+        ],
+    }
+}
+
 export function getBreadcrumbJsonLd(items: BreadCrumbJsonLdItem[]) {
     return {
         '@context': 'https://schema.org/',

@@ -36,4 +36,8 @@ export const SITE_TOOLS = [
         title: 'Generador de Sitemaps',
         pathname: 'generador-sitemap-url',
     },
+    {
+        title: 'Checklist Optimización Velocidad Página Web',
+        pathname: 'checklist-optimizacion-velocidad-web',
+    },
 ]

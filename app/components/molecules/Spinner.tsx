@@ -1,8 +1,13 @@
-export default function Spinner() {
+import cn from 'classnames'
+
+export default function Spinner({ className }: { className?: string }) {
     return (
         <div role="status" className="flex items-center justify-center">
             <svg
-                className="h-6 w-6 animate-spin fill-violet-300 text-white"
+                className={cn(
+                    'h-6 w-6 animate-spin fill-violet-300 text-white',
+                    className
+                )}
                 viewBox="0 0 100 101"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
