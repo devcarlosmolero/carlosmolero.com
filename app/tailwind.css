@@ -95,3 +95,7 @@ pre {
     word-wrap: break-word;
     text-align: justify;
 }
+
+.grecaptcha-badge {
+    display: none;
+}

@@ -2,6 +2,7 @@ import { ActionFunctionArgs } from '@remix-run/cloudflare'
 import { redirectWithToast } from '../utils/server'
 import { ContactFormSubmission } from '~/types/forms'
 import { sendDiscordMessage } from '~/actions/discord'
+import { isRecaptchaTokenValid } from '~/actions/recaptcha'
 
 export async function action({ request }: ActionFunctionArgs) {
     const formData = await request.formData()
@@ -9,7 +10,9 @@ export async function action({ request }: ActionFunctionArgs) {
         formData
     ) as unknown as ContactFormSubmission
 
-    if (submission.bot) {
+    const notABot = await isRecaptchaTokenValid(submission.recaptchaToken)
+
+    if (!notABot) {
         return redirectWithToast(
             `${formData.get('pathname')}?contactFormStatus=error`,
             'Ha ocurrido un error durante el envío del formulario. Inténtalo de nuevo más tarde.',
