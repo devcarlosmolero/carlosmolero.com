@@ -149,7 +149,7 @@ export default function GeneradorSitemapUrl() {
                 />
                 <div className="flex items-center justify-center">
                     {data && data.urls.length > 0 ? (
-                        <div className="flex flex-col gap-y-3">
+                        <div className="flex w-full flex-col gap-y-3">
                             <div className="flex gap-x-3">
                                 <Button
                                     props={{ onClick: () => navigate('.') }}
