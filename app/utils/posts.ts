@@ -1,11 +1,12 @@
 export function getPostSections(content: string) {
-    const sectionRegex = /^##\s+(.*?)\s*$/gm
+    const sectionRegex = /^(##{1,2})\s+(.*?)\s*$/gm
 
     const sections = content.matchAll(sectionRegex)
     const sectionsArray = Array.from(sections)
 
     const results = sectionsArray.map((sectionMatch: any) => {
-        const originalText = sectionMatch[1].trim()
+        const headingLevel = sectionMatch[1].length
+        const originalText = sectionMatch[2].trim()
         const sectionText = originalText.toLowerCase()
 
         const id = sectionText
@@ -16,6 +17,7 @@ export function getPostSections(content: string) {
         return {
             id: id,
             text: originalText,
+            level: headingLevel,
         }
     })
 

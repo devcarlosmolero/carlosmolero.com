@@ -5,6 +5,7 @@ import { PlusIcon, MinusIcon } from '@heroicons/react/24/outline'
 
 export interface AccordionProps {
     data: AccordionPropsItem[]
+    defaultValue?: string
 }
 
 export interface AccordionPropsItem {
@@ -12,11 +13,12 @@ export interface AccordionPropsItem {
     answer: string | ReactNode
 }
 
-const Accordion = ({ data }: AccordionProps) => (
+const Accordion = ({ data, defaultValue }: AccordionProps) => (
     <RadixAccordion.Root
         className="flex flex-col gap-y-3"
         type="single"
         collapsible
+        defaultValue={defaultValue}
     >
         {data.map((item, index) => {
             return (

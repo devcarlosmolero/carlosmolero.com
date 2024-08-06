@@ -57,7 +57,7 @@ export default function NuestroTrabajo() {
                         project={
                             {
                                 seoTitle: 'Tu Proyecto',
-                                imgUrl: 'https://i.postimg.cc/pLqxyPG2/project-1.webp',
+                                imgUrl: `${IMAGE_KIT_BASE_URL}/tr:w-400,ar-16-9/project-placeholder.webp`,
                                 url: '#contacto',
                                 categories: ['Contacta con Nosotros'],
                             } as any

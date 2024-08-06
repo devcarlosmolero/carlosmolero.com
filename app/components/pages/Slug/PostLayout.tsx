@@ -13,13 +13,17 @@ import { FakeBackgroundImagePrimitive } from '~/components/atoms/FakeBackgroundI
 export function SideBarContent({
     sections,
 }: {
-    sections: { id: string; text: string }[]
+    sections: { id: string; text: string; level: number }[]
 }) {
     return (
         <div className="flex flex-col gap-y-2 text-gray-300">
             {sections?.map((section, index) => {
                 return (
-                    <DashedLink to={`#${section.id}`} key={index}>
+                    <DashedLink
+                        className={cn(section.level > 2 && 'ml-3 text-base')}
+                        to={`#${section.id}`}
+                        key={index}
+                    >
                         {section.text}
                     </DashedLink>
                 )
@@ -65,6 +69,7 @@ export default function PostLayout({ post }: { post: Post }) {
                             )}
                             <div className="lg:hidden">
                                 <Accordion
+                                    defaultValue="0"
                                     data={[
                                         {
                                             question: 'Tabla de contenidos',
