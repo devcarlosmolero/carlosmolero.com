@@ -24,10 +24,10 @@ export default function BlogPost({ post }: { post: Post }) {
                             <div className="flex gap-x-2">
                                 <ImageKitImage
                                     alt={post.seoTitle}
-                                    src="/tr:f-webp,ar:1-1,w-20/carlos-molero.jpg"
+                                    src="/tr:f-webp,ar:1-1,w-20/favicon.png"
                                     className="h-[20px] w-[20px] rounded-full"
                                 />
-                                <p>Carlos M.</p>
+                                <p>NovaScript</p>
                             </div>
                         </Badge>
                         <Link
