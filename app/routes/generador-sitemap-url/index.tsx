@@ -46,7 +46,7 @@ const faqs = [
 export const meta: MetaFunction = () => {
     return [
         ...getBasicMetas({
-            title: 'Generador de Sitemap XML Automático',
+            title: '⚙️ Generador de Sitemap XML Automático',
             description: `Crea un sitemap para tu sitio web a partir de la url, de forma 100% automática y gratuita. Nuestro generador de sitemap encontrará todas las urls relevantes de tu sitio web y te ayudará a indexarlas más rápido.`,
             img: `${IMAGE_KIT_BASE_URL}/tr:f-webp/meta.png`,
             appendSiteName: true,
