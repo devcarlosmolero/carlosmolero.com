@@ -116,7 +116,7 @@ export default function Navbar({
                             variant="secondary"
                             className="!py-2"
                             asLink
-                            to="https://wa.link/byrnks"
+                            to="https://wa.link/zvj2va"
                             props={
                                 {
                                     target: '_blank',

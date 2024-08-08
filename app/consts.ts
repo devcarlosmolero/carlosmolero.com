@@ -16,8 +16,8 @@ el asesoramiento en materia tecnológica.`
 export const SITE_NAME = 'NovaScript'
 export const SITE_BASE_URL = 'https://novascript.io'
 export const SITE_EMAIL = 'hi@novascript.io'
-export const SITE_PHONE_NUMBER = '+34674386776'
-export const SITE_X_URL = 'https://twitter.com/novascriptio'
+export const SITE_PHONE_NUMBER = '+1(505)361-3359'
+export const SITE_X_URL = 'https://x.com/novascriptio'
 export const SITE_X_HANDLE = '@novascriptio'
 export const SITE_FACEBOOK_URL =
     'https://www.linkedin.com/company/novascript-io/'
