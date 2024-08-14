@@ -131,7 +131,7 @@ export const meta: MetaFunction = (payload: {
             title: post?.seoTitle || service?.seoTitle,
             description: post?.seoDescription || service?.seoDescription,
             img: `https:${post?.headerImgUrl || service?.headerImgUrl}`,
-            appendSiteName: Boolean(service),
+            appendSiteName: false,
         }),
         ...(post
             ? [
