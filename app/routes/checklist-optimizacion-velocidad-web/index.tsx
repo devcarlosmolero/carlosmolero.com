@@ -87,7 +87,7 @@ export const meta: MetaFunction = () => {
             description: `Completa esta lista de tareas y te garantizamos que la velocidad de tu sitio web se incrementará con creces. Obtén consejos y recomendaciones para mejorar 
 tu página web y hacer que cargue más rápido.`,
             img: `${IMAGE_KIT_BASE_URL}/tr:f-webp/meta.png`,
-            appendSiteName: true,
+            appendSiteName: false,
         }),
         {
             'script:ld+json': [
