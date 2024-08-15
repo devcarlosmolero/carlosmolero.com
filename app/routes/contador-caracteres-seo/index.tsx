@@ -45,6 +45,7 @@ export default function ContadorCaracteresSEOPage() {
         <Page>
             <div className="flex flex-col">
                 <SectionHeading
+                    asH1
                     title="Previsualiza cómo se verán tus títulos y descripciones SEO en Google"
                     description="Utiliza nuestra herramienta 100% gratuita de visualización SERP para dar con títulos y descripciones con el número de carácteres adecuado."
                 />

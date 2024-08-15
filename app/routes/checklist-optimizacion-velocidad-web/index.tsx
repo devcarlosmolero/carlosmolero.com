@@ -4,7 +4,6 @@ import Checkbox from '~/components/atoms/Checkbox'
 import Spinner from '~/components/molecules/Spinner'
 import SectionHeading from '~/components/pages/Home/SectionHeading'
 import Page from '~/components/templates/Page'
-import { IMAGE_KIT_BASE_URL } from '~/consts'
 import { getBasicMetas, getHowToJsonLd } from '~/utils/metas'
 
 const initialChecklist = [
@@ -140,6 +139,7 @@ export default function ChecklistOptimizacionVelocidadWebPage() {
         <Page>
             <div className="flex flex-col">
                 <SectionHeading
+                    asH1
                     title="Lista de tareas para optimizar la velocidad de tu página web"
                     description="Sigue estas recomendaciones para optimizar la velocidad de tu página web. Marca como completadas las tareas a medida que las realices, no te preocupes seguirán marcadas cuando vuelvas."
                 />

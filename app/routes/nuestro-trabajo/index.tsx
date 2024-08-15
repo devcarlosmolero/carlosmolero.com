@@ -31,7 +31,6 @@ export const meta: MetaFunction = () => {
             description: `Hemos tenido el placer de trabajar desarrollando el software y diseñando 
 las páginas web para decenas de empresas y negocios consolidados, PYMES y Startups. Deja que te mostremos
 algunos de los proyectos en los que nos hemos involucrado.`,
-            img: `${IMAGE_KIT_BASE_URL}/tr:f-webp/meta.png`,
         }),
     ]
 }
@@ -43,6 +42,7 @@ export default function NuestroTrabajo() {
         <Page>
             <div className="flex flex-col">
                 <SectionHeading
+                    asH1
                     title="Nuestro trabajo como <br class='hidden sm:block'/><span class='font-accent tracking-normal'>empresa de software</span>"
                     description={`Hemos tenido el placer de trabajar desarrollando el software y diseñando 
                     las páginas web para decenas de empresas y negocios consolidados, PYMES y Startups. Deja que te mostremos
