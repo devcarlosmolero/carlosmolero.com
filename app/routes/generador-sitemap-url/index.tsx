@@ -14,10 +14,8 @@ import 'highlight.js/styles/monokai.css'
 import Highlight from 'react-highlight'
 import { ArrowClockwise, Copy } from 'react-bootstrap-icons'
 import { toast } from 'react-toastify'
-import { redirectWithToast } from '~/utils/server'
 import { useEffect, useState } from 'react'
 import Accordion from '~/components/organisms/Accordion'
-import { IMAGE_KIT_BASE_URL } from '~/consts'
 import { getBasicMetas, getBusinessJsonLd, getFaqsJsonLd } from '~/utils/metas'
 
 const faqs = [
@@ -48,8 +46,6 @@ export const meta: MetaFunction = () => {
         ...getBasicMetas({
             title: '⚙️ Generador de Sitemap XML Automático',
             description: `Crea un sitemap para tu sitio web a partir de la url, de forma 100% automática y gratuita. Nuestro generador de sitemap encontrará todas las urls relevantes de tu sitio web y te ayudará a indexarlas más rápido.`,
-            img: `${IMAGE_KIT_BASE_URL}/tr:f-webp/meta.png`,
-            appendSiteName: false,
         }),
         {
             'script:ld+json': [getBusinessJsonLd(), getFaqsJsonLd(faqs)],

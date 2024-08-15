@@ -6,8 +6,7 @@ import Textarea from '~/components/atoms/Textarea'
 import Accordion from '~/components/organisms/Accordion'
 import SectionHeading from '~/components/pages/Home/SectionHeading'
 import Page from '~/components/templates/Page'
-import { IMAGE_KIT_BASE_URL } from '~/consts'
-import { getBasicMetas, getBusinessJsonLd, getFaqsJsonLd } from '~/utils/metas'
+import { getBasicMetas, getFaqsJsonLd } from '~/utils/metas'
 
 const faqs = [
     {
@@ -30,11 +29,9 @@ export const meta: MetaFunction = () => {
             title: '⚙️ Contador de Caracteres SEO | Vista Previa SERP',
             description: `Previsualiza cómo se verán tus títulos y descripciones SEO en Google. Utiliza nuestra herramienta 100% gratuita 
 de visualización SERP para dar con títulos y descripciones con el número de caracteres adecuado.`,
-            img: `${IMAGE_KIT_BASE_URL}/tr:f-webp/meta.png`,
-            appendSiteName: false,
         }),
         {
-            'script:ld+json': [getBusinessJsonLd(), getFaqsJsonLd(faqs)],
+            'script:ld+json': [getFaqsJsonLd(faqs)],
         },
     ]
 }

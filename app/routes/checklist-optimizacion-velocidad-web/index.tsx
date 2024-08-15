@@ -5,7 +5,7 @@ import Spinner from '~/components/molecules/Spinner'
 import SectionHeading from '~/components/pages/Home/SectionHeading'
 import Page from '~/components/templates/Page'
 import { IMAGE_KIT_BASE_URL } from '~/consts'
-import { getBasicMetas, getBusinessJsonLd, getHowToJsonLd } from '~/utils/metas'
+import { getBasicMetas, getHowToJsonLd } from '~/utils/metas'
 
 const initialChecklist = [
     {
@@ -86,12 +86,9 @@ export const meta: MetaFunction = () => {
             title: '✅ Checklist Velocidad Página Web',
             description: `Completa esta lista de tareas y te garantizamos que la velocidad de tu sitio web se incrementará con creces. Obtén consejos y recomendaciones para mejorar 
 tu página web y hacer que cargue más rápido.`,
-            img: `${IMAGE_KIT_BASE_URL}/tr:f-webp/meta.png`,
-            appendSiteName: false,
         }),
         {
             'script:ld+json': [
-                getBusinessJsonLd(),
                 getHowToJsonLd({
                     name: '¿Cómo aumentar la velocidad de mi página web?',
                     description: `Completa esta lista de tareas y te garantizamos que la velocidad de tu sitio web se incrementará con creces. Obtén consejos y recomendaciones para mejorar 

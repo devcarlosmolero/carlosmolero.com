@@ -130,8 +130,7 @@ export const meta: MetaFunction = (payload: {
         ...getBasicMetas({
             title: post?.seoTitle || service?.seoTitle,
             description: post?.seoDescription || service?.seoDescription,
-            img: `https:${post?.headerImgUrl || service?.headerImgUrl}`,
-            appendSiteName: false,
+            image: `https:${post?.headerImgUrl || service?.headerImgUrl}`,
         }),
         ...(post
             ? [

@@ -8,7 +8,7 @@ import Contact from '~/components/pages/shared/Contact'
 import Page from '~/components/templates/Page'
 import { IMAGE_KIT_BASE_URL } from '~/consts'
 import { Project } from '~/types/contentful'
-import { getBasicMetas, getBusinessJsonLd } from '~/utils/metas'
+import { getBasicMetas } from '~/utils/metas'
 import { getCacheControlHeader } from '~/utils/server'
 
 export async function loader() {
@@ -32,11 +32,7 @@ export const meta: MetaFunction = () => {
 las páginas web para decenas de empresas y negocios consolidados, PYMES y Startups. Deja que te mostremos
 algunos de los proyectos en los que nos hemos involucrado.`,
             img: `${IMAGE_KIT_BASE_URL}/tr:f-webp/meta.png`,
-            appendSiteName: true,
         }),
-        {
-            'script:ld+json': [getBusinessJsonLd()],
-        },
     ]
 }
 

@@ -19,23 +19,19 @@ import { BreadCrumbJsonLdItem, FAQJsonLdItem } from '~/types/metas'
 export function getBasicMetas({
     title,
     description,
-    img,
-    appendSiteName = false,
-    type = 'website',
+    image = `${IMAGE_KIT_BASE_URL}/tr:f-webp/meta.png`,
+    robots = 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
 }: {
     title: string
     description: string
-    img: string
-    appendSiteName?: boolean
-    type?: 'website' | 'article'
+    image?: string
+    robots?: string
 }) {
-    const metaTitle = `${title}${appendSiteName ? ` - ${SITE_NAME}` : ''}`
-
     return [
-        { title: metaTitle },
+        { title: title },
         {
             property: 'og:title',
-            content: metaTitle,
+            content: title,
         },
         {
             name: 'description',
@@ -47,16 +43,15 @@ export function getBasicMetas({
         },
         {
             name: 'robots',
-            content:
-                'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+            content: robots,
         },
         {
             property: 'og:type',
-            content: type,
+            content: 'website',
         },
         {
             property: 'og:image',
-            content: img,
+            content: image,
         },
         {
             property: 'og:image:width',

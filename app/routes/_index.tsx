@@ -7,12 +7,7 @@ import Hero from '~/components/pages/Home/Hero'
 import OurProcess from '~/components/pages/Home/OurProcess'
 import Services from '~/components/pages/Home/Services'
 import Contact from '~/components/pages/shared/Contact'
-import {
-    IMAGE_KIT_BASE_URL,
-    SITE_BASE_URL,
-    SITE_DESCRIPTION,
-    SITE_TITLE,
-} from '~/consts'
+import { SITE_BASE_URL, SITE_DESCRIPTION, SITE_TITLE } from '~/consts'
 import { getLatestPosts, getServices } from '~/actions/contentful'
 import Blog from '~/components/pages/Home/Blog'
 import { useLoaderData } from '@remix-run/react'
@@ -113,8 +108,6 @@ export const meta: MetaFunction = (payload: {
         ...getBasicMetas({
             title: SITE_TITLE,
             description: SITE_DESCRIPTION,
-            img: `${IMAGE_KIT_BASE_URL}/tr:f-webp/meta.png`,
-            appendSiteName: true,
         }),
         {
             'script:ld+json': [
