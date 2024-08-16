@@ -1,3 +1,5 @@
+import { ContentfulFilters } from '~/types/contentful'
+
 const CONTENTFUL_CONFIG = {
     SPACE_ID: 'dbho2mzjh6aw',
     CDA: {
@@ -16,13 +18,7 @@ export function createContentfulFilters({
     select,
     order,
     limit = 1,
-}: {
-    contentType: string
-    where?: string
-    select?: string[]
-    order?: string
-    limit?: number
-}) {
+}: ContentfulFilters) {
     let filtersQueryString = ''
 
     filtersQueryString += `&content_type=${contentType}`

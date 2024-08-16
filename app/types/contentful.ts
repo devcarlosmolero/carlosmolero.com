@@ -1,7 +1,16 @@
+export interface ContentfulFilters {
+    contentType: string
+    where?: string
+    select?: string[]
+    order?: string
+    limit?: number
+}
+
 export interface Post {
     seoTitle: string
     seoDescription: string
     content: string
+    headerImg: any
     headerImgUrl?: string
     categories: string[]
     createdAt?: string

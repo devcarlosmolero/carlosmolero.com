@@ -9,6 +9,8 @@ import Page from '~/components/templates/Page'
 import Contact from '../shared/Contact'
 import Accordion from '~/components/organisms/Accordion'
 import { FakeBackgroundImagePrimitive } from '~/components/atoms/FakeBackgroundImagePrimitive'
+import BlogPost from '~/components/organisms/BlogPost'
+import SectionHeading from '../Home/SectionHeading'
 
 export function SideBarContent({
     sections,
@@ -32,7 +34,13 @@ export function SideBarContent({
     )
 }
 
-export default function PostLayout({ post }: { post: Post }) {
+export default function PostLayout({
+    post,
+    relatedPostsByCategory,
+}: {
+    post: Post
+    relatedPostsByCategory: Post[]
+}) {
     function hasSidebar() {
         return Boolean(post.headerImgUrl || post.sections)
     }
@@ -134,6 +142,21 @@ export default function PostLayout({ post }: { post: Post }) {
                     <div className="mt-24">
                         <Contact />
                     </div>
+                    {relatedPostsByCategory && (
+                        <div className="mt-24 flex flex-col gap-y-5">
+                            <SectionHeading title="Quizás te pueda interesar" />
+                            <div className="grid grid-cols-1">
+                                {relatedPostsByCategory.map(
+                                    (relatedPost, index) => (
+                                        <BlogPost
+                                            key={index}
+                                            post={relatedPost}
+                                        />
+                                    )
+                                )}
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
         </Page>

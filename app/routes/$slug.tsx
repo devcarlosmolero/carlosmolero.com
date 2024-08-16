@@ -11,6 +11,7 @@ import {
     getServiceBySlug,
     getServices,
 } from '~/actions/contentful'
+import Posts from '~/actions/posts'
 import PostHook from '~/components/pages/Slug/PostHook'
 import PostLayout from '~/components/pages/Slug/PostLayout'
 import ServiceLayout from '~/components/pages/Slug/ServiceLayout'
@@ -39,6 +40,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
     )
 
     let post: Post | undefined
+    let relatedPostsByCategory: Post[] = []
     let service: Service | undefined
     let services: Service[] | undefined
 
@@ -70,11 +72,19 @@ export async function loader({ request }: LoaderFunctionArgs) {
                     )
                 )
             }
+
+            relatedPostsByCategory = await Posts.getRelatedByCategory(
+                post.categories,
+                post.slug!
+            )
+                .appendHeaderImgUrls()
+                .get()
         }
 
         return json(
             {
                 post,
+                relatedPostsByCategory,
                 postImageUrls: post
                     ? [
                           `https:${post.headerImgUrl}`,
@@ -150,10 +160,16 @@ export const meta: MetaFunction = (payload: {
 }
 
 export default function Post() {
-    const { post, service, services } = useLoaderData<typeof loader>()
+    const { post, relatedPostsByCategory, service, services } =
+        useLoaderData<typeof loader>()
 
     if (post) {
-        return <PostLayout post={post} />
+        return (
+            <PostLayout
+                relatedPostsByCategory={relatedPostsByCategory as Post[]}
+                post={post as Post}
+            />
+        )
     }
 
     if (service) {
