@@ -24,11 +24,18 @@ import 'react-toastify/dist/ReactToastify.css'
 
 export async function loader({ request }: LoaderFunctionArgs) {
     const pathname = new URL(request.url).pathname
+    const hostname = new URL(request.url).hostname
     const isRoot = pathname === '/'
     const hasWWW = new URL(request.url).hostname.includes('www')
 
     if (!hasWWW) {
-        return redirect(`${SITE_BASE_URL}${pathname}`)
+        return redirect(
+            `${
+                hostname.includes('localhost')
+                    ? SITE_BASE_URL
+                    : 'http://www.localhost:3000'
+            }/${pathname}`
+        )
     }
 
     const services = await getServices(10, [
