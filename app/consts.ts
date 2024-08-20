@@ -14,10 +14,13 @@ export const SITE_DESCRIPTION = `Somos la empresa de desarrollo de software y di
 apoyando a pequeñas y medianas empresas mediante la creación de software a medida, apps móviles iOS y Android, páginas web, tiendas online y 
 el asesoramiento en materia tecnológica.`
 export const SITE_NAME = 'NovaScript'
-export const SITE_BASE_URL = 'https://novascript.io'
+export const SITE_BASE_URL =
+    process.env.NODE_ENV === 'production'
+        ? 'https://www.novascript.io'
+        : 'https://www.localhost:3000'
 export const SITE_EMAIL = 'hi@novascript.io'
 export const SITE_PHONE_NUMBER = '+1(505)361-3359'
-export const SITE_X_URL = 'https://x.com/novascriptio'
+export const SITE_X_URL = 'https://www.x.com/novascriptio'
 export const SITE_X_HANDLE = '@novascriptio'
 export const SITE_FACEBOOK_URL =
     'https://www.linkedin.com/company/novascript-io/'

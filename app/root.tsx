@@ -5,6 +5,7 @@ import {
     Scripts,
     ScrollRestoration,
     json,
+    redirect,
     useLoaderData,
     useSearchParams,
 } from '@remix-run/react'
@@ -14,7 +15,7 @@ import Footer from './components/organisms/Footer'
 import { useEffect, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import cn from 'classnames'
-import { IMAGE_KIT_BASE_URL } from './consts'
+import { IMAGE_KIT_BASE_URL, SITE_BASE_URL } from './consts'
 import Navbar from './components/organisms/Navbar'
 
 //@ts-expect-error idk
@@ -22,7 +23,13 @@ import stylesheet from '~/tailwind.css?url'
 import 'react-toastify/dist/ReactToastify.css'
 
 export async function loader({ request }: LoaderFunctionArgs) {
-    const isRoot = new URL(request.url).pathname === '/'
+    const pathname = new URL(request.url).pathname
+    const isRoot = pathname === '/'
+    const hasWWW = new URL(request.url).hostname.includes('www')
+
+    if (!hasWWW) {
+        return redirect(`${SITE_BASE_URL}${pathname}`)
+    }
 
     const services = await getServices(10, [
         'fields.cardTitle',
