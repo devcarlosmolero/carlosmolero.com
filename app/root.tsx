@@ -31,10 +31,10 @@ export async function loader({ request }: LoaderFunctionArgs) {
     if (!hasWWW) {
         return redirect(
             `${
-                hostname.includes('localhost')
+                !hostname.includes('localhost')
                     ? SITE_BASE_URL
                     : 'http://www.localhost:3000'
-            }/${pathname}`
+            }${pathname}`
         )
     }
 
