@@ -32,7 +32,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
     //@ts-expect-error idk
     if (serviceRedirects[slug]) {
         //@ts-expect-error idk
-        return redirect(`/${serviceRedirects[slug]}`, 301)
+        return redirect(`/${serviceRedirects[slug]}`, { status: 301 })
     }
 
     const servicesSlugs = (await getServices(10, ['fields.slug', 'sys'])).map(

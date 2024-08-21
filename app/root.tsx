@@ -34,7 +34,8 @@ export async function loader({ request }: LoaderFunctionArgs) {
                 !hostname.includes('localhost')
                     ? SITE_BASE_URL
                     : 'http://www.localhost:3000'
-            }${pathname}`
+            }${pathname}`,
+            { status: 301 }
         )
     }
 
