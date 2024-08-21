@@ -7,25 +7,15 @@ import Hero from '~/components/pages/Home/Hero'
 import OurProcess from '~/components/pages/Home/OurProcess'
 import Services from '~/components/pages/Home/Services'
 import Contact from '~/components/pages/shared/Contact'
-import {
-    SITE_BASE_URL,
-    SITE_DESCRIPTION,
-    SITE_NAME,
-    SITE_TITLE,
-} from '~/consts'
+import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE } from '~/consts'
 import { getLatestPosts, getServices } from '~/actions/contentful'
 import Blog from '~/components/pages/Home/Blog'
 import { useLoaderData } from '@remix-run/react'
 import ScrollAnimation from 'react-animate-on-scroll'
-import {
-    getBasicMetas,
-    getBreadcrumbJsonLd,
-    getBusinessJsonLd,
-    getFaqsJsonLd,
-} from '~/utils/metas'
-import { ServiceCard } from '~/types/contentful'
-import { fromServiceCardToBreadCrumbJsonLdItem } from '~/utils/mappers'
+import { getBasicMetas, getBusinessJsonLd, getFaqsJsonLd } from '~/utils/metas'
+
 import { getCacheControlHeader } from '~/utils/server'
+import { Post } from '~/types/contentful'
 
 export async function loader() {
     const posts = await getLatestPosts(6, [
@@ -101,39 +91,14 @@ Pase lo que pase, vamos a estar ahÃ­ si necesitas cualquier tipo de actualizaciÃ
     },
 ]
 
-//@ts-expect-error idk
-export const meta: MetaFunction = (payload: {
-    data: {
-        serviceCards: ServiceCard[]
-    }
-}) => {
-    const { serviceCards } = payload.data
-
+export const meta: MetaFunction = () => {
     return [
         ...getBasicMetas({
             title: `${SITE_TITLE} - ${SITE_NAME}`,
             description: SITE_DESCRIPTION,
         }),
         {
-            'script:ld+json': [
-                getBusinessJsonLd(),
-                getBreadcrumbJsonLd([
-                    ...[
-                        {
-                            name: 'Nuestro Trabajo',
-                            position: 1,
-                            item: `${SITE_BASE_URL}/nuestro-trabajo`,
-                        },
-                    ],
-                    ...serviceCards.map((service, index) =>
-                        fromServiceCardToBreadCrumbJsonLdItem(
-                            service,
-                            index + 1
-                        )
-                    ),
-                ]),
-                getFaqsJsonLd(faqs),
-            ],
+            'script:ld+json': [getBusinessJsonLd(), getFaqsJsonLd(faqs)],
         },
     ]
 }
@@ -147,7 +112,7 @@ export default function Home() {
             <Services serviceCards={serviceCards} />
             <OurProcess />
             <Faq data={faqs} />
-            <Blog posts={posts} />
+            <Blog posts={posts as Post[]} />
             <ScrollAnimation once={true} animateIn="fadeIn">
                 <Contact />
             </ScrollAnimation>
