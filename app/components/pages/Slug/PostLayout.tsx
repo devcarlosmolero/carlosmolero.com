@@ -22,7 +22,10 @@ export function SideBarContent({
             {sections?.map((section, index) => {
                 return (
                     <DashedLink
-                        className={cn(section.level > 2 && 'ml-3 text-base')}
+                        className={cn(
+                            section.level > 2 && 'ml-3 text-base',
+                            section.level === 2 && 'font-semibold'
+                        )}
                         to={`#${section.id}`}
                         key={index}
                     >
