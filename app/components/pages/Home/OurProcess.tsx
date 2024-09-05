@@ -77,7 +77,9 @@ export default function OurProcess() {
                             <ImageKitImage
                                 className="rounded-xl"
                                 alt="App de CRM o ERP para empresas"
-                                src={'/tr:ar-16-9,w-580,f-webp/crm-erp.png'}
+                                src={
+                                    '/tr:ar-4-3,w-550,h-412,f-webp/mobile-app.png'
+                                }
                             />
                         </div>
                     </ScrollAnimation>
@@ -147,7 +149,9 @@ export default function OurProcess() {
                             <ImageKitImage
                                 className="rounded-xl"
                                 alt="Aplicación web"
-                                src={'/tr:ar-16-9,w-580,f-webp/web-design.jpg'}
+                                src={
+                                    '/tr:ar-4-3,w-550,h-412,f-webp/mobile-app-2.png'
+                                }
                             />
                         </ScrollAnimation>
                     </div>
