@@ -53,6 +53,7 @@ html {
 @screen sm {
     .prose table {
         display: inline-table;
+        white-space: wrap;
     }
 }
 
