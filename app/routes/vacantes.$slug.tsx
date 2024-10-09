@@ -11,7 +11,7 @@ import {
     GoogleReCaptcha,
     GoogleReCaptchaProvider,
 } from 'react-google-recaptcha-v3'
-import Markdown from 'react-markdown'
+// import Markdown from 'react-markdown'
 import JobOffers from '~/actions/jobOffers'
 import Button from '~/components/atoms/Button'
 import Input from '~/components/atoms/Input'
@@ -79,9 +79,9 @@ export default function JobOffersPage() {
                         <Send className="size-4" /> Aplicar
                     </Button>
                 </div>
-                <div className="prose prose-dark mt-12 w-full max-w-full prose-img:w-full [&_h2:first-of-type]:mt-0">
-                    <Markdown>{jobOffer.content}</Markdown>
-                </div>
+                {/* <div className="prose prose-dark mt-12 w-full max-w-full prose-img:w-full [&_h2:first-of-type]:mt-0"> */}
+                {/*     <Markdown>{jobOffer.content}</Markdown> */}
+                {/* </div> */}
             </div>
             <div className="flex w-full flex-col justify-center gap-y-8">
                 <GoogleReCaptchaProvider reCaptchaKey="6Lf2j4AjAAAAANW0-igfUz7u38VEZCjoh0WtEbLB">
