@@ -15,7 +15,7 @@ import Markdown from 'react-markdown'
 import JobOffers from '~/actions/jobOffers'
 import Button from '~/components/atoms/Button'
 import Input from '~/components/atoms/Input'
-// import Select from '~/components/atoms/Select'
+import Select from '~/components/atoms/Select'
 import Page from '~/components/templates/Page'
 import { JobOffer } from '~/types/contentful'
 
@@ -128,46 +128,46 @@ export default function JobOffersPage() {
                                     }}
                                     labelProps={{ text: 'Tarifa por hora' }}
                                 />
-                                {/* <Select */}
-                                {/*     options={Array.from({ length: 10 }).map( */}
-                                {/*         (_, index) => ({ */}
-                                {/*             label: String(index + 1), */}
-                                {/*             value: String(index + 1), */}
-                                {/*         }) */}
-                                {/*     )} */}
-                                {/*     labelProps={{ text: 'Años de experiencia' }} */}
-                                {/*     inputProps={{ */}
-                                {/*         name: 'yearsOfExperience', */}
-                                {/*         placeholder: */}
-                                {/*             '¿Cuántos años de experiencia tienes?', */}
-                                {/*         required: true, */}
-                                {/*     }} */}
-                                {/* /> */}
+                                <Select
+                                    options={Array.from({ length: 10 }).map(
+                                        (_, index) => ({
+                                            label: String(index + 1),
+                                            value: String(index + 1),
+                                        })
+                                    )}
+                                    labelProps={{ text: 'Años de experiencia' }}
+                                    inputProps={{
+                                        name: 'yearsOfExperience',
+                                        placeholder:
+                                            '¿Cuántos años de experiencia tienes?',
+                                        required: true,
+                                    }}
+                                />
                             </div>
                             <h3 className="mb-5 w-full text-2xl font-semibold tracking-tighter text-gray-100">
                                 Experiencia con las tecnología de la oferta
                             </h3>
                             <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-                                {/* {jobOffer.skills.map((skill, index) => ( */}
-                                {/*     <Select */}
-                                {/*         key={index} */}
-                                {/*         options={Array.from({ length: 11 }).map( */}
-                                {/*             (_, index) => ({ */}
-                                {/*                 label: String(index), */}
-                                {/*                 value: String(index), */}
-                                {/*             }) */}
-                                {/*         )} */}
-                                {/*         labelProps={{ */}
-                                {/*             text: skill, */}
-                                {/*         }} */}
-                                {/*         inputProps={{ */}
-                                {/*             name: `skill${skill}`, */}
-                                {/*             placeholder: */}
-                                {/*                 '¿Cuántos años de experiencia tienes?', */}
-                                {/*             required: true, */}
-                                {/*         }} */}
-                                {/*     /> */}
-                                {/* ))} */}
+                                {jobOffer.skills.map((skill, index) => (
+                                    <Select
+                                        key={index}
+                                        options={Array.from({ length: 11 }).map(
+                                            (_, index) => ({
+                                                label: String(index),
+                                                value: String(index),
+                                            })
+                                        )}
+                                        labelProps={{
+                                            text: skill,
+                                        }}
+                                        inputProps={{
+                                            name: `skill${skill}`,
+                                            placeholder:
+                                                '¿Cuántos años de experiencia tienes?',
+                                            required: true,
+                                        }}
+                                    />
+                                ))}
                             </div>
                             <Input
                                 inputProps={{

@@ -1,18 +1,3 @@
-import {
-    Root,
-    Trigger,
-    Value,
-    Icon,
-    Content,
-    Viewport,
-    ScrollUpButton,
-    ScrollDownButton,
-    Arrow,
-    Portal,
-    Item,
-    ItemText,
-} from '@radix-ui/react-select'
-
 export default function Select({
     inputProps,
     defaultValue,
@@ -34,31 +19,41 @@ export default function Select({
                     {labelProps.text} {inputProps.required ? '(*)' : ''}
                 </label>
             )}
-            <Root name={inputProps.name} defaultValue={defaultValue}>
-                <Trigger className="flex h-[60px] items-center rounded-xl bg-neutral-900 p-3 text-start outline-none md:p-5">
-                    <Value placeholder={inputProps.placeholder} />
-                    <Icon className="ml-auto" />
-                </Trigger>
-
-                <Portal>
-                    <Content className="rounded-md border border-zinc-800 bg-neutral-900 p-2 text-white">
-                        <ScrollUpButton />
-                        <Viewport>
-                            {options.map((option, index) => (
-                                <Item
-                                    className="cursor-pointer rounded-md px-3 py-2 hover:bg-neutral-950 focus:outline-0"
-                                    value={option.value}
-                                    key={index}
-                                >
-                                    <ItemText>{option.label}</ItemText>
-                                </Item>
-                            ))}
-                        </Viewport>
-                        <ScrollDownButton />
-                        <Arrow />
-                    </Content>
-                </Portal>
-            </Root>
+            <div className="relative w-full">
+                <select
+                    defaultValue={defaultValue}
+                    className="flex h-[60px] w-full appearance-none items-center rounded-xl bg-neutral-900 p-3 text-start outline-none md:p-5"
+                >
+                    <option value="" selected disabled>
+                        Selecciona una opción
+                    </option>
+                    {options.map((option, index) => (
+                        <option
+                            className="cursor-pointer rounded-md px-3 py-2 hover:bg-neutral-950 focus:outline-0"
+                            value={option.value}
+                            key={index}
+                        >
+                            {option.label}
+                        </option>
+                    ))}
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3">
+                    <svg
+                        className="h-4 w-4 text-white"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M19 9l-7 7-7-7"
+                        ></path>
+                    </svg>
+                </div>
+            </div>
         </div>
     )
 }
