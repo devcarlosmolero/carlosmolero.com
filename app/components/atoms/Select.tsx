@@ -25,7 +25,7 @@ export default function Select({
                 name={inputProps.name}
                 defaultValue={defaultValue}
             >
-                <RadixSelect.Trigger className="flex h-[60px] rounded-xl bg-neutral-900 p-5 outline-none">
+                <RadixSelect.Trigger className="flex h-[60px] items-center rounded-xl bg-neutral-900 p-3 text-start outline-none md:p-5">
                     <RadixSelect.Value placeholder={inputProps.placeholder} />
                     <RadixSelect.Icon className="ml-auto" />
                 </RadixSelect.Trigger>

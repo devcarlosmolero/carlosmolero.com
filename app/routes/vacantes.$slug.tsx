@@ -6,7 +6,6 @@ import {
     useSearchParams,
 } from '@remix-run/react'
 import { useEffect, useRef, useState } from 'react'
-import { Send } from 'react-bootstrap-icons'
 import {
     GoogleReCaptcha,
     GoogleReCaptchaProvider,
@@ -76,7 +75,7 @@ export default function JobOffersPage() {
                         variant="accent"
                         className="text-md"
                     >
-                        <Send className="size-4" /> Aplicar
+                        Aplicar
                     </Button>
                 </div>
                 <div className="prose prose-dark mt-12 w-full max-w-full prose-img:w-full [&_h2:first-of-type]:mt-0">
@@ -101,7 +100,7 @@ export default function JobOffersPage() {
                             Datos generales
                         </h3>
                         <div className="flex flex-col gap-y-5">
-                            <div className="grid grid-cols-2 gap-5">
+                            <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                                 <Input
                                     inputProps={{
                                         name: 'name',
@@ -147,7 +146,7 @@ export default function JobOffersPage() {
                             <h3 className="mb-5 w-full text-2xl font-semibold tracking-tighter text-gray-100">
                                 Experiencia con las tecnología de la oferta
                             </h3>
-                            <div className="grid grid-cols-2 gap-5">
+                            <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                                 {jobOffer.skills.map((skill, index) => (
                                     <Select
                                         key={index}
