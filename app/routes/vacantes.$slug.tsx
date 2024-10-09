@@ -89,6 +89,7 @@ export default function JobOffersPage() {
                         Envía tu Candidatura
                     </h2>
                     <Form
+                        id="contact"
                         onSubmit={() => setIsLoading(true)}
                         ref={$form}
                         preventScrollReset
