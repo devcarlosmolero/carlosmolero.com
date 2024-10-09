@@ -1,4 +1,17 @@
-import * as RadixSelect from '@radix-ui/react-select'
+import {
+    Root,
+    Trigger,
+    Value,
+    Icon,
+    Content,
+    Viewport,
+    ScrollUpButton,
+    ScrollDownButton,
+    Arrow,
+    Portal,
+    Item,
+    ItemText,
+} from '@radix-ui/react-select'
 
 export default function Select({
     inputProps,
@@ -21,36 +34,31 @@ export default function Select({
                     {labelProps.text} {inputProps.required ? '(*)' : ''}
                 </label>
             )}
-            <RadixSelect.Root
-                name={inputProps.name}
-                defaultValue={defaultValue}
-            >
-                <RadixSelect.Trigger className="flex h-[60px] items-center rounded-xl bg-neutral-900 p-3 text-start outline-none md:p-5">
-                    <RadixSelect.Value placeholder={inputProps.placeholder} />
-                    <RadixSelect.Icon className="ml-auto" />
-                </RadixSelect.Trigger>
+            <Root name={inputProps.name} defaultValue={defaultValue}>
+                <Trigger className="flex h-[60px] items-center rounded-xl bg-neutral-900 p-3 text-start outline-none md:p-5">
+                    <Value placeholder={inputProps.placeholder} />
+                    <Icon className="ml-auto" />
+                </Trigger>
 
-                <RadixSelect.Portal>
-                    <RadixSelect.Content className="rounded-md border border-zinc-800 bg-neutral-900 p-2 text-white">
-                        <RadixSelect.ScrollUpButton />
-                        <RadixSelect.Viewport>
+                <Portal>
+                    <Content className="rounded-md border border-zinc-800 bg-neutral-900 p-2 text-white">
+                        <ScrollUpButton />
+                        <Viewport>
                             {options.map((option, index) => (
-                                <RadixSelect.Item
+                                <Item
                                     className="cursor-pointer rounded-md px-3 py-2 hover:bg-neutral-950 focus:outline-0"
                                     value={option.value}
                                     key={index}
                                 >
-                                    <RadixSelect.ItemText>
-                                        {option.label}
-                                    </RadixSelect.ItemText>
-                                </RadixSelect.Item>
+                                    <ItemText>{option.label}</ItemText>
+                                </Item>
                             ))}
-                        </RadixSelect.Viewport>
-                        <RadixSelect.ScrollDownButton />
-                        <RadixSelect.Arrow />
-                    </RadixSelect.Content>
-                </RadixSelect.Portal>
-            </RadixSelect.Root>
+                        </Viewport>
+                        <ScrollDownButton />
+                        <Arrow />
+                    </Content>
+                </Portal>
+            </Root>
         </div>
     )
 }

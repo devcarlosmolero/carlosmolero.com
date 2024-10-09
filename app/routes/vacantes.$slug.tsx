@@ -6,6 +6,7 @@ import {
     useSearchParams,
 } from '@remix-run/react'
 import { useEffect, useRef, useState } from 'react'
+import { Send } from 'react-bootstrap-icons'
 import {
     GoogleReCaptcha,
     GoogleReCaptchaProvider,
@@ -75,7 +76,7 @@ export default function JobOffersPage() {
                         variant="accent"
                         className="text-md"
                     >
-                        Aplicar
+                        <Send className="size-4" /> Aplicar
                     </Button>
                 </div>
                 <div className="prose prose-dark mt-12 w-full max-w-full prose-img:w-full [&_h2:first-of-type]:mt-0">

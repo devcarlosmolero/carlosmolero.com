@@ -1,8 +1,5 @@
 import { Service, ServiceCard } from '~/types/contentful'
 import Markdown from 'react-markdown'
-import rehypeSlug from 'rehype-slug'
-import remarkGfm from 'remark-gfm'
-import rehypeRaw from 'rehype-raw'
 import {
     ArrowRightIcon,
     ArrowUpRightIcon,
@@ -57,13 +54,8 @@ export default function ServiceLayout({
             </div>
             <Separator />
             <div className="flex w-full justify-center">
-                <div className="prose prose-dark w-full max-w-[765px] max-w-full prose-img:w-full [&_h2:first-of-type]:mt-0">
-                    <Markdown
-                        remarkPlugins={[remarkGfm]}
-                        rehypePlugins={[rehypeSlug, rehypeRaw]}
-                    >
-                        {service.content}
-                    </Markdown>
+                <div className="prose prose-dark w-full max-w-full prose-img:w-full [&_h2:first-of-type]:mt-0">
+                    <Markdown>{service.content}</Markdown>
                 </div>
             </div>
             <div>
