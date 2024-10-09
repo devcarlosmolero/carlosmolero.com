@@ -30,7 +30,7 @@ export async function action({ request }: ActionFunctionArgs) {
 
     await sendDiscordMessage(
         `\n\n🪐 **${submission.name} ha enviado su candidatura para ${submission.offerTitle}**: 
-         \n**Años de experiencia**: ${submission.yearsOfExperience} \n**Tarifa por hora**: ${submission.ratePerHour}$ \n**Skillset y experiencia**: ${submission.skillset} 
+         \n**Años de experiencia**: ${submission.experience} \n**Tarifa por hora**: ${submission.ratePerHour}$ \n**Skillset y experiencia**: ${submission.skillset} 
          \n📝 Puedes escribirle de vuelta usando el siguiente correo: ${submission.email}`
     )
 

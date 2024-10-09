@@ -52,7 +52,7 @@ export default function JobOffersPage() {
         <Page className="flex flex-col justify-center">
             <div className="flex flex-col">
                 <div className="flex flex-col space-y-5">
-                    <h1 className="w-full text-6xl font-semibold tracking-tighter">
+                    <h1 className="w-full text-4xl font-semibold tracking-tighter md:text-6xl">
                         {jobOffer.seoTitle}
                     </h1>
                     <div className="flex flex-wrap gap-2">
@@ -137,7 +137,7 @@ export default function JobOffersPage() {
                                     )}
                                     labelProps={{ text: 'Años de experiencia' }}
                                     inputProps={{
-                                        name: 'yearsOfExperience',
+                                        name: 'experience',
                                         placeholder:
                                             '¿Cuántos años de experiencia tienes?',
                                         required: true,
@@ -145,7 +145,7 @@ export default function JobOffersPage() {
                                 />
                             </div>
                             <h3 className="mb-5 w-full text-2xl font-semibold tracking-tighter text-gray-100">
-                                Experiencia con las tecnología de la oferta
+                                Experiencia con las tecnologías de la oferta
                             </h3>
                             <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                                 {jobOffer.skills.map((skill, index) => (

@@ -21,6 +21,7 @@ export default function Select({
             )}
             <div className="relative w-full">
                 <select
+                    name={inputProps.name}
                     defaultValue={defaultValue}
                     className="flex h-[60px] w-full appearance-none items-center rounded-xl bg-neutral-900 p-3 text-start outline-none md:p-5"
                 >
