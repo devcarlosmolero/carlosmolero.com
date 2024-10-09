@@ -29,9 +29,7 @@ export async function action({ request }: ActionFunctionArgs) {
     }
 
     await sendDiscordMessage(
-        `\n\n🪐 **${submission.name} ha enviado su candidatura para ${submission.offerTitle}**:
-         \n\n**Años de experiencia**: ${submission.experience} \n**Tarifa por hora**: ${submission.ratePerHour}$ \n**Skillset y experiencia**: ${submission.skillset}
-         \n\n📝 Puedes escribirle de vuelta usando el siguiente correo: ${submission.email}`
+        `\n\n🪐 **${submission.name} ha enviado su candidatura para ${submission.offerTitle}**:\n\n**Años de experiencia**: ${submission.experience} \n**Tarifa por hora**: ${submission.ratePerHour}$ \n**Skillset y experiencia**: ${submission.skillset}\n\n📝 Puedes escribirle de vuelta usando el siguiente correo: ${submission.email}`
     )
 
     return redirectWithToast(
