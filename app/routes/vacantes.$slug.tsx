@@ -1,4 +1,4 @@
-import { json, LoaderFunctionArgs } from '@remix-run/cloudflare'
+import { json, LoaderFunctionArgs, MetaFunction } from '@remix-run/cloudflare'
 import {
     Form,
     useLoaderData,
@@ -18,6 +18,7 @@ import Input from '~/components/atoms/Input'
 import Select from '~/components/atoms/Select'
 import Page from '~/components/templates/Page'
 import { JobOffer } from '~/types/contentful'
+import { getBasicMetas, getBusinessJsonLd } from '~/utils/metas'
 
 export async function loader({ request }: LoaderFunctionArgs) {
     const slug = new URL(request.url).pathname.split('/').pop()
@@ -26,6 +27,21 @@ export async function loader({ request }: LoaderFunctionArgs) {
     )[0]
 
     return json({ jobOffer })
+}
+
+//@ts-expect-error idk
+export const meta: MetaFunction = (payload: {
+    data: { jobOffer: JobOffer }
+}) => {
+    return [
+        ...getBasicMetas({
+            title: `${payload.data.jobOffer.seoTitle}`,
+            description: payload.data.jobOffer.seoDescription,
+        }),
+        {
+            'script:ld+json': [getBusinessJsonLd()],
+        },
+    ]
 }
 
 export default function JobOffersPage() {
