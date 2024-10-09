@@ -7,15 +7,15 @@ import {
 } from '@remix-run/react'
 import { useEffect, useRef, useState } from 'react'
 import { Send } from 'react-bootstrap-icons'
-// import {
-//     GoogleReCaptcha,
-//     GoogleReCaptchaProvider,
-// } from 'react-google-recaptcha-v3'
+import {
+    GoogleReCaptcha,
+    GoogleReCaptchaProvider,
+} from 'react-google-recaptcha-v3'
 import Markdown from 'react-markdown'
 import JobOffers from '~/actions/jobOffers'
 import Button from '~/components/atoms/Button'
 import Input from '~/components/atoms/Input'
-import Select from '~/components/atoms/Select'
+// import Select from '~/components/atoms/Select'
 import Page from '~/components/templates/Page'
 import { JobOffer } from '~/types/contentful'
 
@@ -84,127 +84,127 @@ export default function JobOffersPage() {
                 </div>
             </div>
             <div className="flex w-full flex-col justify-center gap-y-8">
-                {/* <GoogleReCaptchaProvider reCaptchaKey="6Lf2j4AjAAAAANW0-igfUz7u38VEZCjoh0WtEbLB"> */}
-                <h2 className="w-full text-4xl font-semibold tracking-tighter">
-                    Envía tu Candidatura
-                </h2>
-                <Form
-                    id="contact"
-                    onSubmit={() => setIsLoading(true)}
-                    ref={$form}
-                    preventScrollReset
-                    method="POST"
-                    action="/api/jobOfferForm"
-                    className="w-full"
-                >
-                    <h3 className="mb-5 w-full text-2xl font-semibold tracking-tighter text-gray-100">
-                        Datos generales
-                    </h3>
-                    <div className="flex flex-col gap-y-5">
-                        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-                            <Input
-                                inputProps={{
-                                    name: 'name',
-                                    placeholder: 'Sin apellidos',
-                                    required: true,
-                                }}
-                                labelProps={{ text: 'Nombre' }}
-                            />
-                            <Input
-                                inputProps={{
-                                    name: 'email',
-                                    type: 'email',
-                                    placeholder: 'nombre@gmail.com',
-                                    required: true,
-                                }}
-                                labelProps={{ text: 'Correo electrónico' }}
-                            />
-                            <Input
-                                inputProps={{
-                                    name: 'ratePerHour',
-                                    type: 'number',
-                                    placeholder: 'En dólares',
-                                    required: true,
-                                }}
-                                labelProps={{ text: 'Tarifa por hora' }}
-                            />
-                            <Select
-                                options={Array.from({ length: 10 }).map(
-                                    (_, index) => ({
-                                        label: String(index + 1),
-                                        value: String(index + 1),
-                                    })
-                                )}
-                                labelProps={{ text: 'Años de experiencia' }}
-                                inputProps={{
-                                    name: 'yearsOfExperience',
-                                    placeholder:
-                                        '¿Cuántos años de experiencia tienes?',
-                                    required: true,
-                                }}
-                            />
-                        </div>
+                <GoogleReCaptchaProvider reCaptchaKey="6Lf2j4AjAAAAANW0-igfUz7u38VEZCjoh0WtEbLB">
+                    <h2 className="w-full text-4xl font-semibold tracking-tighter">
+                        Envía tu Candidatura
+                    </h2>
+                    <Form
+                        id="contact"
+                        onSubmit={() => setIsLoading(true)}
+                        ref={$form}
+                        preventScrollReset
+                        method="POST"
+                        action="/api/jobOfferForm"
+                        className="w-full"
+                    >
                         <h3 className="mb-5 w-full text-2xl font-semibold tracking-tighter text-gray-100">
-                            Experiencia con las tecnología de la oferta
+                            Datos generales
                         </h3>
-                        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-                            {jobOffer.skills.map((skill, index) => (
-                                <Select
-                                    key={index}
-                                    options={Array.from({ length: 11 }).map(
-                                        (_, index) => ({
-                                            label: String(index),
-                                            value: String(index),
-                                        })
-                                    )}
-                                    labelProps={{
-                                        text: skill,
-                                    }}
+                        <div className="flex flex-col gap-y-5">
+                            <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+                                <Input
                                     inputProps={{
-                                        name: `skill${skill}`,
-                                        placeholder:
-                                            '¿Cuántos años de experiencia tienes?',
+                                        name: 'name',
+                                        placeholder: 'Sin apellidos',
                                         required: true,
                                     }}
+                                    labelProps={{ text: 'Nombre' }}
                                 />
-                            ))}
+                                <Input
+                                    inputProps={{
+                                        name: 'email',
+                                        type: 'email',
+                                        placeholder: 'nombre@gmail.com',
+                                        required: true,
+                                    }}
+                                    labelProps={{ text: 'Correo electrónico' }}
+                                />
+                                <Input
+                                    inputProps={{
+                                        name: 'ratePerHour',
+                                        type: 'number',
+                                        placeholder: 'En dólares',
+                                        required: true,
+                                    }}
+                                    labelProps={{ text: 'Tarifa por hora' }}
+                                />
+                                {/* <Select */}
+                                {/*     options={Array.from({ length: 10 }).map( */}
+                                {/*         (_, index) => ({ */}
+                                {/*             label: String(index + 1), */}
+                                {/*             value: String(index + 1), */}
+                                {/*         }) */}
+                                {/*     )} */}
+                                {/*     labelProps={{ text: 'Años de experiencia' }} */}
+                                {/*     inputProps={{ */}
+                                {/*         name: 'yearsOfExperience', */}
+                                {/*         placeholder: */}
+                                {/*             '¿Cuántos años de experiencia tienes?', */}
+                                {/*         required: true, */}
+                                {/*     }} */}
+                                {/* /> */}
+                            </div>
+                            <h3 className="mb-5 w-full text-2xl font-semibold tracking-tighter text-gray-100">
+                                Experiencia con las tecnología de la oferta
+                            </h3>
+                            <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+                                {/* {jobOffer.skills.map((skill, index) => ( */}
+                                {/*     <Select */}
+                                {/*         key={index} */}
+                                {/*         options={Array.from({ length: 11 }).map( */}
+                                {/*             (_, index) => ({ */}
+                                {/*                 label: String(index), */}
+                                {/*                 value: String(index), */}
+                                {/*             }) */}
+                                {/*         )} */}
+                                {/*         labelProps={{ */}
+                                {/*             text: skill, */}
+                                {/*         }} */}
+                                {/*         inputProps={{ */}
+                                {/*             name: `skill${skill}`, */}
+                                {/*             placeholder: */}
+                                {/*                 '¿Cuántos años de experiencia tienes?', */}
+                                {/*             required: true, */}
+                                {/*         }} */}
+                                {/*     /> */}
+                                {/* ))} */}
+                            </div>
+                            <Input
+                                inputProps={{
+                                    name: 'pathname',
+                                    type: 'hidden',
+                                    value: location.pathname,
+                                }}
+                            />
+                            <Input
+                                inputProps={{
+                                    name: 'offerTitle',
+                                    type: 'hidden',
+                                    value: jobOffer.seoTitle,
+                                }}
+                            />
+                            <Input
+                                inputProps={{
+                                    name: 'recaptchaToken',
+                                    type: 'hidden',
+                                    value: recaptchaToken,
+                                }}
+                            />
+                            <GoogleReCaptcha onVerify={setRecaptchaToken} />
+                            <Button
+                                isLoading={isLoading}
+                                isDisabled={isLoading || !recaptchaToken}
+                                className="mt-3 w-full"
+                                variant="primary"
+                                props={{
+                                    type: 'submit',
+                                }}
+                            >
+                                Enviar
+                            </Button>
                         </div>
-                        <Input
-                            inputProps={{
-                                name: 'pathname',
-                                type: 'hidden',
-                                value: location.pathname,
-                            }}
-                        />
-                        <Input
-                            inputProps={{
-                                name: 'offerTitle',
-                                type: 'hidden',
-                                value: jobOffer.seoTitle,
-                            }}
-                        />
-                        <Input
-                            inputProps={{
-                                name: 'recaptchaToken',
-                                type: 'hidden',
-                                value: recaptchaToken,
-                            }}
-                        />
-                        {/* <GoogleReCaptcha onVerify={setRecaptchaToken} /> */}
-                        <Button
-                            isLoading={isLoading}
-                            isDisabled={isLoading || !recaptchaToken}
-                            className="mt-3 w-full"
-                            variant="primary"
-                            props={{
-                                type: 'submit',
-                            }}
-                        >
-                            Enviar
-                        </Button>
-                    </div>
-                </Form>
-                {/* </GoogleReCaptchaProvider> */}
+                    </Form>
+                </GoogleReCaptchaProvider>
             </div>
         </Page>
     )
