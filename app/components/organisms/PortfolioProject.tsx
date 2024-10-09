@@ -9,8 +9,7 @@ export default function PortfolioProject({ project }: { project: Project }) {
     return (
         <Link
             to={project.url}
-            target={project.url === '#contacto' ? '_self' : '_blank'}
-            rel="noreferrer"
+            target={project.url === '#contacto' ? '_self' : '_blank'} rel="noreferrer"
         >
             <FakeBackgroundImagePrimitive.Container className="aspect-h-9 aspect-w-16 rounded-xl">
                 <FakeBackgroundImagePrimitive.Image

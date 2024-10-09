@@ -73,12 +73,12 @@ export async function loader({ request }: LoaderFunctionArgs) {
                 )
             }
 
-            relatedPostsByCategory = await Posts.getRelatedByCategory(
+            relatedPostsByCategory = (await Posts.getRelatedByCategory(
                 post.categories,
                 post.slug!
             )
                 .appendHeaderImgUrls()
-                .get()
+                .get()) as Post[]
         }
 
         return json(

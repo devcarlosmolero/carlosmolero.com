@@ -6,6 +6,19 @@ export interface ContentfulFilters {
     limit?: number
 }
 
+export interface JobOffer {
+    seoTitle: string
+    seoDescription: string
+    content: string
+    isOpen: boolean
+    skills: string[]
+    createdAt?: string
+    updatedAt?: string
+    formattedCreatedAt?: string
+    formattedUpdatedAt?: string
+    maxCompensationPerHour: number
+}
+
 export interface Post {
     seoTitle: string
     seoDescription: string
@@ -21,7 +34,7 @@ export interface Post {
     hookTitle?: string
     hookDescription?: string
     slug?: string
-    sections?: { id: string; text: string }[]
+    sections?: { id: string; text: string; level: number }[]
 }
 
 export interface Project {

@@ -57,7 +57,7 @@ export default function ServiceLayout({
             </div>
             <Separator />
             <div className="flex w-full justify-center">
-                <div className="prose prose-dark w-full max-w-[765px] prose-img:w-full [&_h2:first-of-type]:mt-0">
+                <div className="prose prose-dark w-full max-w-[765px] max-w-full prose-img:w-full [&_h2:first-of-type]:mt-0">
                     <Markdown
                         remarkPlugins={[remarkGfm]}
                         rehypePlugins={[rehypeSlug, rehypeRaw]}

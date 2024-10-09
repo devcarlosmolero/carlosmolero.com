@@ -62,15 +62,15 @@ export default function ContactForm() {
                                 value: location.pathname,
                             }}
                         />
-                        <div className="hidden">
-                            <Input
-                                inputProps={{
-                                    name: 'recaptchaToken',
-                                    type: 'hidden',
-                                    value: recaptchaToken,
-                                }}
-                            />
-                        </div>
+
+                        <Input
+                            inputProps={{
+                                name: 'recaptchaToken',
+                                type: 'hidden',
+                                value: recaptchaToken,
+                            }}
+                        />
+
                         <Textarea
                             inputProps={{
                                 name: 'message',
