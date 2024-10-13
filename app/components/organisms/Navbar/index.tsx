@@ -4,6 +4,7 @@ import Hamburger from '~/components/molecules/Hamburger'
 import { useEffect, useState } from 'react'
 import ImageKitImage from '~/components/atoms/ImageKitImage'
 import {
+    CalculatorIcon,
     ChatBubbleLeftEllipsisIcon,
     ChevronDownIcon,
     ChevronRightIcon,
@@ -13,7 +14,7 @@ import Button from '~/components/atoms/Button'
 import NavbarDrawer from './NavbarDrawer'
 import { ServiceCard } from '~/types/contentful'
 import PopoverPrimitive from '~/components/atoms/PopoverPrimitive'
-import DashedLink from '~/components/atoms/DashedLink'
+import { ArrowRight } from 'react-bootstrap-icons'
 
 export default function Navbar({
     isRoot,
@@ -60,17 +61,18 @@ export default function Navbar({
                                     Servicios
                                 </div>
                             </PopoverPrimitive.Trigger>
-                            <PopoverPrimitive.Content className="w-60 rounded-xl border border-zinc-800 bg-neutral-950 p-3 text-start normal-case">
+                            <PopoverPrimitive.Content className="w-60 rounded-md border border-zinc-800 bg-neutral-950 p-3 text-start normal-case">
                                 {services.map((service, index) => {
                                     return (
-                                        <DashedLink
-                                            className="py-1 font-normal text-gray-300"
+                                        <Link
+                                            className="flex items-start gap-x-2 py-1 font-normal text-gray-300"
                                             key={index}
                                             reloadDocument
                                             to={`/${service.slug}`}
                                         >
+                                            <ArrowRight className="mt-2 size-4 min-h-4 min-w-4" />{' '}
                                             {service.cardTitle}
-                                        </DashedLink>
+                                        </Link>
                                     )
                                 })}
                             </PopoverPrimitive.Content>
@@ -83,17 +85,18 @@ export default function Navbar({
                                     Herramientas
                                 </div>
                             </PopoverPrimitive.Trigger>
-                            <PopoverPrimitive.Content className="w-60 rounded-xl border border-zinc-800 bg-neutral-950 p-3 text-start normal-case">
+                            <PopoverPrimitive.Content className="w-60 rounded-md border border-zinc-800 bg-neutral-950 p-3 text-start normal-case">
                                 {SITE_TOOLS.map((tool, index) => {
                                     return (
-                                        <DashedLink
-                                            className="py-1 font-normal text-gray-300"
+                                        <Link
+                                            className="flex items-start gap-x-2 py-1 font-normal text-gray-300"
                                             key={index}
                                             reloadDocument
                                             to={`/${tool.pathname}`}
                                         >
+                                            <CalculatorIcon className="mt-2 size-4 min-h-4 min-w-4" />{' '}
                                             {tool.title}
-                                        </DashedLink>
+                                        </Link>
                                     )
                                 })}
                             </PopoverPrimitive.Content>

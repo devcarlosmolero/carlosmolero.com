@@ -12,7 +12,7 @@ export async function action({ request }: ActionFunctionArgs) {
 
     if (!notABot) {
         return redirectWithToast(
-            `${formData.get('pathname')}?contactFormStatus=error`,
+            `${formData.get('pathname')}?formStatus=error`,
             'Ha ocurrido un error durante el envío del formulario. Inténtalo de nuevo más tarde.',
             'error',
             true
@@ -33,7 +33,7 @@ export async function action({ request }: ActionFunctionArgs) {
     )
 
     return redirectWithToast(
-        `${formData.get('pathname')}?contactFormStatus=success`,
+        `${formData.get('pathname')}?formStatus=success`,
         'Candidatura Enviada. Nos pondremos en contacto contigo lo antes posible.',
         'success',
         true

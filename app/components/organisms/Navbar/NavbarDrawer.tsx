@@ -3,10 +3,13 @@ import cn from 'classnames'
 import { Link } from '@remix-run/react'
 import NavbarDropdown from './NavbarDropdown'
 import Button from '~/components/atoms/Button'
-import { ChatBubbleLeftEllipsisIcon } from '@heroicons/react/24/outline'
+import {
+    CalculatorIcon,
+    ChatBubbleLeftEllipsisIcon,
+} from '@heroicons/react/24/outline'
 import { IMAGE_KIT_BASE_URL, SITE_TOOLS } from '~/consts'
 import { ServiceCard } from '~/types/contentful'
-import DashedLink from '~/components/atoms/DashedLink'
+import { ArrowRight } from 'react-bootstrap-icons'
 
 export default function NavbarDrawer({
     isOpen,
@@ -56,28 +59,30 @@ export default function NavbarDrawer({
                     <NavbarDropdown title="Servicios">
                         {services.map((service, index) => {
                             return (
-                                <DashedLink
-                                    className="block py-1 pl-5 text-gray-300"
+                                <Link
+                                    className="flex items-center gap-x-2 py-1 pl-5 text-gray-300"
                                     reloadDocument
                                     to={`/${service.slug}`}
                                     key={index}
                                 >
+                                    <ArrowRight className="mt-2 size-4 min-h-4 min-w-4" />{' '}
                                     {service.cardTitle}
-                                </DashedLink>
+                                </Link>
                             )
                         })}
                     </NavbarDropdown>
                     <NavbarDropdown title="Herramientas">
                         {SITE_TOOLS.map((tool, index) => {
                             return (
-                                <DashedLink
-                                    className="block py-1 pl-5 text-gray-300"
+                                <Link
+                                    className="flex items-center gap-x-2 py-1 pl-5 text-gray-300"
                                     reloadDocument
                                     to={`/${tool.pathname}`}
                                     key={index}
                                 >
+                                    <CalculatorIcon className="mt-2 size-4 min-h-4 min-w-4" />{' '}
                                     {tool.title}
-                                </DashedLink>
+                                </Link>
                             )
                         })}
                     </NavbarDropdown>
