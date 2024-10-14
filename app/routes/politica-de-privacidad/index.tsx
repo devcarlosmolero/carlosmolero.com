@@ -17,13 +17,16 @@ export const meta: MetaFunction = () => {
 export default function PoliticaDePrivacidad() {
     return (
         <PostLayout
-            post={{
-                seoTitle: 'Política de Privacidad',
-                seoDescription: `Esta política de privacidad describe cómo recopilamos, usamos y protegemos tu
+            useFullWidth={true}
+            post={
+                {
+                    seoTitle: 'Política de Privacidad',
+                    seoDescription: `Esta política de privacidad describe cómo recopilamos, usamos y protegemos tu
                 información personal cuando visitas nuestro sitio web.`,
-                content: politicaDePrivacidadMd,
-                categories: [],
-            }}
+                    content: politicaDePrivacidadMd,
+                    categories: [],
+                } as any
+            }
         />
     )
 }

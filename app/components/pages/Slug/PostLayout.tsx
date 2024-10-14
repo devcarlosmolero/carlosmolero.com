@@ -11,6 +11,8 @@ import Accordion from '~/components/organisms/Accordion'
 import { FakeBackgroundImagePrimitive } from '~/components/atoms/FakeBackgroundImagePrimitive'
 import BlogPost from '~/components/organisms/BlogPost'
 import SectionHeading from '../Home/SectionHeading'
+import { Facebook, Linkedin, TwitterX, Whatsapp } from 'react-bootstrap-icons'
+import { SITE_BASE_URL } from '~/consts'
 
 export function SideBarContent({
     sections,
@@ -40,9 +42,11 @@ export function SideBarContent({
 export default function PostLayout({
     post,
     relatedPostsByCategory,
+    useFullWidth = false,
 }: {
     post: Post
-    relatedPostsByCategory: Post[]
+    relatedPostsByCategory?: Post[]
+    useFullWidth?: boolean
 }) {
     function hasSidebar() {
         return Boolean(post.headerImgUrl || post.sections)
@@ -105,18 +109,51 @@ export default function PostLayout({
                 <div
                     className={cn(
                         'lg:col-span-8',
-                        !hasSidebar() && 'max-w-[765px]'
+                        !hasSidebar() && !useFullWidth && 'max-w-[765px]'
                     )}
                 >
                     <div className="mb-8 flex flex-col gap-y-3">
                         <h1 className="text-4xl font-bold">{post.seoTitle}</h1>
+                        <div className="mb-2 mt-1 flex flex-wrap gap-2 text-white">
+                            <a
+                                href={`https://www.facebook.com/sharer/sharer.php?u=${SITE_BASE_URL}/${post.slug}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="rounded-md bg-blue-500 p-2"
+                            >
+                                <Facebook className="size-4" />
+                            </a>
+                            <a
+                                href={`https://twitter.com/intent/tweet?url=${SITE_BASE_URL}/${post.slug}&text=${post.seoTitle}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="rounded-md bg-black p-2"
+                            >
+                                <TwitterX className="size-4" />
+                            </a>
+                            <a
+                                href={`https://www.linkedin.com/sharing/share-offsite/?url=${SITE_BASE_URL}/${post.slug}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="rounded-md bg-blue-800 p-2"
+                            >
+                                <Linkedin className="size-4" />
+                            </a>
+                            <a
+                                href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`${post.seoTitle} ${SITE_BASE_URL}/${post.slug}`)}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="rounded-md bg-green-600 p-2"
+                            >
+                                <Whatsapp className="size-4" />
+                            </a>
+                        </div>
                         {post.createdAt && post.readingTime && (
                             <div className="flex flex-col gap-y-1 text-gray-400">
                                 <p suppressHydrationWarning>
                                     Publicado el {post.formattedCreatedAt!} |{' '}
                                     {post.readingTime} min.
                                 </p>
-                                <p></p>
                             </div>
                         )}
                         <div className="flex flex-wrap gap-2">
