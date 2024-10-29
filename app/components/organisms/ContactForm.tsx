@@ -12,6 +12,7 @@ export default function ContactForm() {
     const $form = useRef<HTMLFormElement>(null)
     const [isLoading, setIsLoading] = useState(false)
     const [recaptchaToken, setRecaptchaToken] = useState('')
+    const [refreshRecaptcha, setRefreshRecaptcha] = useState(false)
     const location = useLocation()
     const [params, setParams] = useSearchParams()
 
@@ -80,7 +81,10 @@ export default function ContactForm() {
                             }}
                             labelProps={{ text: 'Mensaje' }}
                         />
-                        <GoogleReCaptcha onVerify={setRecaptchaToken} />
+                        <GoogleReCaptcha
+                            refreshReCaptcha={refreshRecaptcha}
+                            onVerify={setRecaptchaToken}
+                        />
                         <Button
                             isLoading={isLoading}
                             isDisabled={isLoading || !recaptchaToken}
@@ -88,6 +92,9 @@ export default function ContactForm() {
                             variant="primary"
                             props={{
                                 type: 'submit',
+                                onClick: function () {
+                                    setRefreshRecaptcha((r) => !r)
+                                },
                             }}
                         >
                             Enviar
