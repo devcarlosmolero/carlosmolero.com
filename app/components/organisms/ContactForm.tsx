@@ -18,8 +18,8 @@ function ContactFormInner() {
     useEffect(() => {
         if (params.get('formStatus')) {
             $form.current?.reset()
+            setIsLoading(false)
         }
-        setIsLoading(false)
     }, [params])
 
     const handleReCaptchaVerify = useCallback(async () => {
