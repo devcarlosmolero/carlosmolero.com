@@ -6,39 +6,25 @@ import Faq from '~/components/pages/Home/Faq'
 import Hero from '~/components/pages/Home/Hero'
 import OurProcess from '~/components/pages/Home/OurProcess'
 import Services from '~/components/pages/Home/Services'
+import ServicesAPI from '~/actions/services'
 import Contact from '~/components/pages/shared/Contact'
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE } from '~/consts'
-import { getLatestPosts, getServices } from '~/actions/contentful'
 import Blog from '~/components/pages/Home/Blog'
 import { useLoaderData } from '@remix-run/react'
 import ScrollAnimation from 'react-animate-on-scroll'
 import { getBasicMetas, getBusinessJsonLd, getFaqsJsonLd } from '~/utils/metas'
-
 import { getCacheControlHeader } from '~/utils/server'
-import { Post } from '~/types/contentful'
+import { Post, ServiceCard } from '~/types/contentful'
+import Posts from '~/actions/posts'
 
 export async function loader() {
-    const posts = await getLatestPosts(6, [
-        'fields.seoTitle',
-        'fields.seoDescription',
-        'fields.headerImg',
-        'fields.slug',
-        'sys',
-    ])
-
-    const serviceCards = await getServices(10, [
-        'fields.cardTitle',
-        'fields.cardDescription',
-        'fields.enabled',
-        'fields.slug',
-        'fields.iconString',
-        'sys',
-    ])
+    const posts = await Posts.latest().appendHeaderImgUrls().formatDates().get()
+    const serviceCards = await ServicesAPI.all().get()
 
     return json(
         {
             posts,
-            serviceCards: serviceCards.sort((a, b) =>
+            serviceCards: serviceCards?.sort((a, b) =>
                 a === b ? 0 : a ? -1 : 1
             ),
         },
@@ -109,7 +95,7 @@ export default function Home() {
     return (
         <Page>
             <Hero />
-            <Services serviceCards={serviceCards} />
+            <Services serviceCards={serviceCards as ServiceCard[]} />
             <OurProcess />
             <Faq data={faqs} />
             <Blog posts={posts as Post[]} />

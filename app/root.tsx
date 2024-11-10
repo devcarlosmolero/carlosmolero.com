@@ -9,7 +9,6 @@ import {
     useLoaderData,
     useSearchParams,
 } from '@remix-run/react'
-import { getServices } from './actions/contentful'
 import type { LinksFunction, LoaderFunctionArgs } from '@remix-run/cloudflare'
 import Footer from './components/organisms/Footer'
 import { useEffect, useState } from 'react'
@@ -21,6 +20,8 @@ import Navbar from './components/organisms/Navbar'
 //@ts-expect-error idk
 import stylesheet from '~/tailwind.css?url'
 import 'react-toastify/dist/ReactToastify.css'
+import Services from './actions/services'
+import { Service } from './types/contentful'
 
 export async function loader({ request }: LoaderFunctionArgs) {
     const pathname = new URL(request.url).pathname
@@ -39,19 +40,12 @@ export async function loader({ request }: LoaderFunctionArgs) {
         )
     }
 
-    const services = await getServices(10, [
-        'fields.cardTitle',
-        'fields.cardDescription',
-        'fields.enabled',
-        'fields.slug',
-        'fields.iconString',
-        'sys',
-    ])
+    const services = await Services.all().get()
 
     return json({
         url: request.url,
         isRoot,
-        services: services.sort((a, b) => (a === b ? 0 : a ? -1 : 1)),
+        services: services?.sort((a, b) => (a === b ? 0 : a ? -1 : 1)),
     })
 }
 
@@ -104,7 +98,7 @@ export default function App() {
             >
                 <main>
                     <Navbar
-                        services={services}
+                        services={services as Service[]}
                         onOpen={() => setIsNavbarOpen(true)}
                         onClose={() => setIsNavbarOpen(false)}
                         isRoot={isRoot}

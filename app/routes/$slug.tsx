@@ -6,12 +6,8 @@ import {
 } from '@remix-run/cloudflare'
 import { useLoaderData } from '@remix-run/react'
 import { renderToStaticMarkup } from 'react-dom/server'
-import {
-    getPostBySlug,
-    getServiceBySlug,
-    getServices,
-} from '~/actions/contentful'
 import Posts from '~/actions/posts'
+import Services from '~/actions/services'
 import PostHook from '~/components/pages/Slug/PostHook'
 import PostLayout from '~/components/pages/Slug/PostLayout'
 import ServiceLayout from '~/components/pages/Slug/ServiceLayout'
@@ -35,31 +31,23 @@ export async function loader({ request }: LoaderFunctionArgs) {
         return redirect(`/${serviceRedirects[slug]}`, { status: 301 })
     }
 
-    const servicesSlugs = (await getServices(10, ['fields.slug', 'sys'])).map(
-        (service) => service.slug
-    )
+    const services = (await Services.all().get()) ?? []
 
     let post: Post | undefined
     let relatedPostsByCategory: Post[] = []
     let service: Service | undefined
-    let services: Service[] | undefined
 
     try {
-        if (servicesSlugs.includes(slug)) {
-            service = await getServiceBySlug(slug)
-            services = await getServices(10, [
-                'fields.cardTitle',
-                'fields.cardDescription',
-                'fields.slug',
-                'fields.iconString',
-                'fields.enabled',
-                'sys',
-            ])
+        if (services?.map((service) => service.slug).includes(slug)) {
+            service = (await Services.getBySlug(slug)
+                .appendHeaderImgUrls()
+                .appendFAQs()
+                .get())![0] as Service
         } else {
-            post = await getPostBySlug(slug)
-            post.formattedCreatedAt = new Date(
-                post.createdAt!
-            ).toLocaleDateString('es')
+            post = (await Posts.getBySlug(slug)
+                .appendHeaderImgUrls()
+                .formatDates()
+                .get())![0] as Post
 
             if (post.hookTitle && post.hookDescription) {
                 post.content = injectHook(
@@ -152,7 +140,7 @@ export const meta: MetaFunction = (payload: {
                   {
                       'script:ld+json': [
                           getProductServiceJsonLd(service, reviews),
-                          getFaqsJsonLd(service.faqs),
+                          getFaqsJsonLd(service.faqs!),
                       ],
                   },
               ]),
@@ -173,6 +161,11 @@ export default function Post() {
     }
 
     if (service) {
-        return <ServiceLayout service={service} cards={services!} />
+        return (
+            <ServiceLayout
+                service={service as Service}
+                cards={services! as Service[]}
+            />
+        )
     }
 }

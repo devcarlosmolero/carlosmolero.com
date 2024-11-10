@@ -80,7 +80,7 @@ export default function ServiceLayout({
             <div>
                 <AccentCard>
                     <div className="flex h-full flex-col items-center justify-center gap-y-3 text-center">
-                        <div className="flex max-w-[600px] flex-col items-center gap-y-5">
+                        <div className="my-5 flex max-w-[600px] flex-col items-center gap-y-5">
                             <h3 className="text-3xl font-bold md:text-5xl">
                                 {service.adTitle}
                             </h3>

@@ -61,7 +61,7 @@ export default function Navbar({
                                     Servicios
                                 </div>
                             </PopoverPrimitive.Trigger>
-                            <PopoverPrimitive.Content className="w-60 rounded-md border border-zinc-800 bg-neutral-950 p-3 text-start normal-case">
+                            <PopoverPrimitive.Content className="w-80 rounded-md border border-zinc-800 bg-neutral-950 p-3 text-start normal-case">
                                 {services.map((service, index) => {
                                     return (
                                         <Link
@@ -85,7 +85,7 @@ export default function Navbar({
                                     Herramientas
                                 </div>
                             </PopoverPrimitive.Trigger>
-                            <PopoverPrimitive.Content className="w-60 rounded-md border border-zinc-800 bg-neutral-950 p-3 text-start normal-case">
+                            <PopoverPrimitive.Content className="w-80 rounded-md border border-zinc-800 bg-neutral-950 p-3 text-start normal-case">
                                 {SITE_TOOLS.map((tool, index) => {
                                     return (
                                         <Link

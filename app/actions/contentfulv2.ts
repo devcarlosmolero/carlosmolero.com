@@ -67,3 +67,9 @@ export async function getAssetUrl(assetId: string) {
     const { fields } = (await response.json()) as any
     return fields.file.url as string
 }
+
+export async function getEntryById(entryId: string) {
+    const response = await fetch(createSingleContentfulUrl(entryId))
+    const { fields } = (await response.json()) as any
+    return fields
+}

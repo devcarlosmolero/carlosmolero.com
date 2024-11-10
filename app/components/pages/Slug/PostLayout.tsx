@@ -43,10 +43,12 @@ export default function PostLayout({
     post,
     relatedPostsByCategory,
     useFullWidth = false,
+    useSocialShare = true,
 }: {
     post: Post
     relatedPostsByCategory?: Post[]
     useFullWidth?: boolean
+    useSocialShare?: boolean
 }) {
     function hasSidebar() {
         return Boolean(post.headerImgUrl || post.sections)
@@ -114,40 +116,42 @@ export default function PostLayout({
                 >
                     <div className="mb-8 flex flex-col gap-y-3">
                         <h1 className="text-4xl font-bold">{post.seoTitle}</h1>
-                        <div className="mb-2 mt-1 flex flex-wrap gap-2 text-white">
-                            <a
-                                href={`https://www.facebook.com/sharer/sharer.php?u=${SITE_BASE_URL}/${post.slug}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="rounded-md bg-blue-500 p-2"
-                            >
-                                <Facebook className="size-4" />
-                            </a>
-                            <a
-                                href={`https://twitter.com/intent/tweet?url=${SITE_BASE_URL}/${post.slug}&text=${post.seoTitle}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="rounded-md bg-black p-2"
-                            >
-                                <TwitterX className="size-4" />
-                            </a>
-                            <a
-                                href={`https://www.linkedin.com/sharing/share-offsite/?url=${SITE_BASE_URL}/${post.slug}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="rounded-md bg-blue-800 p-2"
-                            >
-                                <Linkedin className="size-4" />
-                            </a>
-                            <a
-                                href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`${post.seoTitle} ${SITE_BASE_URL}/${post.slug}`)}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="rounded-md bg-green-600 p-2"
-                            >
-                                <Whatsapp className="size-4" />
-                            </a>
-                        </div>
+                        {useSocialShare && (
+                            <div className="mb-2 mt-1 flex flex-wrap gap-2 text-white">
+                                <a
+                                    href={`https://www.facebook.com/sharer/sharer.php?u=${SITE_BASE_URL}/${post.slug}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="rounded-md bg-blue-500 p-2"
+                                >
+                                    <Facebook className="size-4" />
+                                </a>
+                                <a
+                                    href={`https://twitter.com/intent/tweet?url=${SITE_BASE_URL}/${post.slug}&text=${post.seoTitle}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="rounded-md bg-black p-2"
+                                >
+                                    <TwitterX className="size-4" />
+                                </a>
+                                <a
+                                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${SITE_BASE_URL}/${post.slug}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="rounded-md bg-blue-800 p-2"
+                                >
+                                    <Linkedin className="size-4" />
+                                </a>
+                                <a
+                                    href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`${post.seoTitle} ${SITE_BASE_URL}/${post.slug}`)}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="rounded-md bg-green-600 p-2"
+                                >
+                                    <Whatsapp className="size-4" />
+                                </a>
+                            </div>
+                        )}
                         {post.createdAt && post.readingTime && (
                             <div className="flex flex-col gap-y-1 text-gray-400">
                                 <p suppressHydrationWarning>
@@ -156,20 +160,22 @@ export default function PostLayout({
                                 </p>
                             </div>
                         )}
-                        <div className="flex flex-wrap gap-2">
-                            {post.categories.map(
-                                (category: string, index: number) => {
-                                    return (
-                                        <p
-                                            key={index}
-                                            className="rounded-xl bg-neutral-900 px-3 py-1 text-sm"
-                                        >
-                                            {category}
-                                        </p>
-                                    )
-                                }
-                            )}
-                        </div>
+                        {post.categories && post.categories.length > 0 && (
+                            <div className="flex flex-wrap gap-2">
+                                {post.categories.map(
+                                    (category: string, index: number) => {
+                                        return (
+                                            <p
+                                                key={index}
+                                                className="rounded-xl bg-neutral-900 px-3 py-1 text-sm"
+                                            >
+                                                {category}
+                                            </p>
+                                        )
+                                    }
+                                )}
+                            </div>
+                        )}
                     </div>
                     <article className="prose prose-dark w-full !max-w-none prose-img:w-full prose-img:rounded-xl [&_h2:first-of-type]:mt-0">
                         <Markdown

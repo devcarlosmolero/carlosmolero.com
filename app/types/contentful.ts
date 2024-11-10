@@ -49,13 +49,14 @@ export interface Service {
     seoTitle: string
     seoDescription: string
     content: string
+    headerImg: any
     headerImgUrl: string
     slug: string
     createdAt?: string
     updatedAt?: string
     adTitle: string
     adDescription: string
-    faqs: {
+    faqs?: {
         question: string
         answer: string
     }[]

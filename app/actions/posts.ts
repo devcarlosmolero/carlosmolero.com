@@ -78,6 +78,14 @@ function createApi(filters: ContentfulFilters) {
 }
 
 const Posts = {
+    getBySlug(slug: string) {
+        const filters = {
+            contentType: 'post',
+            where: `fields.slug=${slug}`,
+        }
+
+        return createApi(filters)
+    },
     getRelatedByCategory(categories: string[], slug: string) {
         const filters = {
             contentType: 'post',
@@ -90,6 +98,23 @@ const Posts = {
             ],
             limit: 5,
             where: `fields.categories[in]=${categories.join(',')}&fields.slug[ne]=${slug}`,
+        }
+
+        return createApi(filters)
+    },
+    latest(limit = 6) {
+        const filters = {
+            contentType: 'post',
+            limit,
+            select: [
+                'fields.seoTitle',
+                'fields.seoDescription',
+                'fields.slug',
+                'fields.headerImg',
+                'fields.categories',
+                'sys',
+            ],
+            order: '-sys.createdAt',
         }
 
         return createApi(filters)

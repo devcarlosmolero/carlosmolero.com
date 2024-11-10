@@ -17,7 +17,8 @@ export const meta: MetaFunction = () => {
 export default function PoliticaDePrivacidad() {
     return (
         <PostLayout
-            useFullWidth={true}
+            useFullWidth
+            useSocialShare={false}
             post={
                 {
                     seoTitle: 'Política de Privacidad',
