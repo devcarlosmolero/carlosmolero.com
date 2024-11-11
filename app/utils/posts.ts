@@ -30,7 +30,7 @@ export function getPostReadingTimeInMinutes(content: string) {
     return Math.ceil(minutes)
 }
 
-export default function injectHook(content: string, hookHtml: string) {
+export default function injectPostHook(content: string, hookHtml: string) {
     return content.replace(/--hook--/g, hookHtml)
 }
 

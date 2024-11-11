@@ -1,25 +1,20 @@
 import { Fragment } from 'react/jsx-runtime'
 import cn from 'classnames'
 import { Link } from '@remix-run/react'
-import NavbarDropdown from './NavbarDropdown'
+
 import Button from '~/components/atoms/Button'
-import {
-    CalculatorIcon,
-    ChatBubbleLeftEllipsisIcon,
-} from '@heroicons/react/24/outline'
-import { IMAGE_KIT_BASE_URL, SITE_TOOLS } from '~/consts'
-import { ServiceCard } from '~/types/contentful'
-import { ArrowRight } from 'react-bootstrap-icons'
+import { ChatBubbleLeftEllipsisIcon } from '@heroicons/react/24/outline'
+import { IMAGE_KIT_BASE_URL } from '~/consts'
 
 export default function NavbarDrawer({
     isOpen,
     isRoot,
-    services,
+
     onClose,
 }: {
     isOpen: boolean
     isRoot: boolean
-    services: ServiceCard[]
+
     onClose: () => void
 }) {
     return (
@@ -56,36 +51,7 @@ export default function NavbarDrawer({
                             src={`${IMAGE_KIT_BASE_URL}/tr:ar-1-1,w-60,f-webp/logo.svg`}
                         />
                     </Link>
-                    <NavbarDropdown title="Servicios">
-                        {services.map((service, index) => {
-                            return (
-                                <Link
-                                    className="flex items-center gap-x-2 py-1 pl-5 text-gray-300"
-                                    reloadDocument
-                                    to={`/${service.slug}`}
-                                    key={index}
-                                >
-                                    <ArrowRight className="mt-2 size-4 min-h-4 min-w-4" />{' '}
-                                    {service.cardTitle}
-                                </Link>
-                            )
-                        })}
-                    </NavbarDropdown>
-                    <NavbarDropdown title="Herramientas">
-                        {SITE_TOOLS.map((tool, index) => {
-                            return (
-                                <Link
-                                    className="flex items-center gap-x-2 py-1 pl-5 text-gray-300"
-                                    reloadDocument
-                                    to={`/${tool.pathname}`}
-                                    key={index}
-                                >
-                                    <CalculatorIcon className="mt-2 size-4 min-h-4 min-w-4" />{' '}
-                                    {tool.title}
-                                </Link>
-                            )
-                        })}
-                    </NavbarDropdown>
+
                     <Link
                         reloadDocument
                         onClick={onClose}

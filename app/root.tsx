@@ -21,7 +21,7 @@ import Navbar from './components/organisms/Navbar'
 import stylesheet from '~/tailwind.css?url'
 import 'react-toastify/dist/ReactToastify.css'
 import Services from './actions/services'
-import { Service } from './types/contentful'
+import { ServiceCard } from './types/contentful'
 
 export async function loader({ request }: LoaderFunctionArgs) {
     const pathname = new URL(request.url).pathname
@@ -98,7 +98,6 @@ export default function App() {
             >
                 <main>
                     <Navbar
-                        services={services as Service[]}
                         onOpen={() => setIsNavbarOpen(true)}
                         onClose={() => setIsNavbarOpen(false)}
                         isRoot={isRoot}
@@ -106,7 +105,7 @@ export default function App() {
                     <Outlet />
                     <ScrollRestoration />
                     <Scripts />
-                    <Footer />
+                    <Footer services={services as ServiceCard[]} />
                 </main>
                 <ToastContainer
                     position="bottom-right"

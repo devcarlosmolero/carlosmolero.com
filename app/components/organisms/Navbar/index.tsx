@@ -3,27 +3,18 @@ import Container from '~/components/templates/Container'
 import Hamburger from '~/components/molecules/Hamburger'
 import { useEffect, useState } from 'react'
 import ImageKitImage from '~/components/atoms/ImageKitImage'
-import {
-    CalculatorIcon,
-    ChatBubbleLeftEllipsisIcon,
-    ChevronDownIcon,
-    ChevronRightIcon,
-} from '@heroicons/react/24/outline'
-import { IMAGE_KIT_BASE_URL, SITE_TOOLS } from '~/consts'
+import { ChatBubbleLeftEllipsisIcon } from '@heroicons/react/24/outline'
+import { IMAGE_KIT_BASE_URL } from '~/consts'
 import Button from '~/components/atoms/Button'
 import NavbarDrawer from './NavbarDrawer'
-import { ServiceCard } from '~/types/contentful'
-import PopoverPrimitive from '~/components/atoms/PopoverPrimitive'
-import { ArrowRight } from 'react-bootstrap-icons'
 
 export default function Navbar({
     isRoot,
-    services,
     onOpen,
     onClose,
 }: {
     isRoot: boolean
-    services: ServiceCard[]
+
     onOpen: () => void
     onClose: () => void
 }) {
@@ -53,54 +44,54 @@ export default function Navbar({
                         </Link>
                     </div>
                     <div className="col-span-9 flex w-full items-center justify-end gap-x-10">
-                        <PopoverPrimitive.Root>
-                            <PopoverPrimitive.Trigger className="flex w-full items-center">
-                                <div className="flex items-center gap-x-1">
-                                    <ChevronRightIcon className="size-4 group-hover:hidden" />
-                                    <ChevronDownIcon className="hidden size-4 group-hover:block" />
-                                    Servicios
-                                </div>
-                            </PopoverPrimitive.Trigger>
-                            <PopoverPrimitive.Content className="w-80 rounded-md border border-zinc-800 bg-neutral-950 p-3 text-start normal-case">
-                                {services.map((service, index) => {
-                                    return (
-                                        <Link
-                                            className="flex items-start gap-x-2 py-1 font-normal text-gray-300"
-                                            key={index}
-                                            reloadDocument
-                                            to={`/${service.slug}`}
-                                        >
-                                            <ArrowRight className="mt-2 size-4 min-h-4 min-w-4" />{' '}
-                                            {service.cardTitle}
-                                        </Link>
-                                    )
-                                })}
-                            </PopoverPrimitive.Content>
-                        </PopoverPrimitive.Root>
-                        <PopoverPrimitive.Root>
-                            <PopoverPrimitive.Trigger className="flex w-full items-center">
-                                <div className="flex items-center gap-x-1">
-                                    <ChevronRightIcon className="size-4 group-hover:hidden" />
-                                    <ChevronDownIcon className="hidden size-4 group-hover:block" />
-                                    Herramientas
-                                </div>
-                            </PopoverPrimitive.Trigger>
-                            <PopoverPrimitive.Content className="w-80 rounded-md border border-zinc-800 bg-neutral-950 p-3 text-start normal-case">
-                                {SITE_TOOLS.map((tool, index) => {
-                                    return (
-                                        <Link
-                                            className="flex items-start gap-x-2 py-1 font-normal text-gray-300"
-                                            key={index}
-                                            reloadDocument
-                                            to={`/${tool.pathname}`}
-                                        >
-                                            <CalculatorIcon className="mt-2 size-4 min-h-4 min-w-4" />{' '}
-                                            {tool.title}
-                                        </Link>
-                                    )
-                                })}
-                            </PopoverPrimitive.Content>
-                        </PopoverPrimitive.Root>
+                        {/* <PopoverPrimitive.Root> */}
+                        {/*     <PopoverPrimitive.Trigger className="flex w-full items-center"> */}
+                        {/*         <div className="flex items-center gap-x-1"> */}
+                        {/*             <ChevronRightIcon className="size-4 group-hover:hidden" /> */}
+                        {/*             <ChevronDownIcon className="hidden size-4 group-hover:block" /> */}
+                        {/*             Servicios */}
+                        {/*         </div> */}
+                        {/*     </PopoverPrimitive.Trigger> */}
+                        {/*     <PopoverPrimitive.Content className="w-80 rounded-md border border-zinc-800 bg-neutral-950 p-3 text-start normal-case"> */}
+                        {/*         {services.map((service, index) => { */}
+                        {/*             return ( */}
+                        {/*                 <Link */}
+                        {/*                     className="flex items-start gap-x-2 py-1 font-normal text-gray-300" */}
+                        {/*                     key={index} */}
+                        {/*                     reloadDocument */}
+                        {/*                     to={`/${service.slug}`} */}
+                        {/*                 > */}
+                        {/*                     <ArrowRight className="mt-2 size-4 min-h-4 min-w-4" />{' '} */}
+                        {/*                     {service.cardTitle} */}
+                        {/*                 </Link> */}
+                        {/*             ) */}
+                        {/*         })} */}
+                        {/*     </PopoverPrimitive.Content> */}
+                        {/* </PopoverPrimitive.Root> */}
+                        {/* <PopoverPrimitive.Root> */}
+                        {/*     <PopoverPrimitive.Trigger className="flex w-full items-center"> */}
+                        {/*         <div className="flex items-center gap-x-1"> */}
+                        {/*             <ChevronRightIcon className="size-4 group-hover:hidden" /> */}
+                        {/*             <ChevronDownIcon className="hidden size-4 group-hover:block" /> */}
+                        {/*             Herramientas */}
+                        {/*         </div> */}
+                        {/*     </PopoverPrimitive.Trigger> */}
+                        {/*     <PopoverPrimitive.Content className="w-80 rounded-md border border-zinc-800 bg-neutral-950 p-3 text-start normal-case"> */}
+                        {/*         {SITE_TOOLS.map((tool, index) => { */}
+                        {/*             return ( */}
+                        {/*                 <Link */}
+                        {/*                     className="flex items-start gap-x-2 py-1 font-normal text-gray-300" */}
+                        {/*                     key={index} */}
+                        {/*                     reloadDocument */}
+                        {/*                     to={`/${tool.pathname}`} */}
+                        {/*                 > */}
+                        {/*                     <CalculatorIcon className="mt-2 size-4 min-h-4 min-w-4" />{' '} */}
+                        {/*                     {tool.title} */}
+                        {/*                 </Link> */}
+                        {/*             ) */}
+                        {/*         })} */}
+                        {/*     </PopoverPrimitive.Content> */}
+                        {/* </PopoverPrimitive.Root> */}
                         <Link
                             reloadDocument
                             className="w-fit"
@@ -151,7 +142,6 @@ export default function Navbar({
                 onClose={() => setIsOpen(false)}
                 isOpen={isOpen}
                 isRoot={isRoot}
-                services={services}
             />
         </nav>
     )

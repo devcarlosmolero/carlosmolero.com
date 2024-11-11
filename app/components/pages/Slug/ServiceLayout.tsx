@@ -6,6 +6,9 @@ import {
     CalendarDaysIcon,
 } from '@heroicons/react/24/outline'
 import { Link } from '@remix-run/react'
+import rehypeSlug from 'rehype-slug'
+import remarkGfm from 'remark-gfm'
+import rehypeRaw from 'rehype-raw'
 import Badge from '~/components/atoms/Badge'
 import Button from '~/components/atoms/Button'
 import Separator from '~/components/atoms/Separator'
@@ -55,7 +58,12 @@ export default function ServiceLayout({
             <Separator />
             <div className="flex w-full justify-center">
                 <div className="prose prose-dark w-full max-w-full prose-img:w-full [&_h2:first-of-type]:mt-0">
-                    <Markdown>{service.content}</Markdown>
+                    <Markdown
+                        remarkPlugins={[remarkGfm]}
+                        rehypePlugins={[rehypeSlug, rehypeRaw]}
+                    >
+                        {service.content}
+                    </Markdown>
                 </div>
             </div>
             <div>
@@ -63,7 +71,7 @@ export default function ServiceLayout({
                     badgeLabel="FAQs"
                     title="Preguntas Frecuentes"
                 />
-                <Accordion data={service.faqs} />
+                <Accordion data={service.faqs as any} />
                 <div className="flex items-center justify-center">
                     <Button
                         className="mt-10"

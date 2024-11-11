@@ -18,8 +18,12 @@ import {
     getFaqsJsonLd,
     getProductServiceJsonLd,
 } from '~/utils/metas'
-import injectHook, { getPostImageUrls } from '~/utils/posts'
+import injectPostHook, {
+    getPostImageUrls,
+    getPostSections,
+} from '~/utils/posts'
 import { getCacheControlHeader, serviceRedirects } from '~/utils/server'
+import { injectServiceBenefits } from '~/utils/services'
 
 export async function loader({ request }: LoaderFunctionArgs) {
     const url = new URL(request.url)
@@ -43,14 +47,18 @@ export async function loader({ request }: LoaderFunctionArgs) {
                 .appendHeaderImgUrls()
                 .appendFAQs()
                 .get())![0] as Service
+
+            service.content = injectServiceBenefits(service.content)
         } else {
             post = (await Posts.getBySlug(slug)
                 .appendHeaderImgUrls()
                 .formatDates()
                 .get())![0] as Post
 
+            post.sections = getPostSections(post.content)
+
             if (post.hookTitle && post.hookDescription) {
-                post.content = injectHook(
+                post.content = injectPostHook(
                     post.content,
                     renderToStaticMarkup(
                         <PostHook
