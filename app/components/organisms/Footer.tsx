@@ -14,8 +14,8 @@ export default function Footer({ services }: { services: ServiceCard[] }) {
         <footer className="mx-2 mt-16">
             <Separator />
             <Container className="px-4 py-16 text-white">
-                <div className="grid gap-10 md:grid-cols-3">
-                    <div className="flex flex-col items-start space-y-5">
+                <div className="grid gap-10 md:grid-cols-4">
+                    <div className="flex flex-col items-start space-y-5 md:col-span-2">
                         <ImageKitImage
                             className="h-[70px] w-[70px]"
                             src="/logo.svg"
@@ -79,7 +79,7 @@ export default function Footer({ services }: { services: ServiceCard[] }) {
                         {services.map((service, index) => {
                             return (
                                 <Link
-                                    className="flex items-start gap-x-2 py-1 font-normal text-gray-300"
+                                    className="flex items-start gap-x-2 py-1 font-normal text-gray-300 hover:text-white"
                                     key={index}
                                     reloadDocument
                                     to={`/${service.slug}`}
@@ -96,7 +96,7 @@ export default function Footer({ services }: { services: ServiceCard[] }) {
                         {SITE_TOOLS.map((tool, index) => {
                             return (
                                 <Link
-                                    className="flex items-start gap-x-2 py-1 font-normal text-gray-300"
+                                    className="flex items-start gap-x-2 py-1 font-normal text-gray-300 hover:text-white"
                                     key={index}
                                     reloadDocument
                                     to={`/${tool.pathname}`}

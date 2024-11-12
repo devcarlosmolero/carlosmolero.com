@@ -47,8 +47,16 @@ export default function Hero() {
                     </h1>
                     <p>
                         Somos un equipo de desarrolladores de software,
-                        diseñadores y marketers con más de 10 años de
-                        experiencia.
+                        diseñadores y{' '}
+                        <a
+                            className="underline decoration-gray-500 decoration-dashed underline-offset-4 hover:text-orange-300"
+                            href="https://www.rank.novascript.io"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            marketers
+                        </a>{' '}
+                        con más de 10 años de experiencia.
                     </p>
                     <p>
                         Nos asociamos con empresas que buscan planear, diseñar y

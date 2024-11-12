@@ -3,7 +3,7 @@ import {
     createContentfulFilters,
     createContentfulUrl,
     getAssetUrl,
-} from './contentfulv2'
+} from './contentful'
 import { format } from 'date-fns'
 
 async function appendHeaderImgUrls(posts: Post[]) {

@@ -1,5 +1,5 @@
 import { ContentfulFilters, JobOffer } from '~/types/contentful'
-import { createContentfulFilters, createContentfulUrl } from './contentfulv2'
+import { createContentfulFilters, createContentfulUrl } from './contentful'
 import { format } from 'date-fns'
 
 function createApi(filters: ContentfulFilters) {

@@ -4,7 +4,7 @@ import {
     createContentfulUrl,
     getAssetUrl,
     getEntryById,
-} from './contentfulv2'
+} from './contentful'
 
 async function appendHeaderImgUrls(services: Service[]) {
     const result = await Promise.all(

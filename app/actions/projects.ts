@@ -3,7 +3,7 @@ import {
     createContentfulFilters,
     createContentfulUrl,
     getAssetUrl,
-} from './contentfulv2'
+} from './contentful'
 
 export async function getProjects() {
     const response = await fetch(

@@ -9,9 +9,7 @@ import { Link } from '@remix-run/react'
 import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
-import Badge from '~/components/atoms/Badge'
 import Button from '~/components/atoms/Button'
-import Separator from '~/components/atoms/Separator'
 import AccentCard from '~/components/templates/AccentCard'
 import Card from '~/components/templates/Card'
 import Page from '~/components/templates/Page'
@@ -20,6 +18,8 @@ import Contact from '../shared/Contact'
 import Accordion from '~/components/organisms/Accordion'
 import { FakeBackgroundImagePrimitive } from '~/components/atoms/FakeBackgroundImagePrimitive'
 import ServicesIconMap from '~/components/atoms/ServicesIconMap'
+import { QuestionCircle } from 'react-bootstrap-icons'
+import ImageKitImage from '~/components/atoms/ImageKitImage'
 
 export default function ServiceLayout({
     service,
@@ -31,14 +31,27 @@ export default function ServiceLayout({
     return (
         <Page>
             <div className="grid gap-10 lg:grid-cols-2">
-                <div className="flex flex-col gap-y-3">
-                    <Badge label="Servicio" />
+                <div className="flex flex-col gap-y-5">
+                    <p className="rounded-xl bg-neutral-800 px-2 py-3 text-white">
+                        😉 Te podríamos soltar una turra insufrible en la página
+                        de servicio, pero creemos que es importante respetar tu
+                        tiempo.
+                    </p>
                     <h1 className="text-4xl font-semibold tracking-tighter">
                         {service.seoTitle}
                     </h1>
-                    <p>{service.seoDescription}</p>
+                    <div className="flex w-full justify-center">
+                        <div className="prose prose-dark w-full max-w-full prose-img:w-full [&_h2:first-of-type]:mt-0">
+                            <Markdown
+                                remarkPlugins={[remarkGfm]}
+                                rehypePlugins={[rehypeSlug, rehypeRaw]}
+                            >
+                                {service.content}
+                            </Markdown>
+                        </div>
+                    </div>
                     <Button
-                        className="mt-3"
+                        className="my-3"
                         asLink
                         to="#contacto"
                         hasIcon
@@ -46,8 +59,27 @@ export default function ServiceLayout({
                     >
                         Pide presupuesto <ArrowRightIcon className="size-4" />
                     </Button>
+                    <h4 className="text-2xl font-semibold tracking-tighter">
+                        🔮 Sabíamos que Tendrías Preguntas...
+                    </h4>
+
+                    <Accordion data={service.faqs as any} />
+                    <a
+                        className="flex items-center gap-x-2 text-gray-300 underline underline-offset-4"
+                        href="#contacto"
+                    >
+                        <QuestionCircle className="size-4" /> Tengo más
+                        preguntas
+                    </a>
                 </div>
-                <FakeBackgroundImagePrimitive.Container className="aspect-h-9 aspect-w-16 rounded-xl">
+                <FakeBackgroundImagePrimitive.Container className="aspect-w-9 rounded-xl md:block md:h-[900px]">
+                    <FakeBackgroundImagePrimitive.Image
+                        alt={service.seoTitle}
+                        src={service.headerImgUrl}
+                        className="rounded-xl"
+                    />
+                </FakeBackgroundImagePrimitive.Container>
+                <FakeBackgroundImagePrimitive.Container className="aspect-h-9 aspect-w-16 block rounded-xl md:hidden">
                     <FakeBackgroundImagePrimitive.Image
                         alt={service.seoTitle}
                         src={service.headerImgUrl}
@@ -55,40 +87,17 @@ export default function ServiceLayout({
                     />
                 </FakeBackgroundImagePrimitive.Container>
             </div>
-            <Separator />
-            <div className="flex w-full justify-center">
-                <div className="prose prose-dark w-full max-w-full prose-img:w-full [&_h2:first-of-type]:mt-0">
-                    <Markdown
-                        remarkPlugins={[remarkGfm]}
-                        rehypePlugins={[rehypeSlug, rehypeRaw]}
-                    >
-                        {service.content}
-                    </Markdown>
-                </div>
-            </div>
-            <div>
-                <SectionHeading
-                    badgeLabel="FAQs"
-                    title="Preguntas Frecuentes"
-                />
-                <Accordion data={service.faqs as any} />
-                <div className="flex items-center justify-center">
-                    <Button
-                        className="mt-10"
-                        asLink
-                        to="#contacto"
-                        hasIcon
-                        variant="primary"
-                    >
-                        Tengo más preguntas
-                        <ArrowRightIcon className="size-4" />
-                    </Button>
-                </div>
-            </div>
             <div>
                 <AccentCard>
-                    <div className="flex h-full flex-col items-center justify-center gap-y-3 text-center">
-                        <div className="my-5 flex max-w-[600px] flex-col items-center gap-y-5">
+                    <div className="grid h-full items-center justify-center gap-y-3 md:grid-cols-2">
+                        <div className="hidden md:block">
+                            <ImageKitImage
+                                className="-mb-5 w-full max-w-[500px]"
+                                src={'/astronaut.svg'}
+                                alt="astronaut"
+                            />
+                        </div>
+                        <div className="my-5 flex max-w-[600px] flex-col items-center gap-y-5 text-center md:items-end md:text-end">
                             <h3 className="text-3xl font-bold md:text-5xl">
                                 {service.adTitle}
                             </h3>
@@ -115,7 +124,10 @@ export default function ServiceLayout({
             </div>
             <div className="flex flex-col">
                 <div>
-                    <SectionHeading title="Descubre Más Servicios" />
+                    <SectionHeading
+                        title="Descubre Más Servicios"
+                        description="Date un voltio por nuestro sitio web y descubre como podemos ayudarte, te lo explicamos en un par de párrafos, sin calentarte la cabeza."
+                    />
                 </div>
                 <div className="grid grid-cols-1 gap-x-5 gap-y-5 lg:grid-cols-3">
                     {cards.map((card, index) => {

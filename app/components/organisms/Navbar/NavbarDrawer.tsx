@@ -39,7 +39,7 @@ export default function NavbarDrawer({
             >
                 <div
                     className={cn(
-                        'h-100 flex min-w-[300px] flex-col items-start justify-center gap-y-2 px-6 py-4 font-semibold uppercase tracking-tighter transition-opacity',
+                        'h-100 flex min-w-[300px] flex-col items-start justify-center gap-y-2 px-6 py-4 font-semibold tracking-tighter transition-opacity',
                         isOpen && 'opacity-1 w-[100%] duration-500',
                         !isOpen && 'hidden w-[0%] opacity-0 duration-0'
                     )}
