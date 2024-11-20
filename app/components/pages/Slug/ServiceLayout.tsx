@@ -89,7 +89,7 @@ export default function ServiceLayout({
             </div>
             <div>
                 <AccentCard>
-                    <div className="grid h-full items-center justify-center gap-y-3 md:grid-cols-2">
+                    <div className="grid h-full items-center justify-center gap-y-3 md:grid-cols-2 md:px-8">
                         <div className="hidden md:block">
                             <ImageKitImage
                                 className="-mb-5 w-full max-w-[500px]"
