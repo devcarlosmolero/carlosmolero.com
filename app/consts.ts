@@ -7,6 +7,7 @@ export const SITE_STATIC_PATHS = [
     'nuestro-trabajo',
     'contador-caracteres-seo',
     'generador-sitemap-url',
+    'blog',
     'checklist-optimizacion-velocidad-web',
 ]
 export const SITE_TITLE = 'Empresa de Software y Diseño Web'
