@@ -61,6 +61,14 @@ export default function NavbarDrawer({
                         Nuestro Trabajo
                     </Link>
                     <Link
+                        reloadDocument
+                        onClick={onClose}
+                        className="text-white"
+                        to={'/blog'}
+                    >
+                        Blog{' '}
+                    </Link>
+                    <Link
                         onClick={onClose}
                         className="text-white"
                         to={`${isRoot ? '' : '/'}#contacto`}

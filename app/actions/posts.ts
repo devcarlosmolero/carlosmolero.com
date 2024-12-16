@@ -102,6 +102,36 @@ const Posts = {
 
         return createApi(filters)
     },
+    async count() {
+        const filters = {
+            contentType: 'post',
+            select: ['sys'],
+        }
+
+        const response = await fetch(
+            createContentfulUrl(createContentfulFilters(filters))
+        )
+        const { total } = (await response.json()) as any
+        return total
+    },
+    all(limit = 9, skip = 0) {
+        const filters = {
+            contentType: 'post',
+            limit,
+            skip,
+            select: [
+                'fields.seoTitle',
+                'fields.seoDescription',
+                'fields.slug',
+                'fields.headerImg',
+                'fields.categories',
+                'sys',
+            ],
+            order: '-sys.createdAt',
+        }
+
+        return createApi(filters)
+    },
     latest(limit = 6) {
         const filters = {
             contentType: 'post',
