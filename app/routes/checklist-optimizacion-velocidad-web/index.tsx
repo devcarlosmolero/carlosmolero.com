@@ -14,7 +14,7 @@ const initialChecklist = [
 <a class="underline decoration-gray-500 decoration-dashed underline-offset-4 hover:text-violet-300" target="_blank" href="https://es.wordpress.org/plugins/wp-smushit/">Smush</a> y 
 <a class="underline decoration-gray-500 decoration-dashed underline-offset-4 hover:text-violet-300" target="_blank" href="https://shortpixel.com/">ShortPixel</a>.`,
         checked: false,
-    },
+    },  
     {
         recommendation: 'Minificar y combinar archivos JavaScript y CSS',
         description: `Combina y reduce el tamaño de múltiples archivos CSS o JavaScript en uno solo para reducir el número de solicitudes HTTP. Si estás usando WordPress te recomendamos utilizar el plugin 

@@ -28,7 +28,7 @@ export default function Footer({ services }: { services: ServiceCard[] }) {
                         <Button
                             hasIcon
                             asLink
-                            to="https://cal.com/carlosmta/30min"
+                            to="https://cal.com/carlosmmta/30min"
                             props={
                                 {
                                     target: '_blank',

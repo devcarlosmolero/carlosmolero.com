@@ -37,8 +37,8 @@ module.exports = {
       settings: {
         react: {
           version: "detect",
-        },
-        formComponents: ["Form"],
+          },
+          formComponents: ["Form"],
         linkComponents: [
           { name: "Link", linkAttribute: "to" },
           { name: "NavLink", linkAttribute: "to" },
