@@ -1,12 +1,12 @@
 import { MetaFunction } from '@remix-run/cloudflare'
 import PostLayout from '~/components/pages/Slug/PostLayout'
 // @ts-expect-error vite import
-import politicaDePrivacidadMd from '~/markdown/politica-de-privacidad.md?raw'
+import politicaDeDevolucionesYReembolsosdMd from '~/markdown/politica-de-devoluciones-y-reembolsos.md?raw'
 
 export const meta: MetaFunction = () => {
     return [
-        { title: 'Política de Privacidad' },
-        { name: 'title', content: 'Política de Privacidad' },
+        { title: 'Política de Devoluciones y Reembolsos' },
+        { name: 'title', content: 'Política de Devoluciones y Reembolsos' },
         {
             name: 'robots',
             content: 'noindex',
@@ -21,10 +21,9 @@ export default function PoliticaDePrivacidad() {
             useSocialShare={false}
             post={
                 {
-                    seoTitle: 'Política de Privacidad',
-                    seoDescription: `La política de privacidad describe cómo recopilamos, usamos y protegemos tu
-                información personal cuando visitas nuestro sitio web.`,
-                    content: politicaDePrivacidadMd,
+                    seoTitle: 'Política de Devoluciones y Reembolsos',
+                    seoDescription: `La política de devoluciones y reembolsos detalla cómo se gestionan los pagos por suscripción y las reglas aplicables.`,
+                    content: politicaDeDevolucionesYReembolsosdMd,
                     categories: [],
                 } as any
             }

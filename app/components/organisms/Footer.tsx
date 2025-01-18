@@ -37,12 +37,24 @@ export default function Footer({ services }: { services: ServiceCard[] }) {
                             className="-mt-14"
                             variant="accent"
                         >
-                            Agendar reunión
+                               Agendar reunión
                             <CalendarDaysIcon className="size-4" />
                         </Button>
-                        <div className="mt-5 text-gray-300 hover:text-white">
-                            <Link reloadDocument to="/politica-de-privacidad">
+                        <div className="mt-5 text-sm">
+                            <Link
+                                className="text-gray-300 no-underline hover:text-white"
+                                reloadDocument
+                                to="/politica-de-privacidad"
+                            >
                                 Política de privacidad
+                            </Link>
+                        <span className="text-gray-300"> | </span>
+                            <Link
+                                className="text-gray-300 no-underline hover:text-white"
+                                reloadDocument
+                                to="/politica-de-devoluciones-y-reembolsos"
+                            >
+                                Política de Devoluciones y Reembolsos
                             </Link>
                         </div>
                         <div className="mt-3 flex items-center gap-x-3">
