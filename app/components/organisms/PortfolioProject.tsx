@@ -21,7 +21,7 @@ export default function PortfolioProject({ project }: { project: Project }) {
                     src={project.imgUrl}
                     alt={project.imgUrl}
                 />
-                <Overlay className="bg-black/80 hover:bg-black/70">
+                <Overlay className="bg-black/70 hover:bg-black/65">
                     <div className="flex h-full w-full flex-col items-start justify-start">
                         <div className="p-5">
                             {' '}

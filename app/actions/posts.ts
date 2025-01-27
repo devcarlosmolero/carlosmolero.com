@@ -97,7 +97,7 @@ const Posts = {
                 'sys',
             ],
             limit: 5,
-            where: `fields.categories[in]=${categories.join(',')}&fields.slug[ne]=${slug}&fields.isSuccessCase[ne]=true`,
+            where: `fields.categories[in]=${categories.join(',')}&fields.slug[ne]=${slug}`,
         }
 
         return createApi(filters)

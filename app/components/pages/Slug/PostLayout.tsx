@@ -191,7 +191,7 @@ export default function PostLayout({
                     {relatedPostsByCategory && (
                         <div className="mt-24 flex flex-col gap-y-5">
                             <SectionHeading title="Quizás te pueda interesar" />
-                            <div className="grid grid-cols-1">
+                            <div className="grid grid-cols-1 gap-y-5">
                                 {relatedPostsByCategory.map(
                                     (relatedPost, index) => (
                                         <BlogPost
