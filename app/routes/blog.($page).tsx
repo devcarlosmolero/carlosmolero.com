@@ -79,7 +79,7 @@ export default function BlogPage() {
                     </div>
                 )}
 
-                <div id="posts" className="grid gap-5 gap-y-12 md:grid-cols-2">
+                <div id="posts" className="grid gap-5 gap-y-5 md:grid-cols-2">
                     {posts &&
                         (posts as Post[]).map((post: Post, index: number) => (
                             <BlogPost key={index} post={post} />
