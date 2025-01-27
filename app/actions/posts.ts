@@ -115,7 +115,7 @@ const Posts = {
         const { total } = (await response.json()) as any
         return total
     },
-    all(limit = 9, skip = 0) {
+    all(limit = 9, skip = 0, pullSuccessCases = false) {
         const filters = {
             contentType: 'post',
             limit,
@@ -129,7 +129,7 @@ const Posts = {
                 'sys',
             ],
             order: '-sys.createdAt',
-            where: `fields.isSuccessCase[ne]=true`
+            where: `fields.isSuccessCase[ne]=${pullSuccessCases ? 'false' : 'true'}`,
         }
 
         return createApi(filters)

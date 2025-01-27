@@ -9,6 +9,7 @@ export const SITE_STATIC_PATHS = [
     'generador-sitemap-url',
     'blog',
     'checklist-optimizacion-velocidad-web',
+    'marca-de-agua',
 ]
 export const SITE_TITLE = 'Empresa de Software y Diseño Web'
 export const SITE_DESCRIPTION = `Somos la empresa de desarrollo de software y diseño web líder en el sector, operamos en toda España, desde Málaga, 
@@ -39,7 +40,11 @@ export const SITE_TOOLS = [
         pathname: 'generador-sitemap-url',
     },
     {
-        title: 'Checklist Optimización Velocidad Página Web',
+        title: 'Checklist Velocidad Web',
         pathname: 'checklist-optimizacion-velocidad-web',
+    },
+    {
+        title: 'Agregador Marca de Agua Online',
+        pathname: 'marca-de-agua',
     },
 ]

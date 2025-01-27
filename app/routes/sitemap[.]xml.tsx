@@ -7,7 +7,7 @@ import { getCacheControlHeader } from '~/utils/server'
 
 export const loader: LoaderFunction = async () => {
     const [posts, services] = await Promise.all([
-        Posts.latest(100).get() as Promise<Post[]>,
+        Posts.all(100, 0, true).get() as Promise<Post[]>,
         Services.all().get() as Promise<Service[]>,
     ])
 
