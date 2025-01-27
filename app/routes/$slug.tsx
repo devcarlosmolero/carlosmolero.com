@@ -22,12 +22,22 @@ import injectPostHook, {
     getPostImageUrls,
     getPostSections,
 } from '~/utils/posts'
-import { getCacheControlHeader, serviceRedirects } from '~/utils/server'
+import {
+    getCacheControlHeader,
+    pageRedirects,
+    serviceRedirects,
+} from '~/utils/server'
 import { injectServiceBenefits } from '~/utils/services'
 
 export async function loader({ request }: LoaderFunctionArgs) {
     const url = new URL(request.url)
     const slug = url.pathname.split('/')[1]
+
+    //@ts-expect-error idk
+    if (pageRedirects[slug]) {
+        //@ts-expect-error idk
+        return redirect(`/${pageRedirects[slug]}`, { status: 301 })
+    }
 
     //@ts-expect-error idk
     if (serviceRedirects[slug]) {
@@ -109,7 +119,7 @@ const reviews = [
         body: 'Los recomendaría sin dudarlo. Siempre consiguen encontrar una solución perfecta para las necesidades de tu negocio. Carlos es una persona seria y responsable.',
     },
     {
-        author: 'Joaquin Galan',
+        author: 'Joaquin Galán',
         body: 'Son los mejores especialistas que podrás encontrar en el campo del diseño web y el desarrollo de software para pequeñas y medianas empresas. Destacaría el excelente trato, la atención al detalle, su cercanía, compromiso, apoyo, formalidad y calidad/precio. 100% recomendados.',
     },
     {
@@ -117,11 +127,11 @@ const reviews = [
         body: 'Todo fenomenal con ellos, son excelentes profesionales. En menos de 1 semana tenía mi sitio web funcionando. Son un equipo sobresaliente en todo lo relativo a la creación de productos digitales, ya sean páginas web, software personalizado para empresas e integraciones. ¡Recomendadísimos!',
     },
     {
-        author: 'Monika Milenova',
+        author: 'Mónica Milenova',
         body: 'Captaron mi idea a la primera y la ejecutaron a la perfección. Había pasado por un infierno tratando con agencias que solo me querían sacar el dinero, NovaScript fue la solución.',
     },
     {
-        author: 'Elena Diaz Sanchez',
+        author: 'Elena Díaz Sànchez',
         body: 'No tengo ninguna pega, son buenos en todo lo que tiene que ver con diseño web y desarrollo de software, rápidos y atentos. Si lo necesito, repetiré sin dudarlo.',
     },
 ]

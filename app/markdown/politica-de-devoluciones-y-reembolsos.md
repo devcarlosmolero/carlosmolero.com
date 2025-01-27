@@ -1,6 +1,6 @@
 ## Política de Suscripciones y Pagos
 
-En NovaScript LLC (grupo al que pertenece [rank.novascript.io](https://www.rank.novascript.io), las suscripciones **no son reembolsables** una vez realizado el pago, independientemente de las circunstancias, como cancelaciones anticipadas, interrupciones del servicio no atribuibles a nosotros o decisiones personales de no utilizar el servicio.
+En NovaScript LLC, las suscripciones **no son reembolsables** una vez realizado el pago, independientemente de las circunstancias, como cancelaciones anticipadas, interrupciones del servicio no atribuibles a nosotros o decisiones personales de no utilizar el servicio.
 
 ### Cancelación de Suscripciones
 

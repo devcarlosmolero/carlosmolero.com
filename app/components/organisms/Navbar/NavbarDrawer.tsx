@@ -51,14 +51,21 @@ export default function NavbarDrawer({
                             src={`${IMAGE_KIT_BASE_URL}/tr:ar-1-1,w-60,f-webp/logo.svg`}
                         />
                     </Link>
+                    <Link
 
+                            reloadDocument
+                        className=" text-gray-500 pointer-events-none"
+                            to={'/diseno-ux-ui'}
+                        >
+                            Diseño UX/UI
+                        </Link>
                     <Link
                         reloadDocument
                         onClick={onClose}
                         className="text-white"
-                        to={'/nuestro-trabajo'}
+                        to={'/nuestros-clientes-y-casos-de-exito'}
                     >
-                        Nuestro Trabajo
+                        Nuestros Clientes
                     </Link>
                     <Link
                         reloadDocument

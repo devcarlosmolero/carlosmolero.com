@@ -56,3 +56,8 @@ export const serviceRedirects = {
         'desarrollo-de-producto-minimo-viable',
     'creacion-de-apps-ios-y-android': 'desarrollo-de-apps-ios-y-android',
 }
+
+
+export const pageRedirects = {
+    'nuestro-trabajo':'nuestros-clientes-y-casos-de-exito'
+}

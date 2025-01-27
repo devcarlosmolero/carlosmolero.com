@@ -97,7 +97,7 @@ const Posts = {
                 'sys',
             ],
             limit: 5,
-            where: `fields.categories[in]=${categories.join(',')}&fields.slug[ne]=${slug}`,
+            where: `fields.categories[in]=${categories.join(',')}&fields.slug[ne]=${slug}&fields.isSuccessCase[ne]=true`,
         }
 
         return createApi(filters)
@@ -106,6 +106,7 @@ const Posts = {
         const filters = {
             contentType: 'post',
             select: ['sys'],
+            where: `fields.isSuccessCase[ne]=true`
         }
 
         const response = await fetch(
@@ -128,6 +129,7 @@ const Posts = {
                 'sys',
             ],
             order: '-sys.createdAt',
+            where: `fields.isSuccessCase[ne]=true`
         }
 
         return createApi(filters)
@@ -145,6 +147,7 @@ const Posts = {
                 'sys',
             ],
             order: '-sys.createdAt',
+            where: `fields.isSuccessCase[ne]=true`
         }
 
         return createApi(filters)

@@ -27,7 +27,7 @@ export async function loader() {
 export const meta: MetaFunction = () => {
     return [
         ...getBasicMetas({
-            title: 'Nuestro Trabajo Como Empresa de Software y Diseño Web',
+            title: 'Clientes y Casos de Éxito',
             description: `Hemos tenido el placer de trabajar desarrollando el software y diseñando 
 las páginas web para decenas de empresas y negocios consolidados, PYMES y Startups. Deja que te mostremos
 algunos de los proyectos en los que nos hemos involucrado.`,
@@ -35,7 +35,7 @@ algunos de los proyectos en los que nos hemos involucrado.`,
     ]
 }
 
-export default function NuestroTrabajo() {
+export default function NuestrosClientes() {
     const { projects } = useLoaderData<typeof loader>()
 
     return (
@@ -43,7 +43,7 @@ export default function NuestroTrabajo() {
             <div className="flex flex-col">
                 <SectionHeading
                     asH1
-                    title="Nuestro trabajo como <br class='hidden sm:block'/><span class='font-accent tracking-normal'>empresa de software</span>"
+                    title="Juzga por ti mismo, <br class='hidden sm:block'/><span class='font-accent tracking-normal'>clientes y casos de éxito</span>"
                     description={`Hemos tenido el placer de trabajar desarrollando el software y diseñando 
                     las páginas web para decenas de empresas y negocios consolidados, PYMES y Startups. Deja que te mostremos
                     algunos de los proyectos en los que nos hemos involucrado.`}
@@ -58,7 +58,7 @@ export default function NuestroTrabajo() {
                                 categories: ['Contacta con Nosotros'],
                             } as any
                         }
-                    />
+                    />  
                     {projects.map((project, index: number) => {
                         return (
                             <PortfolioProject

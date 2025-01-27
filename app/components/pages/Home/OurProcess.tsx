@@ -48,10 +48,10 @@ export default function OurProcess() {
                         <ScrollAnimation animateOnce animateIn="fadeInUp">
                             <Card className="flex w-full flex-col gap-y-5">
                                 <Review
-                                    author="Monika Milenova"
+                                    author="Mónica Milenova"
                                     jobTitle="Directora en MMAbogada"
                                     src="/monika-milenova.jpg"
-                                    alt="Monika Milenova - Directora en MMAbogada"
+                                    alt="Mónica Milenova - Directora en MMAbogada"
                                     description="Captaron mi idea a la primera y la ejecutaron a la perfección. Había pasado por un infierno tratando con agencias que solo me querían sacar el dinero, NovaScript fue la solución."
                                 />
                             </Card>

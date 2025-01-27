@@ -41,6 +41,7 @@ export interface Project {
     seoTitle: string
     categories: string[]
     url: string
+    successCaseSlug?:string
     img: any
     imgUrl: string
 }

@@ -9,7 +9,7 @@ import Button from '~/components/atoms/Button'
 const avatarImages = [
     {
         src: '/monika-milenova.jpg',
-        alt: 'Monika Milenova - Abogada Málaga',
+        alt: 'Mónica Milenova - Abogada Málaga',
     },
     {
         src: '/rafa-torres.jpg',

@@ -44,12 +44,19 @@ export default function Navbar({
                         </Link>
                     </div>
                     <div className="col-span-9 flex w-full items-center justify-end gap-x-10">
+                    <Link
+                            reloadDocument
+                            className="w-fit text-gray-500 pointer-events-none"
+                            to={'/diseno-ux-ui'}
+                        >
+                            Diseño UX/UI
+                        </Link>
                         <Link
                             reloadDocument
                             className="w-fit"
-                            to={'/nuestro-trabajo'}
+                            to={'/nuestros-clientes-y-casos-de-exito'}
                         >
-                            Nuestro Trabajo
+                            Nuestros Clientes
                         </Link>
                         <Link
                             reloadDocument

@@ -1,4 +1,4 @@
-Esta política de privacidad describe cómo NovaScript LLC (grupo al que pertenece [rank.novascript.io](https://www.rank.novascript.io) "nosotros", "nuestro", o "nos") maneja tu información personal cuando utilizas nuestro sitio web, nuestras aplicaciones móviles o nuestros servicios (en conjunto, los "Servicios"). Esta política de privacidad está diseñada para cumplir con el Reglamento General de Protección de Datos de la Unión Europea ("RGPD").
+Esta política de privacidad describe cómo NovaScript LLC maneja tu información personal cuando utilizas nuestro sitio web, nuestras aplicaciones móviles o nuestros servicios (en conjunto, los "Servicios"). Esta política de privacidad está diseñada para cumplir con el Reglamento General de Protección de Datos de la Unión Europea ("RGPD").
 
 ## Recopilación y Uso de Información
 

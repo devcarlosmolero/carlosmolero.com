@@ -2,44 +2,94 @@ import { Link } from '@remix-run/react'
 import { FakeBackgroundImagePrimitive } from '../atoms/FakeBackgroundImagePrimitive'
 import Overlay from '../atoms/Overlay'
 import { Project } from '~/types/contentful'
+import cn from 'classnames'
+import { ChevronRightIcon, LinkIcon } from 'lucide-react'
 import { Fragment } from 'react/jsx-runtime'
-import Button from '../atoms/Button'
 
 export default function PortfolioProject({ project }: { project: Project }) {
     return (
-        <Link
-            to={project.url}
-            target={project.url === '#contacto' ? '_self' : '_blank'} rel="noreferrer"
-        >
-            <FakeBackgroundImagePrimitive.Container className="aspect-h-9 aspect-w-16 rounded-xl">
+        <Fragment>
+            <FakeBackgroundImagePrimitive.Container
+                className={cn(
+                    'aspect-h-9 aspect-w-16 rounded-xl border-2',
+                    project.url === '#contacto'
+                        ? 'border-violet-300'
+                        : 'border-transparent'
+                )}
+            >
                 <FakeBackgroundImagePrimitive.Image
                     src={project.imgUrl}
                     alt={project.imgUrl}
-                    className="cursor-pointer transition-all duration-500 hover:scale-105"
                 />
-                <Overlay className="pointer-events-none flex flex-col items-center justify-center gap-y-5 bg-black/60 p-5 text-center">
-                    <h2 className="text-center text-xl">{project.seoTitle}</h2>
-                    <div>
-                        {project.url !== '#contacto' && (
-                            <Fragment>
-                                {project.categories.map((category, index) => (
-                                    <p
-                                        className="mx-1 my-1 inline-block w-fit rounded-xl bg-neutral-900 px-3 py-1 text-sm"
-                                        key={index}
-                                    >
-                                        {category}
-                                    </p>
-                                ))}
-                            </Fragment>
-                        )}
-                        {project.url === '#contacto' && (
-                            <Button variant="accent">
-                                {project.categories[0]}
-                            </Button>
-                        )}
+                <Overlay className="bg-black/80 hover:bg-black/70">
+                    <div className="flex h-full w-full flex-col items-start justify-start">
+                        <div className="p-5">
+                            {' '}
+                            <h2 className="text-start sm:text-xl">
+                                {project.seoTitle}
+                            </h2>
+                            {project.url !== '#contacto' && (
+                                <div className="mt-3 flex flex-wrap items-center gap-2">
+                                    {project.categories.map(
+                                        (category, index) => {
+                                            return (
+                                                <p className="rounded-xl border border-neutral-700 bg-neutral-900 px-3 py-1 text-[10px] sm:text-xs">
+                                                    #{category}
+                                                </p>
+                                            )
+                                        }
+                                    )}
+                                </div>
+                            )}
+                        </div>
+                        <div className="flex h-full w-full items-end">
+                            <div
+                                className="w-full"
+                                style={{ marginTop: 'auto' }}
+                            >
+                                {project.url === '#contacto' && (
+                                    <div className="bg-violet-600/80 px-5 text-start">
+                                        <Link
+                                            to="#contacto"
+                                            className="flex w-full items-center gap-2 py-3 text-sm transition-all duration-500 hover:translate-x-3"
+                                        >
+                                            <span>Contacta con nosotros</span>{' '}
+                                            <ChevronRightIcon className="size-5" />
+                                        </Link>
+                                    </div>
+                                )}
+                                {project.url !== '#contacto' && (
+                                    <div className="flex items-center bg-violet-700 px-5 text-start text-sm">
+                                        {project.successCaseSlug && (
+                                            <div className="w-full">
+                                                <Link
+                                                    to={`/${project.successCaseSlug}`}
+                                                    className="flex w-full items-center gap-2 py-3 transition-all duration-500 hover:translate-x-3"
+                                                >
+                                                    <span>
+                                                        Leer caso de éxito
+                                                    </span>{' '}
+                                                    <ChevronRightIcon className="size-5" />
+                                                </Link>
+                                            </div>
+                                        )}
+                                        {!project.successCaseSlug && (
+                                            <div className="w-full h-[44px]"></div>
+                                        )}
+                                        <a
+                                            href={project.url}
+                                            target={'_blank'}
+                                            className="rounded-full bg-white p-2 text-black transition-all duration-500 hover:bg-black hover:text-white"
+                                        >
+                                            <LinkIcon className="size-3" />
+                                        </a>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
                     </div>
                 </Overlay>
             </FakeBackgroundImagePrimitive.Container>
-        </Link>
+        </Fragment>
     )
 }
