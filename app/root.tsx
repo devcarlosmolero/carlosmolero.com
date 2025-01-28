@@ -11,7 +11,7 @@ import {
 } from '@remix-run/react'
 import type { LinksFunction, LoaderFunctionArgs } from '@remix-run/cloudflare'
 import Footer from './components/organisms/Footer'
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import cn from 'classnames'
 import { IMAGE_KIT_BASE_URL, SITE_BASE_URL } from './consts'
@@ -22,6 +22,9 @@ import stylesheet from '~/tailwind.css?url'
 import 'react-toastify/dist/ReactToastify.css'
 import Services from './actions/services'
 import { ServiceCard } from './types/contentful'
+import Container from './components/templates/Container'
+import Button from './components/atoms/Button'
+import { ChevronLeft } from 'lucide-react'
 
 export async function loader({ request }: LoaderFunctionArgs) {
     const pathname = new URL(request.url).pathname
@@ -59,6 +62,8 @@ export default function App() {
     const [isNavbarOpen, setIsNavbarOpen] = useState(false)
 
     useEffect(() => {
+        const newParams = new URLSearchParams(params)
+
         if (params.get('tt') === 'error') {
             toast.error(params.get('tm'))
         }
@@ -66,9 +71,9 @@ export default function App() {
             toast.success(params.get('tm'))
         }
 
-        params.delete('tt')
-        params.delete('tm')
-        setParams({}, { preventScrollReset: true, replace: true })
+        newParams.delete('tt')
+        newParams.delete('tm')
+        setParams(newParams, { preventScrollReset: true, replace: true })
     }, [params, setParams])
 
     return (
@@ -102,6 +107,18 @@ export default function App() {
                         onClose={() => setIsNavbarOpen(false)}
                         isRoot={isRoot}
                     />
+                    {params.get('source') &&
+                        params.get('source') === 'rank' && (
+                            <Fragment>
+                                {' '}
+                                <div className="fixed z-50 bottom-2 left-5 text-white  py-3">
+                                <a  href={params.get("prevUrl")!} className='text-xs animate-pulse !py-2 px-4 flex items-center gap-x-2 text-white bg-orange-500 rounded-full'>
+                                    <ChevronLeft className='size-4'/>
+                                    Volver a Rank</a>
+                                </div>
+                                <div className="pt-10"></div>
+                            </Fragment>
+                        )}
                     <Outlet />
                     <ScrollRestoration />
                     <Scripts />
