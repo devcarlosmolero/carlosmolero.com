@@ -19,7 +19,7 @@ const faqs = [
         question: '¿Cómo se añade una marca de agua a una imagen?',
         answer: 'Puedes añadir una marca de agua utilizando herramientas de edición como Photoshop, GIMP o aplicaciones en línea. Estas permiten superponer texto, logos o gráficos, ajustando su transparencia, tamaño y posición para que no afecte demasiado la imagen original.',
     },
-];
+]
 
 export const meta: MetaFunction = () => {
     return [
@@ -64,16 +64,19 @@ import { ColorPicker } from '~/components/atoms/ui/color-picker'
 import { Slider } from '~/components/atoms/ui/slider'
 import Button from '~/components/atoms/Button'
 import Input from '~/components/atoms/Input'
+import StringUtils from '~/utils/strings'
 
 const WatermarkImage = () => {
     const canvasRef = useRef(null)
     const [image, setImage] = useState(null)
-    const [uploadedImage, setUploadedImage] = useState(null)
-    const [color, setColor] = useState('#ffffff') 
-    const [opacity, setOpacity] = useState(0.5) 
-    const [watermarkText, setWatermarkText] = useState('') 
-    const [rotation, setRotation] = useState(-45) 
-    const [spacing, setSpacing] = useState(100) 
+    const [, setUploadedImage] = useState(null)
+    const [color, setColor] = useState('#ffffff')
+    const [opacity, setOpacity] = useState(0.5)
+    const [watermarkText, setWatermarkText] = useState('')
+    const [rotation, setRotation] = useState(-45)
+    const [spacing, setSpacing] = useState(100)
+    const [isDownloading, setIsDownloading] = useState(false)
+    const [fontSize, setFontSize] = useState(20)
 
     const handleImageUpload = (event: SyntheticEvent) => {
         const file = (event.target as HTMLInputElement)!.files![0]
@@ -98,7 +101,7 @@ const WatermarkImage = () => {
         if (image) {
             drawWatermark(image)
         }
-    }, [image, watermarkText, color, opacity, rotation, spacing])
+    }, [image, fontSize, watermarkText, color, opacity, rotation, spacing])
 
     const drawWatermark = (img: HTMLImageElement) => {
         const canvas = canvasRef.current as any as HTMLCanvasElement
@@ -111,7 +114,7 @@ const WatermarkImage = () => {
 
         ctx.drawImage(img, 0, 0, img.width, img.height)
 
-        ctx.font = '20px Arial'
+        ctx.font = `${fontSize}px Arial`
         ctx.fillStyle = `rgba(${hexToRgb(color)}, ${opacity})`
         ctx.textAlign = 'center'
         ctx.textBaseline = 'middle'
@@ -136,9 +139,26 @@ const WatermarkImage = () => {
         return `${r}, ${g}, ${b}`
     }
 
+    const handleDownload = () => {
+        setIsDownloading(true)
+        const canvas = canvasRef.current as any as HTMLCanvasElement
+        if (!canvas) return
+
+        const randomString = StringUtils.generateRandomString(8)
+        const fileName = `${randomString}-marca-de-agua.png`
+
+        const link = document.createElement('a')
+        link.download = fileName;
+        link.href = canvas.toDataURL('image/png')
+        link.click()
+        setIsDownloading(false)
+    }
+
+
+
     return (
         <Fragment>
-            <div className="grid md:grid-cols-2 items-start gap-5">
+            <div className="grid items-start gap-5 md:grid-cols-2">
                 <div className="flex flex-col">
                     <label htmlFor={''} className="mb-2 ml-2 text-gray-200">
                         Selecciona una imagen (*)
@@ -148,7 +168,13 @@ const WatermarkImage = () => {
                         accept="image/*"
                         onChange={handleImageUpload}
                     />
-                    <Button className="mt-5" variant="primary">
+                    <Button
+                        isDisabled={!image}
+                        isLoading={isDownloading}
+                        props={{ onClick: handleDownload }}
+                        className="mt-5"
+                        variant="primary"
+                    >
                         Descargar
                     </Button>
                 </div>
@@ -167,15 +193,42 @@ const WatermarkImage = () => {
                     </div>
                     <div className="flex gap-5">
                         <label>Opacidad:</label>
-                        <Slider defaultValue={[opacity]} onValueChange={(value)=> setOpacity(value[0])} max={1} step={0.1} />
+                        <Slider
+                            defaultValue={[opacity]}
+                            onValueChange={(value) => setOpacity(value[0])}
+                            max={1}
+                            step={0.1}
+                        />
                     </div>
                     <div className="flex gap-5">
                         <label>Rotación:</label>
-                        <Slider defaultValue={[rotation]} onValueChange={(value)=> setRotation(value[0])} min={-360} max={360} step={1} />
+                        <Slider
+                            defaultValue={[rotation]}
+                            onValueChange={(value) => setRotation(value[0])}
+                            min={-360}
+                            max={360}
+                            step={1}
+                        />
                     </div>
                     <div className="flex gap-5">
                         <label>Espaciado:</label>
-                        <Slider defaultValue={[spacing]} onValueChange={(value)=> setSpacing(value[0])} min={50} max={150} step={1} />
+                        <Slider
+                            defaultValue={[spacing]}
+                            onValueChange={(value) => setSpacing(value[0])}
+                            min={50}
+                            max={350}
+                            step={1}
+                        />
+                    </div>
+                    <div className="flex gap-5">
+                        <label>Tamaño:</label>
+                        <Slider
+                            defaultValue={[fontSize]}
+                            onValueChange={(value) => setFontSize(value[0])}
+                            min={12}
+                            max={48}
+                            step={1}
+                        />
                     </div>
                 </div>
             </div>
@@ -187,7 +240,7 @@ const WatermarkImage = () => {
                         border: '1px solid black',
                         maxWidth: '100%',
                     }}
-                    className='mt-5'
+                    className="mt-5"
                 />
             )}
         </Fragment>

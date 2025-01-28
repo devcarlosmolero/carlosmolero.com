@@ -58,15 +58,27 @@ export default function NuestrosClientes() {
                                 categories: ['Contacta con Nosotros'],
                             } as any
                         }
-                    />  
-                    {projects.map((project, index: number) => {
-                        return (
-                            <PortfolioProject
-                                key={index}
-                                project={project as Project}
-                            />
-                        )
-                    })}
+                    />
+                    {projects
+                        .sort((a, b) => {
+                            if (a.successCaseSlug && !b.successCaseSlug) {
+                                return -1
+                            }
+
+                            if (!a.successCaseSlug && b.successCaseSlug) {
+                                return 1
+                            }
+
+                            return 0
+                        })
+                        .map((project, index: number) => {
+                            return (
+                                <PortfolioProject
+                                    key={index}
+                                    project={project as Project}
+                                />
+                            )
+                        })}
                 </div>
                 <div className="mt-12">
                     <LogoCarousel heading="" />

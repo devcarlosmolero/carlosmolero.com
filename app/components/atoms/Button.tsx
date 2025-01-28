@@ -31,7 +31,7 @@ export default function Button({
 }) {
     function getVariantClassname() {
         if (isDisabled) {
-            return 'bg-neutral-800 text-gray-400'
+            return 'bg-neutral-800 pointer-events-none text-gray-400'
         }
 
         switch (variant) {
