@@ -111,8 +111,8 @@ export default function App() {
                         params.get('source') === 'rank' && (
                             <Fragment>
                                 {' '}
-                                <div className="fixed z-50 bottom-2 left-5 text-white  py-3">
-                                <a  href={params.get("prevUrl")!} className='text-xs animate-pulse !py-2 px-4 flex items-center gap-x-2 text-white bg-orange-500 rounded-full'>
+                                <div className="fixed z-50 bottom-2 right-5 text-white  py-3">
+                                <a  href={params.get("prevUrl")!} className='text-xs animate-pulse !py-3 px-4 flex items-center gap-x-2 text-white bg-orange-500 rounded-full'>
                                     <ChevronLeft className='size-4'/>
                                     Volver a Rank</a>
                                 </div>
