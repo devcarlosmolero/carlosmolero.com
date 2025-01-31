@@ -46,10 +46,10 @@ export default function Navbar({
                     <div className="col-span-9 flex w-full items-center justify-end gap-x-10">
                     <Link
                             reloadDocument
-                            className="w-fit text-gray-500 pointer-events-none"
-                            to={'/diseno-ux-ui'}
+                            className="w-fit"
+                            to={'/galeria-diseno-ux-ui'}
                         >
-                            Diseño UX/UI
+                            Galería Diseño UX/UI
                         </Link>
                         <Link
                             reloadDocument

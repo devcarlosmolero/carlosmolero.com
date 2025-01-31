@@ -54,10 +54,10 @@ export default function NavbarDrawer({
                     <Link
 
                             reloadDocument
-                        className=" text-gray-500 pointer-events-none"
-                            to={'/diseno-ux-ui'}
+                        className=" text-white "
+                            to={'/galeria-diseno-ux-ui'}
                         >
-                            Diseño UX/UI
+                            Galería Diseño UX/UI
                         </Link>
                     <Link
                         reloadDocument

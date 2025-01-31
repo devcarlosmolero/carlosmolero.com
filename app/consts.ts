@@ -10,6 +10,7 @@ export const SITE_STATIC_PATHS = [
     'blog',
     'checklist-optimizacion-velocidad-web',
     'marca-de-agua',
+    'galeria-diseno-ux-ui',
 ]
 export const SITE_TITLE = 'Empresa de Software y Diseño Web'
 export const SITE_DESCRIPTION = `Somos la empresa de desarrollo de software y diseño web líder en el sector, operamos en toda España, desde Málaga, 

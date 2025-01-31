@@ -1,5 +1,5 @@
 import { CalendarDaysIcon } from '@heroicons/react/24/outline'
-import { Facebook, Linkedin, TwitterX } from 'react-bootstrap-icons'
+import { Dribbble, Facebook, Linkedin, TwitterX } from 'react-bootstrap-icons'
 import Button from '../atoms/Button'
 import ImageKitImage from '../atoms/ImageKitImage'
 import SectionHeading from '../pages/Home/SectionHeading'
@@ -81,6 +81,14 @@ export default function Footer({ services }: { services: ServiceCard[] }) {
                                 rel="noreferrer"
                             >
                                 <Facebook />
+                            </Link>
+                            <Link
+                                to="https://dribbble.com/carlosmmta"
+                                className="cursor-pointer text-gray-300 hover:text-white"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                <Dribbble />
                             </Link>
                         </div>
                     </div>
