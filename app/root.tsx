@@ -22,9 +22,6 @@ import stylesheet from '~/tailwind.css?url'
 import 'react-toastify/dist/ReactToastify.css'
 import Services from './actions/services'
 import { ServiceCard } from './types/contentful'
-import Container from './components/templates/Container'
-import Button from './components/atoms/Button'
-import { ChevronLeft } from 'lucide-react'
 
 export async function loader({ request }: LoaderFunctionArgs) {
     const pathname = new URL(request.url).pathname
@@ -107,18 +104,6 @@ export default function App() {
                         onClose={() => setIsNavbarOpen(false)}
                         isRoot={isRoot}
                     />
-                    {params.get('source') &&
-                        params.get('source') === 'rank' && (
-                            <Fragment>
-                                {' '}
-                                <div className="fixed z-50 bottom-2 right-5 text-white  py-3">
-                                <a  href={params.get("prevUrl")!} className='text-xs animate-pulse !py-3 px-4 flex items-center gap-x-2 text-white bg-orange-500 rounded-full'>
-                                    <ChevronLeft className='size-4'/>
-                                    Volver a Rank</a>
-                                </div>
-                                <div className="pt-10"></div>
-                            </Fragment>
-                        )}
                     <Outlet />
                     <ScrollRestoration />
                     <Scripts />
