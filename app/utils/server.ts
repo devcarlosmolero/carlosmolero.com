@@ -59,5 +59,6 @@ export const serviceRedirects = {
 
 
 export const pageRedirects = {
-    'nuestro-trabajo':'nuestros-clientes-y-casos-de-exito'
+    'nuestro-trabajo':'nuestros-clientes-y-casos-de-exito',
+    'caso-de-exito-plataforma-de-agregacion-de-pagos-tuenix':'caso-de-exito-integrador-de-lenders-tuenix'
 }
