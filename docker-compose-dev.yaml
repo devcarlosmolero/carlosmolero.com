@@ -1,0 +1,14 @@
+services:
+  node-app:
+    image: node:20
+    platform: linux/amd64
+    container_name: carlosmolero_web_dev
+    tty: true
+    working_dir: /app
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - ./:/app
+    ports:
+      - "3000:3000"
+    command: sh -c "npm i && npm run dev"
