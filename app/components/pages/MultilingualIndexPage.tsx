@@ -16,7 +16,7 @@ export default function MultilingualIndexPage({
                 <p className="text-base font-normal">{translation.title}</p>
             </h1>
             <LanguageSwitcher />
-            <div className="space-y-3 text-center text-sm md:text-base">
+            <div className="space-y-3 text-center text-base">
                 {translation.paragraphs.map((paragraph: any, index: number) => (
                     <p
                         key={index}
