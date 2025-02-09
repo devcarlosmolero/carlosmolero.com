@@ -52,7 +52,7 @@ export default function App() {
                 <link rel="icon" type="image/x-icon" href={``} />
                 <link rel="canonical" href={url} />
                 <meta property="og:url" content={url} />
-                <meta property="og:locale" content="es" />
+                <meta property="og:locale" content={lang} />
                 <Meta />
                 <Links />
             </head>
