@@ -23,7 +23,7 @@ export const meta: MetaFunction = () => {
             description: SITE_DESCRIPTION_ES,
         }),
         {
-            'script:ld+json': [getBusinessJsonLd()],
+            'script:ld+json': [getBusinessJsonLd('es')],
         },
     ]
 }
