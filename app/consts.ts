@@ -13,8 +13,6 @@ export const SITE_BASE_URL = 'https://www.carlosmolero.com'
 export const SITE_BASE_URL_EN = 'https://www.carlosmolero.com/en'
 export const SITE_BASE_URL_ZH = 'https://www.carlosmolero.com/zh'
 
-export const SITE_NAME = 'https://www.carlosmolero.com'
-
 export const SITE_EMAIL = 'iscarlosmolero@icloud.com'
 export const SITE_PHONE_NUMBER = '+34 674 386 776'
 export const SITE_X_URL = 'https://x.com/iscarlosmolero'

@@ -3,7 +3,6 @@ import {
     SITE_PHONE_NUMBER,
     SITE_BASE_URL,
     SITE_EMAIL,
-    SITE_NAME,
     SITE_X_HANDLE,
     SITE_X_URL,
     SITE_BASE_URL_EN,
@@ -43,14 +42,6 @@ export function getBasicMetas({
             content: 'website',
         },
         {
-            property: 'og:image:type',
-            content: 'image/webp',
-        },
-        {
-            property: 'og:site_name',
-            content: SITE_NAME,
-        },
-        {
             name: 'twitter:card',
             content: 'summary_large_image',
         },
@@ -68,8 +59,7 @@ export function getBasicMetas({
 export function getBusinessJsonLd(language = 'es') {
     return {
         '@context': 'https://schema.org',
-        '@type': 'Corporation',
-        name: SITE_NAME,
+        '@type': 'http://schema.org/Person',
         url:
             language === 'es'
                 ? SITE_BASE_URL
