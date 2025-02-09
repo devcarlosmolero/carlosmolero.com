@@ -5,13 +5,14 @@ import { getBasicMetas, getBusinessJsonLd } from '~/utils/metas'
 
 const translation = {
     name: 'Carlos Molero',
-    title: 'Developer & Clinical Psychologist',
-    intro: "Hi! 👋 Welcome to my website! 🌍✨ My name is Carlos, and I graduated in Psychology from the University of Málaga in 2020. Years later, I completed a master's degree in Clinical Psychology online at UNED, where I acquired the skills to practice psychotherapy. 🎓🧠",
+    title: 'Developer and Clinical Psychologist',
+    intro: 'You might be wondering... Who on earth is Carlos? And even if you’re not wondering, I’m going to tell you anyway, because my professional background is, to say the least, peculiar.',
     paragraphs: [
-        'Although Psychology has always been my passion ❤️, I also decided to graduate in Software Engineering 💻 at the University of the People, a field in which I found a job and have been working for the past eight years. However, I have never stopped sharing knowledge and pursuing my path as a psychologist.',
-        'Currently, I work in both fields, and I invite you to learn more about my two professional profiles by visiting the dedicated pages.',
+        'I wanted to be a psychologist, I studied <b>psychology at the University of Malaga from 2016 to 2020</b> and then obtained the title of Clinical Psychologist by completing the master’s degree at UNED. Like some things in life, it didn’t work out in the end (spoiler: there was a lack of work as a psychologist).',
+        'Given this situation, I said to myself: <i>"Hey, I already know a bit about programming, it’s a field I like, and it seems there are job opportunities. Why not study <b>engineering</b> at the same time?"</i> And so I did, through the <b>University of the People</b>.',
+        '<b>For the last 8 years, I have been working as a freelance developer, creating applications and websites</b>, and it’s something I love. However, I still hold on to the <b>hope of being able to practice as a psychologist</b> and help people feel better.',
     ],
-    button1: 'Developer Profile',
+    button1: 'Programmer Profile',
     button2: 'Psychologist Profile',
 }
 

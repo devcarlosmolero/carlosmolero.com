@@ -17,6 +17,11 @@ export default function MultilingualIndexPage({
             </h1>
             <LanguageSwitcher />
             <div className="space-y-3 text-center text-base">
+                <p
+                    dangerouslySetInnerHTML={{
+                        __html: translation.intro,
+                    }}
+                />
                 {translation.paragraphs.map((paragraph: any, index: number) => (
                     <p
                         key={index}

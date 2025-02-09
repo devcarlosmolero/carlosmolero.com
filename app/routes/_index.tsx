@@ -6,10 +6,11 @@ import { getBasicMetas, getBusinessJsonLd } from '~/utils/metas'
 const translation = {
     name: 'Carlos Molero',
     title: 'Desarrollador y Psicólogo Clínico',
-    intro: '¡Hola! 👋 ¡Bienvenido a mi página web! 🌍✨ Me llamo Carlos y me gradué en Psicología por la Universidad de Málaga en 2020. Años más tarde, realicé un máster en Psicología Clínica online por la UNED, en el que adquirí las competencias para realizar psicoterapia. 🎓🧠',
+    intro: 'Estarás pensando... ¿Quién demonios es Carlos? Y aunque no lo estés pensando te lo voy a contar igual, porque mi <i>background</i> profesional es, como poco, peculiar.',
     paragraphs: [
-        'Aunque la Psicología siempre ha sido mi pasión ❤️, decidí graduarme también en Ingeniería de Software 💻 en la University of the People, un campo en el que sí encontré trabajo y al que me he dedicado durante los últimos ocho años. Sin embargo, nunca he dejado de divulgar y seguir mi camino como psicólogo.',
-        'Actualmente me dedico a ambas cosas, pero te invito a conocer un poco más acerca de mis dos perfiles profesionales yendo a la página dedicada a cada uno de ellos.',
+        'Yo quería ser psicólogo, estudie <b>psicología en la Universidad de Malaga del 2016 al 2020</b> y luego obtuve el titulo de Psicólogo Clínico cursando el master por la UNED. Como algunas cosas en la vida, al final no pudo ser (spoiler: escaseaba el trabajo como psicologo).',
+        'Dada esta situación, me dije: <i>"Oye, ya controlo algo de programación, es un campo que me gusta y parece que hay puestos de trabajo ¿Por qué no estudio una <b>ingeniería</b> a la vez?"</i> Y asi lo hice, a través de la <b>University of the People</b>.',
+        '<b>Durante los últimos 8 años me he dedicado al desarrollo de aplicaciones y sitios web de forma <i>freelance</i></b> y es algo que me encanta, sin embargo, aun guardo la <b>esperanza de poder ejercer como psicólogo</b> y ayudar a las personas a sentirse bien.',
     ],
     button1: 'Perfil de Programador',
     button2: 'Perfil de Psicólogo',
