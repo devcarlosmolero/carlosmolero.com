@@ -1,12 +1,12 @@
 import {
-    SITE_LINKEDIN_URL,
-    SITE_PHONE_NUMBER,
     SITE_BASE_URL,
-    SITE_EMAIL,
-    SITE_X_HANDLE,
-    SITE_X_URL,
     SITE_BASE_URL_EN,
     SITE_BASE_URL_ZH,
+    SITE_EMAIL,
+    SITE_LINKEDIN_URL,
+    SITE_PHONE_NUMBER,
+    SITE_X_HANDLE,
+    SITE_X_URL,
 } from '~/consts'
 
 export function getBasicMetas({
@@ -66,7 +66,7 @@ export function getBusinessJsonLd(language = 'es') {
                 : language === 'zh'
                   ? SITE_BASE_URL_ZH
                   : SITE_BASE_URL_EN,
-        logo: ``,
+        logo: `/carlos-molero.png`,
         sameAs: [SITE_X_URL, SITE_LINKEDIN_URL],
         contactPoint: [
             {
