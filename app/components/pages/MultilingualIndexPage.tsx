@@ -10,7 +10,11 @@ export default function MultilingualIndexPage({
 }) {
     return (
         <div className="flex max-w-[600px] flex-col items-center justify-center gap-y-5">
-            <img className="h-[100px] w-[100px]" src={'./carlos-molero.png'} />
+            <img
+                className="h-[100px] w-[100px]"
+                alt="Carlos Molero"
+                src={'./carlos-molero.png'}
+            />
             <h1 className="flex flex-col text-center text-2xl font-semibold">
                 {translation.name}{' '}
                 <p className="text-base font-normal">{translation.title}</p>
@@ -46,6 +50,7 @@ export default function MultilingualIndexPage({
                     href={'https://wa.link/cvvbvq'}
                     target="_blank"
                     className="rounded-full border border-gray-600 p-2 text-gray-600 hover:border-black hover:text-black"
+                    rel="noreferrer"
                 >
                     <Whatsapp className="size-3" />
                 </a>
@@ -53,6 +58,7 @@ export default function MultilingualIndexPage({
                     href={SITE_X_URL}
                     target="_blank"
                     className="rounded-full border border-gray-600 p-2 text-gray-600 hover:border-black hover:text-black"
+                    rel="noreferrer"
                 >
                     <TwitterX className="size-3" />
                 </a>
@@ -60,6 +66,7 @@ export default function MultilingualIndexPage({
                     href={SITE_LINKEDIN_URL}
                     target="_blank"
                     className="rounded-full border border-gray-600 p-2 text-gray-600 hover:border-black hover:text-black"
+                    rel="noreferrer"
                 >
                     <Linkedin className="size-3" />
                 </a>

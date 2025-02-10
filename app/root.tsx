@@ -1,3 +1,4 @@
+import type { LinksFunction, LoaderFunctionArgs } from '@remix-run/cloudflare'
 import {
     Links,
     Meta,
@@ -8,7 +9,6 @@ import {
     redirect,
     useLoaderData,
 } from '@remix-run/react'
-import type { LinksFunction, LoaderFunctionArgs } from '@remix-run/cloudflare'
 
 //@ts-expect-error idk
 import stylesheet from '~/tailwind.css?url'
@@ -49,7 +49,11 @@ export default function App() {
                     name="viewport"
                     content="width=device-width, initial-scale=1"
                 />
-                <link rel="icon" type="image/x-icon" href={``} />
+                <link
+                    rel="icon"
+                    type="image/x-icon"
+                    href={`/carlos-molero.png`}
+                />
                 <link rel="canonical" href={url} />
                 <meta property="og:url" content={url} />
                 <meta property="og:locale" content={lang} />
